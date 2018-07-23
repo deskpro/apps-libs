@@ -1,0 +1,37 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "ie >= 11"
+          ]
+        },
+        "exclude": [],
+        "modules": false,
+        "loose": true
+      }
+    ]
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "babel-plugin-transform-class-properties"
+  ],
+  "env": {
+    "commonjs": {
+      "presets": [
+        ["env", { "loose": true } ]
+      ]
+    },
+    "test": {
+      "presets": [
+        ["env", { "loose": true } ]
+      ],
+      "plugins": [
+        "transform-object-rest-spread",
+        "babel-plugin-transform-class-properties"
+      ]
+    }
+  }
+}
