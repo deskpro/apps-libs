@@ -1,0 +1,49 @@
+.dp-ActionPanel {
+  border: 1px solid var(--border-color);
+  display: block;
+  width: var(--width-app);
+}
+
+.dp-HeaderAppPanel {
+  border-bottom: 2px solid var(--border-color-light);
+  padding: var(--card-padding);
+}
+
+.dp-HeaderTitle {
+  color: var(--gray-500);
+  font-size: var(--h2);
+  margin-bottom: -4px;
+  padding-left: 5px;
+}
+
+.dp-HeaderAppPanel .dp-IconClose {
+  font-size: 16px;
+}
+
+.dp-ActionPanel .dp-InputSearchWrap {
+  margin-bottom: 6px;
+}
+
+.dp-ActionPanel .dp-ListItem {
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.dp-ActionPanelBody {
+  display: block;
+  padding: var(--card-padding);
+}
+
+.dp-ActionPanelTitle {
+  color: var(--gray-500);
+  display: block;
+  font-size: var(--h3);
+  padding: 0 0 13px 0;
+}
+
+.dp-HeaderAppPanel .dp-IconClose::after,
+.dp-HeaderAppPanel .dp-IconClose::before {
+  height: 0.05em;
+}

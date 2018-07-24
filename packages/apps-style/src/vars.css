@@ -1,0 +1,89 @@
+:root {
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-base: var(--font-family-sans-serif);
+
+  --font-size-base: 0.75rem;
+  --font-size-lg: calc(var(--font-size-base) * 1.25);
+  --font-size-sm: calc(var(--font-size-base) * 0.85);
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --font-weight-base: var(--font-weight-normal);
+  --line-height-base: 1.2;
+
+  --white: #fff;
+  --black: #000;
+  --gray-100: #eceef0;
+  --gray-200: #d0dae2;
+  --gray-300: #b0c0cc;
+  --gray-400: #798d9d;
+  --gray-500: #5f768a;
+
+  --gray-light: #afc0cc;
+
+  --blue: #4696dc;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #f14154;
+  --orange: #faaf3a;
+  --yellow: #ffc107;
+  --green: #94be46;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+
+  --text-light: #fefefe;
+  --text-dark: #333;
+  --text-darkish: #555;
+
+  --text-color: var(--gray-500);
+
+  --color-primary: var(--blue);
+  --color-secondary: var(--gray-400);
+  --color-success: var(--green);
+  --color-info: var(--cyan);
+  --color-warning: var(--yellow);
+  --color-danger: var(--red);
+
+  --link-color: var(--color-primary);
+  --link-hover-color: color-mod(var(--color-primary) blackness(50%));
+
+  --border-radius: 0.25rem; /* 4px based on 16px document */
+  --border-radius-small: calc(var(--border-radius) * 0.5); /* 4px based on 16px document */
+
+  --animation-speed: 0.2s;
+
+  --bg-app-panel: #edeff1;
+  --bg-app-panel-hover: #d5dde3;
+  --border-color-light: #d2dce4;
+  --border-color-dark: #b2c2ce;
+  --border-color: #cecece;
+  --normal-font-size: 1rem;
+  --border-color-input: #cecece;
+
+  --height-icon: 15px;
+  --width-icon: 15px;
+
+  --width-app: 275px;
+  --padding-app: 10px;
+
+  --h1: 16px;
+  --h2: 14px;
+  --h3: 13px;
+  --h4: 12px;
+
+  --p1: 10px;
+  --p2: 9px;
+  --p3: 8px;
+
+  --card-border: 2px;
+  --card-padding: 8px;
+  --card-element-margin: 13px;
+  --framework-margin: 10px;
+  --button-padding: 10px;
+
+}

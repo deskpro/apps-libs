@@ -1,0 +1,49 @@
+.dp-Panel {
+  border: 1px solid var(--gray-200);
+  display: block;
+}
+
+.dp-PanelHeader {
+  border-bottom: 1px solid var(--gray-200);
+  padding: var(--card-padding);
+}
+
+.dp-PanelHeaderTitle {
+  color: var(--gray-500);
+  font-size: var(--h2);
+}
+
+.dp-PanelHeader .dp-IconClose {
+  height: 11px;
+  width: 11px;
+}
+
+.dp-PanelBody {
+  display: block;
+  padding: 5px var(--card-padding);
+}
+
+.dp-PT--none {
+  padding-top: 0;
+}
+
+.dp-DataDefListAddress {
+  font-size: var(--h4);
+}
+
+.dp-DataDefListShipping {
+  padding-top: 2px;
+}
+
+.dp-DataDefListShipping,
+.dp-DataDefListBilling {
+  color: var(--gray-500);
+  display: inline-block;
+  font-weight: 600;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.dp-DataDefListBilling {
+  padding-top: var(--card-padding);
+}

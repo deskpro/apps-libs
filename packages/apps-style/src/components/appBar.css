@@ -1,0 +1,47 @@
+.dp-AppBar {
+  border-bottom: var(--card-border) solid var(--gray-300);
+  padding-bottom: 3px;
+}
+
+.dp-AppBarIcon-wrap {
+  position: relative;
+}
+
+.dp-AppBarIcon-wrap .dp-IconBadge {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+}
+
+.dp-AppBar .dp-LevelLeft {
+  flex-shrink: initial;
+}
+
+.dp-AppBarTitle {
+  font-size: var(--h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  margin-left: 8px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/**
+ * overrides for ActionList and nested Menu
+ */
+
+.dp-AppBar > .dp-ActionList .dp-ActionListItem {
+  margin-left: 13px;
+  padding-left: 0;
+
+  & > .dp-Menu {
+    margin-left: 0;
+  }
+}
+
+.dp-AppBar .dp-ActionListIcon img,
+.dp-AppBar .dp-ActionListIcon i {
+  cursor: pointer;
+}

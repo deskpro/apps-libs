@@ -1,0 +1,315 @@
+.dp-Icon {
+  display: inline-block;
+  flex-shrink: 0;
+  height: var(--height-icon);
+  vertical-align: top;
+  width: var(--width-icon);
+}
+
+.dp-Icon--Round {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.dp-Icon img {
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.dp-IconArrow {
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 11px;
+  width: 11px;
+}
+
+.dp-IconArrow {
+  background-image: svg-load("../svg/arrow.svg", fill = var(--gray-light));
+}
+
+.dp---is-hoverable:hover .dp-IconArrow,
+.dp-IconArrow:hover {
+  background-image: svg-load("../svg/arrow.svg", fill=var(--blue));
+}
+
+.dp-IconArrow {
+
+  &.iconArrow--right {
+    transform: rotate(-90deg);
+  }
+
+  &.iconArrow--left {
+    transform: rotate(90deg);
+  }
+
+  &.iconArrow--top {
+    transform: rotate(180deg);
+  }
+}
+
+.dp-IconArrow.is-open {
+  transform: rotate(180deg);
+  transition: transform var(--animation-speed);
+}
+
+.dp-IconBadge {
+  align-items: center;
+  background: linear-gradient(to top, var(--red) 50%, color-mod(var(--red) blackness(20%)));
+  border-radius: 50%;
+  color: var(--white);
+  display: flex;
+  font-size: 6.5px;
+  height: 12px;
+  justify-content: center;
+  line-height: 1;
+  width: 12px;
+
+  &.is-inactive {
+    background: linear-gradient(to top, var(--gray-400), var(--gray-400));
+  }
+}
+
+.dp-IconEllipsis,
+.dp-IconEllipsis::after,
+.dp-IconEllipsis::before {
+  background-color: var(--gray-400);
+  border-radius: 100%;
+  border-radius: 50%;
+  display: inline-block;
+  height: 3px;
+  width: 3px;
+}
+
+.dp-IconEllipsis {
+  margin: 0 6px;
+  position: relative;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+  }
+
+  &::after {
+    right: -5px;
+    top: 0;
+  }
+
+  &::before {
+    left: -5px;
+    top: 0;
+  }
+}
+
+.dp-IconPlus {
+  background-image: svg-load("../svg/plus.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+}
+
+.dp---is-hoverable:hover .dp-IconPlus,
+.dp-IconPlus:hover {
+  background-image: svg-load("../svg/plus.svg", fill=var(--blue));
+}
+
+.dp-IconPlusRound {
+  background-image: svg-load("../svg/plus-round.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+}
+
+.dp---is-hoverable:hover .dp-IconPlusRound,
+.dp-IconPlusRound:hover {
+  background-image: svg-load("../svg/plus-round.svg", fill=var(--blue));
+}
+
+.dp-IconClose {
+  background-image: svg-load("../svg/close.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  fill: var(--gray-light);
+  height: 9px;
+  width: 9px;
+}
+
+.dp---is-hoverable:hover .dp-IconClose,
+.dp-IconClose:hover {
+  background-image: svg-load("../svg/close.svg", fill=var(--blue));
+}
+
+.dp-IconCloseFatty {
+  background-image: svg-load("../svg/close-bold.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+}
+
+.dp---is-hoverable:hover .dp-IconCloseFatty,
+.dp-IconCloseFatty:hover {
+  background-image: svg-load("../svg/close-bold.svg", fill=var(--blue));
+}
+
+.dp-IconEdit {
+  background-image: svg-load("../svg/edit.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 13px;
+  width: 13px;
+}
+
+.dp---is-hoverable:hover .dp-IconEdit,
+.dp-IconEdit:hover {
+  background-image: svg-load("../svg/edit.svg", fill=var(--blue));
+}
+
+.dp-IconLock {
+  background-image: svg-load("../svg/lock.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+}
+
+.dp---is-hoverable:hover .dp-IconLock,
+.dp-IconLock:hover {
+  background-image: svg-load("../svg/lock.svg", fill=var(--blue));
+}
+
+.dp-RefreshIcon.is-updating {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-name: spin;
+  animation-timing-function: linear;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+}
+
+@keyframes spin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dp-RefreshIcon {
+  background-image: svg-load("../svg/refresh.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 13px;
+  width: 13px;
+}
+
+.dp---is-hoverable:hover .dp-RefreshIcon,
+.dp-RefreshIcon:hover {
+  background-image: svg-load("../svg/refresh.svg", fill=var(--blue));
+}
+
+.dp-RefreshIcon.is-updated {
+  background-image: svg-load("../svg/refresh.svg", fill=var(--green));
+}
+
+.dp-IconSearch {
+  background-image: svg-load("../svg/search.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 13px;
+  width: 13px;
+}
+
+.dp---is-hoverable:hover .dp-IconSearch,
+.dp-IconSearch:hover {
+  background-image: svg-load("../svg/search.svg", fill=var(--blue));
+}
+
+.dp-IconTag {
+  background-image: svg-load("../svg/tag.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 13px;
+  width: 13px;
+}
+
+.dp---is-hoverable:hover .dp-IconTag,
+.dp-IconTag:hover {
+  background-image: svg-load("../svg/tag.svg", fill=var(--blue));
+}
+
+.dp-IconOpen {
+  background-image: svg-load("../svg/open.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 13px;
+  width: 13px;
+}
+
+.dp---is-hoverable:hover .dp-IconOpen,
+.dp-IconOpen:hover {
+  background-image: svg-load("../svg/open.svg", fill=var(--blue));
+}
+
+.dp-IconUnlink {
+  background-image: svg-load("../svg/unlink.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 13px;
+  width: 13px;
+}
+
+.dp---is-hoverable:hover .dp-IconUnlink,
+.dp-IconUnlink:hover {
+  background-image: svg-load("../svg/unlink.svg", fill=var(--blue));
+}
+
+.dp-IconLink {
+  background-image: svg-load("../svg/link.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+}
+
+.dp---is-hoverable:hover .dp-IconLink,
+.dp-IconLink:hover {
+  background-image: svg-load("../svg/link.svg", fill=var(--blue));
+}
+
+.dp-IconSettings {
+  background-image: svg-load("../svg/settings.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 13px;
+  width: 13px;
+}
+
+.dp---is-hoverable:hover .dp-IconSettings,
+.dp-IconSettings:hover {
+  background-image: svg-load("../svg/settings.svg", fill=var(--blue));
+}

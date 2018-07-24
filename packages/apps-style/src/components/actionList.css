@@ -1,0 +1,44 @@
+.dp-ActionList {
+  display: flex;
+}
+
+.dp-ActionListItem {
+  align-items: center;
+  display: flex;
+  padding-left: 8px;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:hover .dp-Icon {
+    fill: #111;
+  }
+}
+
+.dp-ActionListItem * {
+  cursor: pointer;
+}
+
+.dp-ActionListLabel {
+  font-size: var(--h4);
+  padding-left: 3px;
+}
+
+.dp---is-hoverable:hover .dp-ActionListLabel {
+  color: var(--link-hover-color);
+}
+
+.dp---is-hidden.dp-ActionList {
+  display: none;
+  height: 0;
+  opacity: 0;
+}
+
+.dp-ActionList--is-vertical {
+  flex-direction: column;
+
+  & .dp-ActionListItem {
+    padding: 7px 5px;
+  }
+}

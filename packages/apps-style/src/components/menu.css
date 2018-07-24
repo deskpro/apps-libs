@@ -1,0 +1,52 @@
+.dp-Menu {
+
+  /* margin-bottom: -10px; */
+  margin-left: auto;
+  margin-right: 0;
+
+  /* opacity: 0; */
+
+  /* padding-bottom: 10px; */
+  position: relative;
+  text-align: right;
+
+  /** why 40px? **/
+
+  /* width: 40px; */
+}
+
+.dp-Menu .dp-ActionList {
+
+  background-color: #fff;
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius);
+  bottom: auto;
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1);
+
+  position: absolute;
+  right: 0;
+  top: calc(var(--height-icon) + 3px);
+
+  /** why 75px? **/
+
+  /* width: 75px; */
+
+  z-index: 1;
+
+}
+
+.dp-Menu .dp-ActionListItem {
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--border-color-light);
+  }
+
+  &:hover {
+    color: var(--blue);
+  }
+
+  & > .dp-ActionListLabel {
+    display: inline-block;
+    width: 75px;
+  }
+}

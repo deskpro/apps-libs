@@ -1,0 +1,28 @@
+{
+  "docs": {
+    "Getting Started": ["intro", "colors"],
+    "Components": [
+      "components/dp-Level",
+      "components/dp-ButtonTabs",
+      "components/dp-AppBar",
+      "components/dp-ActionList",
+      "components/dp-AppBody",
+      "components/dp-AppFrame",
+      "components/dp-AppPanel",
+      "components/dp-ListItem",
+      "components/dp-Scrollable",
+      "components/dp-ActionPanel",
+      "components/dp-TabSwitcher",
+      "components/dp-DataTable",
+      "components/dp-DataDefList",
+      "components/dp-Panel"
+    ],
+    "Elements": [
+      "elements/dp-Button",
+      "elements/dp-Forms",
+      "elements/dp-Content",
+      "elements/dp-Title",
+      "elements/dp-Icons"
+    ]
+  }
+}

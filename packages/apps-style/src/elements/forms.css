@@ -1,0 +1,100 @@
+.dp-Input {
+  border: 1px solid var(--border-color-input);
+  border-radius: var(--border-radius-small);
+  color: var(--gray-500);
+  display: block;
+  font-size: var(--h3);
+  letter-spacing: 0.8px;
+  line-height: 1;
+  padding: 6px 9px;
+  width: 100%;
+
+  &.is-error {
+    border: 1px solid var(--red);
+    color: red;
+  }
+
+  &:focus {
+    border: 1px solid var(--blue);
+    color: var(--gray-500);
+  }
+}
+
+.dp-Input.is-error {
+
+  &::placeholder {
+    color: var(--red);
+  }
+}
+
+.dp-Input {
+
+  &::placeholder,
+  &:focus::placeholder {
+    color: var(--gray-500);
+    opacity: 1;
+  }
+}
+
+.dp-InputSearchWrap {
+  display: block;
+  position: relative;
+}
+
+.dp-IconSearchWrap {
+  align-items: center;
+  bottom: 0;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 25px;
+}
+
+.dp-IconSearchWrap .dp-IconSearch {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dp-InputSearchWrap .dp-IconClose {
+  cursor: pointer;
+}
+
+.dp-InputSearchWrap .dp-IconClose:hover {
+  background-image: url('data:image/svg+xml,<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"><defs><style>.cls-1{fill: var(--blue);}</style></defs><title>app_icons</title><path class="cls-1" d="M325.79,299.58,585.5,38.87a18.81,18.81,0,0,0-26.59-26.6L299.19,273,38.49,12.27a18.81,18.81,0,0,0-26.6,26.6L272.65,299.63,11.89,561.38a18.74,18.74,0,0,0,13.19,32A19.59,19.59,0,0,0,38.49,588L299.24,326.22,558.91,585.89a18.7,18.7,0,0,0,13.19,5.44,19.56,19.56,0,0,0,13.4-5.44,18.84,18.84,0,0,0,0-26.6Z"/></svg>');
+}
+
+.dp-InputSearch {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.dp-InputSearchWrap .dp-IconClose {
+  position: absolute;
+  right: 10px;
+  top: 9px;
+}
+
+.dp-Select {
+  border: 1px solid var(--border-color-input);
+  border-radius: var(--border-radius-small);
+  color: var(--gray-500);
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  padding: 6px 9px;
+  width: 100%;
+
+  &.is-error {
+    border: 1px solid var(--red);
+    color: red;
+  }
+
+  &:focus {
+    border: 1px solid var(--blue);
+    color: var(--gray-500);
+  }
+}

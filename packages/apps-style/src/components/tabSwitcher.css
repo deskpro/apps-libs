@@ -1,0 +1,67 @@
+.dp-TabSwitcher {
+  display: flex;
+}
+
+.dp-TabItem * {
+  cursor: pointer;
+}
+
+.dp-TabLabel {
+  font-size: var(--h4);
+}
+
+.dp-TabItem {
+  border-bottom: 2px solid #f0f3f6;
+  cursor: pointer;
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: center;
+  padding: 7px 8px 7px;
+  position: relative;
+  text-align: center;
+
+  &::after {
+    background-color: var(--blue);
+    bottom: -2px;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    right: auto;
+    transition: all 0.2s;
+    width: 0;
+    z-index: 1;
+  }
+
+  &:not(:last-child) {
+    border-right: 2px solid #f0f3f6;
+  }
+
+  &:hover,
+  &.is-active {
+    background-color: #e1e8ed;
+
+    &::after {
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    &:not(:last-child) {
+      border-right: 2px solid #e1e8ed;
+    }
+  }
+
+  &:not(:last-child) {
+
+    &:hover::after,
+    &.is-active::after {
+      transition: all 0.2s;
+      width: calc(100% + 2px);
+    }
+  }
+}
+
+.dp-TabCount {
+  color: var(--blue);
+}

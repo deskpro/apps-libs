@@ -1,0 +1,12 @@
+.dp-Section {
+  display: block;
+}
+
+.dp-AppBody.dp-Section {
+  padding-top: 11px;
+}
+
+.dp---is-hidden.dp-AppBody {
+  height: 0;
+  opacity: 0;
+}

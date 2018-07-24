@@ -1,0 +1,27 @@
+
+.dp-ActionBar {
+  display: flex;
+  width: 100%;
+}
+
+.dp-ActionBarTitle {
+  font-size: var(--h3);
+
+  /* letter-spacing: 0.5px; */
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: 0;
+  margin-left: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dp-ActionBar .dp-LevelLeft {
+  flex-shrink: initial;
+}
+
+.dp---is-hoverable:hover .dp-ActionBarTitle {
+  color: var(--link-hover-color);
+  font-weight: bold;
+}

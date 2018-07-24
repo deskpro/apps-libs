@@ -1,0 +1,104 @@
+{
+  "plugins": [
+    "transform-object-rest-spread",
+    "babel-plugin-transform-class-properties"
+  ],
+  "env": {
+    "es": {
+      "presets": [
+        "stage-1",
+        "react"
+      ]
+    },
+    "commonjs": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": [
+                "ie >= 11"
+              ]
+            },
+            "exclude": [],
+            "modules": "commonjs",
+            "loose": true
+          }
+        ],
+        "react"
+      ]
+    },
+    "modules": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": [
+                "ie >= 11"
+              ]
+            },
+            "exclude": [],
+            "modules": false,
+            "loose": true
+          }
+        ],
+        "react"
+      ]
+    },
+    "production": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": [
+                "ie >= 11"
+              ]
+            },
+            "exclude": [],
+            "modules": "commonjs",
+            "loose": true
+          }
+        ],
+        "react"
+      ]
+    },
+    "development": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": [
+                "ie >= 11"
+              ]
+            },
+            "exclude": [],
+            "modules": false,
+            "loose": true
+          }
+        ],
+        "react"
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": [
+                "ie >= 11"
+              ]
+            },
+            "exclude": [],
+            "modules": "commonjs",
+            "loose": true
+          }
+        ],
+        "react"
+      ]
+    }
+  }
+}

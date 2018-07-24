@@ -1,0 +1,61 @@
+.dp-Level {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dp-LevelItem {
+  align-items: center;
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+.dp-LevelBottom {
+  align-items: center;
+  align-self: flex-end;
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+.dp-LevelTop {
+  align-items: center;
+  align-self: flex-start;
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+.dp-LevelLeft {
+  align-items: center;
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: flex-start;
+}
+
+.dp-LevelRight {
+  align-items: center;
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+.dp---is-hoverable:hover .dp-Level,
+.dp---is-hoverable:hover .dp-LevelItem,
+.dp---is-hoverable:hover .dp-LevelTop,
+.dp---is-hoverable:hover .dp-LevelLeft,
+.dp---is-hoverable:hover .dp-LevelBottom,
+.dp---is-hoverable:hover .dp-LevelRight {
+  color: var(--link-hover-color);
+}

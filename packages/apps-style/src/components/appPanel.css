@@ -1,0 +1,11 @@
+.dp-AppPanel {
+  background-color: var(--bg-app-panel);
+  border: 1px solid var(--border-color);
+  display: block;
+  width: var(--width-app);
+}
+
+.dp-AppPanelBody {
+  display: block;
+  padding: var(--framework-margin);
+}

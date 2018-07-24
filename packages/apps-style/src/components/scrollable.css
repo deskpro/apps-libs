@@ -1,0 +1,56 @@
+.dp-Scrollable {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.dp-ScrollableThumb {
+  background-color: #6f8495;
+  border-radius: 4px;
+  display: block;
+  position: relative;
+  width: 4px;
+}
+
+.dp-Scrollable .dp-ScrollableThumb {
+  display: none;
+  opacity: 0;
+}
+
+.dp-Scrollable:hover .dp-ScrollableThumb {
+  display: block;
+  opacity: 1;
+  transition: opacity var(--animation-speed);
+
+}
+
+/**
+.dp-ScrollableScrollWrap {
+  bottom: 0;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.dp-ScrollableScrollTrack {
+  background-color: var(--border-color-light);
+  border-radius: 4px;
+  display: block;
+  height: 100%;
+  position: relative;
+  width: 4px;
+}
+
+.dp-ScrollableScrollbar {
+  background-color: #6f8495;
+  border-radius: 4px;
+  bottom: auto;
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+**/
+

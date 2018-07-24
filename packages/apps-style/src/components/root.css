@@ -1,0 +1,30 @@
+/**
+ * This can be used to set base styles for a tree of elements/components.
+ * This should typically be the root of the app
+ * (e.g. on the actual <body> tag itself usually).
+ */
+
+.dp-Root {
+
+  background: #fff;
+
+  color: var(--text-dark);
+  font-family: var(--font-family-sans-serif);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  margin: 0;
+  padding: 0;
+
+  & a {
+    color: var(--link-color);
+
+    &:hover {
+      color: var(--link-hover-color);
+    }
+  }
+}
+
+.dp-Root * {
+  color: var(--text-color);
+}
+

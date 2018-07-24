@@ -1,0 +1,35 @@
+.dp-ListItem {
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius);
+  display: block;
+  margin-top: 7px;
+  padding: 6px 5px 6px 8px;
+}
+
+.dp-ListItem,
+.dp-ListItem * {
+  cursor: pointer;
+}
+
+.dp-ListItemRow {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+
+}
+
+.dp-ListItemRow:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.dp-ListItemRow .dp-Level {
+  width: 100%;
+}
+
+.dp---is-hoverable.dp-ListItem:hover,
+.dp-ListItem.is-hover {
+  border-color: var(--blue);
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1);
+  transition: var(--animation-speed);
+}
+

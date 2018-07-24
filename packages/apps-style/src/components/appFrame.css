@@ -1,0 +1,26 @@
+.dp-AppFrame {
+  background-color: #fff;
+  border: 2px solid var(--border-color-light);
+  border-radius: var(--border-radius);
+  display: block;
+  padding: var(--card-padding);
+}
+
+.dp-AppFrame:not(:last-child) {
+  margin-bottom: 13px;
+}
+
+.dp-AppFrame .dp-AppBody {
+  height: auto;
+  opacity: 1;
+}
+
+.dp-AppFrame.is-colapsed .dp-AppBody {
+  height: 0;
+  opacity: 0;
+}
+
+.dp-AppFrame.is-inactive {
+  filter: grayscale(100%);
+  opacity: 0.8;
+}

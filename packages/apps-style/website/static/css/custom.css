@@ -1,0 +1,46 @@
+.dp-style-wrapper {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.html-with-preview {
+  border: 1px solid #F0F0F0;
+  margin-bottom: 16px;
+}
+
+.html-with-preview > .rendered {
+  padding: 0.75rem;
+  position: relative;
+}
+
+.html-with-preview > .source > pre {
+  margin-bottom: 0;
+}
+
+.html-with-preview .code-collapsed-toggle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #F0F0F0;
+  border-bottom: 0;
+  border-right: 0;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 1px 4px;
+  color: #bbb;
+}
+
+.html-with-preview .code-collapsed-toggle:hover {
+  color: #000;
+}
+
+.html-with-preview > .source.collapsed {
+  display: none;
+}
+
+.hljs {
+  padding: 1rem;
+  border-radius: 0;
+  font-size: 12px;
+  line-height: 1.2em;
+}

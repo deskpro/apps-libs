@@ -1,0 +1,28 @@
+.dp-Title, .dp-Subtitle {
+  display: block;
+  word-break: break-word;
+}
+
+.dp-Title {
+  color: var(--text-dark);
+  font-size: 2rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.125;
+  margin-bottom: 1.5rem;
+
+  & + .dp-Subtitle {
+    margin-top: -1.25rem;
+  }
+}
+
+.dp-Subtitle {
+  color: var(--text-darkish);
+  font-size: 1.25rem;
+  font-weight: normal;
+  line-height: 1.125;
+  margin: 0;
+
+  & + .dp-Title {
+    margin-top: -1.25rem;
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "@deskpro/apps-components-style",
+  "version": "0.3.6",
+  "author": "DeskPRO <support@deskpro.com>",
+  "license": "BSD 3-Clause License",
+  "description": "Styling for for Deskpro Apps",
+  "main": "dist/style.css",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "npm run postcss-build && concurrently --kill-others 'npm:postcss-watch' 'npm:init-website-watch' 'npm:docs-server'",
+    "build-lib": "npm run postcss-build",
+    "build": "npm run postcss-build && npm run init-website-build && npm run docs-build",
+    "postcss-watch": "postcss -o dist/style.css --verbose -m -w --env development src/style.css",
+    "postcss-build": "postcss --verbose --env development -m -o dist/style.css src/style.css",
+    "init-website-watch": "cpx dist/style.css website/static/css --watch",
+    "init-website-build": "cpx dist/style.css website/static/css",
+    "docs-server": "cd website && npm run start",
+    "docs-build": "cd website && npm run build",
+    "lint": "stylelint \"src/**/*.css\"",
+    "lint-tryfix": "stylelint \"src/**/*.css\" --fix",
+    "test": "stylelint \"src/**/*.css\"",
+    "postinstall": "[ ! -d website ] || (cd website && npm install)"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0",
+    "contrast": "^1.0.1",
+    "cpx": "^1.5.0",
+    "postcss": "^6.0.23",
+    "postcss-autoreset": "^2.0.2",
+    "postcss-cli": "^5.0.1",
+    "postcss-extend-rule": "^2.0.0",
+    "postcss-flexbugs-fixes": "^3.3.1",
+    "postcss-import": "^11.1.0",
+    "postcss-inline-svg": "^3.1.1",
+    "postcss-preset-env": "^5.1.0",
+    "postcss-reporter": "^5.0.0",
+    "postcss-svgo": "^4.0.0",
+    "stylelint": "^9.3.0",
+    "stylelint-config-suitcss": "^14.0.0",
+    "stylelint-selector-bem-pattern": "^2.0.0"
+  }
+}

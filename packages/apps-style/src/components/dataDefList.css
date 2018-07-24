@@ -1,0 +1,22 @@
+.dp-SectionTitle {
+  color: var(--gray-500);
+  font-size: var(--h2);
+}
+
+.dp-DataDefList {
+  display: block;
+}
+
+.dp-DataDefListKey {
+  color: #9ca0ad;
+  display: block;
+  font-size: var(--h4);
+  padding-top: 10px;
+}
+
+.dp-DataDefListValue {
+  color: var(--gray-500);
+  display: block;
+  font-size: var(--h3);
+  padding-top: 1px;
+}
