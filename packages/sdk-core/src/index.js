@@ -10,6 +10,10 @@ export {
    * @function
    */
   createAppFromProps,
+  /**
+   * @function
+   */
+  createMockApp
 } from './Core/createApp';
 
 /**

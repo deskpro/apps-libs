@@ -1,4 +1,5 @@
 import WidgetMessage from './WidgetMessage';
+import { nextMessageId, nextCorrelationId } from './messageId';
 
 /**
  * Representation of a request message
@@ -7,6 +8,28 @@ import WidgetMessage from './WidgetMessage';
  * @extends {WidgetMessage}
  */
 class WidgetRequest extends WidgetMessage {
+  /**
+   * Creates a new request
+   *
+   * @static
+   * @method
+   *
+   * @param {string} widgetId
+   * @param {*} payload
+   * @return {WidgetRequest}
+   */
+  static nextRequest(widgetId, payload) {
+    const correlationId = nextCorrelationId();
+    const id = nextMessageId();
+
+    return new WidgetRequest({
+      id: id.toString(),
+      widgetId,
+      correlationId: correlationId.toString(),
+      body: payload,
+    });
+  }
+
   /**
    * Parse an object literal or a JSON encoded string into a {@link WidgetResponse}
    * @method

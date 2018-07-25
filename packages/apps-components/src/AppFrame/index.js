@@ -1,2 +1,2 @@
-import AppFrame from './AppFrame'
-export default AppFrame
+import AppFrame from './AppFrame';
+export default AppFrame;

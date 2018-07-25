@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import '@deskpro/apps-components-style';
 
-import { ActionList } from "../Action";
+import { ActionList } from '../Action';
 
 /**
  * @param {string} iconUrl
@@ -15,16 +15,14 @@ import { ActionList } from "../Action";
  * @constructor
  */
 const AppBar = ({ iconUrl, title, badgeText, children, className }) => (
-  <div className={classnames("dp-AppBar dp-Level", className)}>
-
+  <div className={classnames('dp-AppBar dp-Level', className)}>
     <div className="dp-LevelLeft">
-
       <div className="dp-AppBarIcon-wrap">
-        { iconUrl &&
+        {iconUrl && (
           <i className="dp-Icon">
             <img src={iconUrl} alt={title} />
           </i>
-        }
+        )}
 
         {badgeText && <span className="dp-IconBadge">{badgeText}</span>}
       </div>
@@ -32,15 +30,11 @@ const AppBar = ({ iconUrl, title, badgeText, children, className }) => (
       <span className="dp-AppBarTitle">{title}</span>
     </div>
 
-    {
-      React.Children.count(children) > 0
-      && <div className="dp-LevelRight">
-          <ActionList >
-            {children}
-          </ActionList>
-        </div>
-    }
-
+    {React.Children.count(children) > 0 && (
+      <div className="dp-LevelRight">
+        <ActionList>{children}</ActionList>
+      </div>
+    )}
   </div>
 );
 
@@ -48,25 +42,22 @@ AppBar.propTypes = {
   /**
    * The url to the icon displayed in the bar
    */
-  iconUrl:        PropTypes.string,
+  iconUrl: PropTypes.string,
 
   /**
    * The title displayed in the bar
    */
-  title:          PropTypes.string,
+  title: PropTypes.string,
 
   /**
    * The text or number to display in the badge
    */
-  badgeText:      PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  badgeText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * any additional classnames to be applied to the AppBar container
    */
-  className:      PropTypes.string
+  className: PropTypes.string,
 };
 
 export default AppBar;

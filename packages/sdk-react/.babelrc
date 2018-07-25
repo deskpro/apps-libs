@@ -17,24 +17,7 @@
   ],
   "plugins": [
     "transform-object-rest-spread",
-    "babel-plugin-transform-class-properties"
-  ],
-  "env": {
-    "commonjs": {
-      "presets": [
-        ["env", { "loose": true } ],
-        "react"
-      ]
-    },
-    "test": {
-      "presets": [
-        ["env", { "loose": true } ],
-        "react"
-      ],
-      "plugins": [
-        "transform-object-rest-spread",
-        "babel-plugin-transform-class-properties"
-      ]
-    }
-  }
+    "babel-plugin-transform-class-properties",
+    "external-helpers"
+  ]
 }

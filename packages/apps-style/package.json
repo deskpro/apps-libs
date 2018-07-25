@@ -4,16 +4,18 @@
   "author": "DeskPRO <support@deskpro.com>",
   "license": "BSD 3-Clause License",
   "description": "Styling for for Deskpro Apps",
-  "main": "dist/style.css",
+  "main": "dist/style.js",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "dev": "npm run postcss-build && concurrently --kill-others 'npm:postcss-watch' 'npm:init-website-watch' 'npm:docs-server'",
     "build-lib": "npm run postcss-build",
+    "prepare": "npm run postcss-prod",
     "build": "npm run postcss-build && npm run init-website-build && npm run docs-build",
     "postcss-watch": "postcss -o dist/style.css --verbose -m -w --env development src/style.css",
     "postcss-build": "postcss --verbose --env development -m -o dist/style.css src/style.css",
+    "postcss-prod": "postcss --verbose --env production -m -o dist/style.css src/style.css",
     "init-website-watch": "cpx dist/style.css website/static/css --watch",
     "init-website-build": "cpx dist/style.css website/static/css",
     "docs-server": "cd website && npm run start",
@@ -34,6 +36,7 @@
     "postcss-flexbugs-fixes": "^3.3.1",
     "postcss-import": "^11.1.0",
     "postcss-inline-svg": "^3.1.1",
+    "postcss-modules": "^1.3.0",
     "postcss-preset-env": "^5.1.0",
     "postcss-reporter": "^5.0.0",
     "postcss-svgo": "^4.0.0",

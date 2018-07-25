@@ -139,10 +139,22 @@ module.exports = ctx => {
         'nesting-rules': true
       }
     }),
+    require('postcss-modules')({
+      scopeBehaviour: 'global',
+      getJSON: function(cssFileName, json, outputFileName) {
+        var path          = require('path');
+        var fs            = require('fs');
+        var cssName       = path.basename(cssFileName, '.css');
+        var jsonFileName  = path.resolve('./dist/' + cssName + '.json');
+        var jsFileName    = path.resolve('./dist/' + cssName + '.js');
+        fs.writeFileSync(jsonFileName, JSON.stringify(json));
+        fs.writeFileSync(jsFileName, "require('./" + cssName + ".css');\n");
+      }
+    }),
     require('postcss-flexbugs-fixes'),
     contrastPlugin(),
-        require('postcss-inline-svg')(),
-        require('postcss-svgo')(),
+    require('postcss-inline-svg')(),
+    require('postcss-svgo')(),
     require("postcss-reporter")({ clearReportedMessages: false })
   ]
   }

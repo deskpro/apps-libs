@@ -5,6 +5,7 @@
  */
 
 import { WidgetFactories } from '../Widget';
+import postRobot from 'post-robot';
 
 import {
   InternalEventDispatcher,
@@ -86,16 +87,25 @@ export const createAppFromProps = ({
  * @function
  * @param {createAppCallback} cb a callback to be invoked after the app is ready
  */
-export const createApp = cb => {
-  const WidgetWindow = WidgetFactories.windowBridgeFromWindow(window);
+export const createApp = (cb, widgetWin) => {
+  const WidgetWindow = widgetWin || WidgetFactories.windowBridgeFromWindow(window);
 
   WidgetWindow.connect(createAppFromProps)
     .then(registerAppEventListeners.bind(null, WidgetWindow))
-    .then(cb)
-    .catch(err => {
-      cb(err);
-    }); // the error scenario needs re-thinking
+    .then(cb);
 };
+
+/**
+ * @function
+ * @param {createAppCallback} cb a callback to be invoked after the app is ready
+ */
+export const createMockApp = (cb, options = {}) => {
+  const WidgetWindow = WidgetFactories.windowBridgeFromMockData(options.window || document.getElementById('testAppFrame') || window, options);
+
+  WidgetWindow.connect(createAppFromProps)
+    .then(registerAppEventListeners.bind(null, WidgetWindow))
+    .then(cb);
+}
 
 export default createApp;
 

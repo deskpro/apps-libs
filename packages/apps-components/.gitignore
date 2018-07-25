@@ -6,7 +6,8 @@ lib/*
 target/*
 .cache
 build/*
-gen/
+gen/*
+es/*
 
 
 # testing

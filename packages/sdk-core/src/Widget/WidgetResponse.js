@@ -1,4 +1,5 @@
 import WidgetMessage from './WidgetMessage';
+import { nextMessageId } from './messageId';
 
 /**
  * Representation of a response message
@@ -7,6 +8,40 @@ import WidgetMessage from './WidgetMessage';
  * @extends {WidgetMessage}
  */
 class WidgetResponse extends WidgetMessage {
+  /**
+   * Creates the response message for a request
+   *
+   * @static
+   * @method
+   *
+   * @param {WidgetRequest} request the initial request
+   * @param {*} body response body
+   * @param {boolean} isError true when the response is an error response
+   * @return {WidgetResponse}
+   */
+  static nextResponse(request, body, isError) {
+    const id = nextMessageId();
+    const {
+      /**
+       * @ignore
+       *
+       * @type {string}
+       * */
+      widgetId,
+      correlationId,
+    } = request;
+    const status = isError ? 'error' : 'success';
+
+    //const parsedBody = body === null ? body : JSON.stringify(body);
+    return new WidgetResponse({
+      id: id.toString(),
+      widgetId,
+      correlationId: correlationId.toString(),
+      body,
+      status,
+    });
+  }
+
   /**
    * Parse an object literal or a JSON encoded string into a {@link WidgetResponse}
    *

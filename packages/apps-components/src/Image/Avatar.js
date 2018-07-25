@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 const shapeClassNames = {
   auto: 'dp-Icon',
-  round: 'dp-Icon dp-Icon--Round'
+  round: 'dp-Icon dp-Icon--Round',
 };
 
 /**
@@ -21,26 +21,22 @@ const shapeClassNames = {
  * @return {*}
  * @constructor
  */
-const Avatar = ({ src, shape, className}) => (
-  <i  className={classnames( shapeClassNames[shape] , className)}>
-    <img src={src} alt=""/>
+const Avatar = ({ src, shape, className }) => (
+  <i className={classnames(shapeClassNames[shape], className)}>
+    <img src={src} alt="" />
   </i>
 );
 
 Avatar.propTypes = {
-
   className: PropTypes.string,
 
   src: PropTypes.string.isRequired,
 
-  shape: PropTypes.oneOf([
-    'round',
-    'auto'
-  ])
+  shape: PropTypes.oneOf(['round', 'auto']),
 };
 
 Avatar.defaultProps = {
-  shape: "auto"
+  shape: 'auto',
 };
 
 export default Avatar;

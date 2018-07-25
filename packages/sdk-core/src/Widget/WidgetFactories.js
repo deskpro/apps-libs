@@ -1,10 +1,8 @@
+import warning from 'warning';
 import WidgetRequest from './WidgetRequest';
 import WidgetResponse from './WidgetResponse';
 import WidgetWindowBridge from './WidgetWindowBridge';
 import InitPropertiesBag from './InitPropertiesBag';
-
-let nextMessageId = 0;
-let nextCorrelationId = 0;
 
 /**
  * Various factory methods
@@ -26,6 +24,22 @@ class WidgetFactories {
     }
 
     throw new Error('could not find a global window object');
+  }
+
+  /**
+   * Creates a fake bridge for use in a test env
+   *
+   * @static
+   * @method
+   *
+   * @return {WidgetFactories.windowBridgeFromWindow}
+   */
+  static windowBridgeFromMockData(windowObject, options = {}) {
+    return new WidgetWindowBridge(windowObject, {
+      ...options,
+      widgetId: options.widgetId || 'MOCK',
+      dpWidgetId: options.dpWidgetId || 'MOCK'
+    });
   }
 
   /**
@@ -77,15 +91,8 @@ class WidgetFactories {
    * @return {WidgetRequest}
    */
   static nextRequest(widgetId, payload) {
-    const correlationId = ++nextCorrelationId;
-    const id = ++nextMessageId;
-
-    return new WidgetRequest({
-      id: id.toString(),
-      widgetId,
-      correlationId: correlationId.toString(),
-      body: payload,
-    });
+    warning(true, "Use WidgetRequest.nextRequest instead of WidgetRequest.nextRequest");
+    return WidgetRequest.nextRequest(widgetId, payload);
   }
 
   /**
@@ -100,26 +107,8 @@ class WidgetFactories {
    * @return {WidgetResponse}
    */
   static nextResponse(request, body, isError) {
-    const id = ++nextMessageId;
-    const {
-      /**
-       * @ignore
-       *
-       * @type {string}
-       * */
-      widgetId,
-      correlationId,
-    } = request;
-    const status = isError ? 'error' : 'success';
-
-    //const parsedBody = body === null ? body : JSON.stringify(body);
-    return new WidgetResponse({
-      id: id.toString(),
-      widgetId,
-      correlationId: correlationId.toString(),
-      body,
-      status,
-    });
+    warning(true, "Use WidgetResponse.nextResponse instead of WidgetFactories.nextResponse");
+    return WidgetResponse.nextResponse(request, body, isError);
   }
 }
 

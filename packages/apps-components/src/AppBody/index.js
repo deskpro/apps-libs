@@ -5,23 +5,21 @@ import classnames from 'classnames';
 import '@deskpro/apps-components-style';
 
 const AppBody = ({ className, children }) => (
-  <section className={classnames("dp-AppBody dp-Section", className)}>
+  <section className={classnames('dp-AppBody dp-Section', className)}>
     {children}
   </section>
 );
 
 AppBody.propTypes = {
-
   /**
    * any additional classnames to be applied to the AppBar container
    */
-  className:      PropTypes.string,
+  className: PropTypes.string,
 
   /**
    * a list of children to render.
    */
-  children:       PropTypes.array
+  children: PropTypes.array,
 };
-
 
 export default AppBody;

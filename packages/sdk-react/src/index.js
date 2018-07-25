@@ -1,24 +1,33 @@
-import { createApp } from '@deskpro/apps-sdk-core';
-import { createAppContainer } from './utils/appContainer';
-import { linkStyles } from './utils/styles';
-import { sdkConnect } from './utils/connect';
-import { testDpapp, testStore } from './utils/testing';
-import * as sdkActions from './actions/sdkActions';
-import * as sdkPropTypes from './utils/props';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createApp, createMockApp } from '@deskpro/apps-sdk-core';
 
-export {
-  createApp,
-  createAppContainer,
-  linkStyles,
-  sdkConnect,
-  testDpapp,
-  testStore,
-  sdkActions,
-  sdkPropTypes,
-};
-export { default as DeskproSDK } from './components/DeskproSDK';
-export { default as Routes } from './components/Routes';
-export { default as Route } from './components/Route';
-export { default as Link } from './components/Link';
-export { default as LinkButton } from './components/LinkButton';
-export { default as configureStore } from './store/configureStore';
+export const AppContext = React.createContext({
+  dpapp: null
+});
+
+let windowDpApp = null;
+
+export const getDpApp = () => windowDpApp;
+
+export const bootReactApp = function(renderFn, options = { rootElementId: 'root' }) {
+
+  if (window.IS_DEV_FRAME) {
+    // This means the app is embedded in the dev frame, which is used for test dev
+    return;
+  }
+
+  const mockWindow = process.env.DESKPRO_ENV && process.env.DESKPRO_ENV === 'test';
+  const fn = mockWindow ? createMockApp : createApp;
+
+  return new Promise((res, err) => {
+    fn(dpapp => {
+      windowDpApp = dpapp;
+
+      ReactDOM.render(
+        <AppContext.Provider value={{dpapp}}>{renderFn(dpapp)}</AppContext.Provider>,
+        document.getElementById(options.rootElementId)
+      );
+    });
+  });
+}

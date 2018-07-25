@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const alignToClassName = {
-  left:   "dp-LevelLeft",
-  right:  "dp-LevelRight",
-  top:    "dp-LevelTop",
-  bottom: "dp-LevelBottom",
-  auto:   "dp-Level"
+  left: 'dp-LevelLeft',
+  right: 'dp-LevelRight',
+  top: 'dp-LevelTop',
+  bottom: 'dp-LevelBottom',
+  auto: 'dp-Level',
 };
 
 /**
@@ -18,27 +18,20 @@ const alignToClassName = {
  * @return {*}
  * @constructor
  */
-const Level = ({align, className, children}) => (
-  <div className={classnames( alignToClassName[align] , className)} >
+const Level = ({ align, className, children }) => (
+  <div className={classnames(alignToClassName[align], className)}>
     {children}
   </div>
 );
 
 Level.propTypes = {
-
   className: PropTypes.string,
 
-  align: PropTypes.oneOf([
-    'left',
-    'right',
-    'top',
-    'bottom',
-    'auto'
-  ])
+  align: PropTypes.oneOf(['left', 'right', 'top', 'bottom', 'auto']),
 };
 
 Level.defaultProps = {
-  align: "auto"
+  align: 'auto',
 };
 
 export default Level;
