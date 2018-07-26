@@ -16,7 +16,8 @@
   ],
   "plugins": [
     "transform-object-rest-spread",
-    "babel-plugin-transform-class-properties"
+    "transform-class-properties",
+    "transform-es2015-modules-commonjs"
   ],
   "env": {
     "test": {
@@ -26,7 +27,8 @@
       }]],
       "plugins": [
         "transform-object-rest-spread",
-        "babel-plugin-transform-class-properties"
+        "transform-class-properties",
+        "transform-es2015-modules-commonjs"
       ]
     }
   }
