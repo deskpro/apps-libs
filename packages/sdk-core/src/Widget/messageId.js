@@ -4,7 +4,7 @@ const ids = {
 };
 
 export const nextMessageId = () => {
-  return ++ids.nextMessageId;
+  return ++ids.messageId;
 };
 
 export const nextCorrelationId = () => {

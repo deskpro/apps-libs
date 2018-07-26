@@ -9,7 +9,7 @@
     "format": "prettier --write \"{src,test}/**/*.js\"",
     "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
     "lint": "eslint src test ",
-    "test": "cross-env NODE_ENV=test BABEL_ENV=test jest",
+    "test": "echo no tests defined",
     "dev": "cross-env NODE_ENV=development rollup --watch -c -o lib/sdk-react.js",
     "build": "cross-env NODE_ENV=production rollup -c -o lib/sdk-react.js",
     "prepare": "npm run clean && npm run build"
