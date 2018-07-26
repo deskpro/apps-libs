@@ -16,6 +16,7 @@ const config = {
     babel({
       externalHelpers: false,
       exclude: ["node_modules/**"],
+      plugins: ["external-helpers"]
     }),
     commonjs({
       include: "node_modules/**"
