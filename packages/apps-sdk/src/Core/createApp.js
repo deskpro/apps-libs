@@ -22,6 +22,8 @@ import { registerEventHandlers as registerContextUserEventHandlers } from './Con
 import { registerEventHandlers as registerWebAPIEventHandlers } from '../WebAPI';
 import { registerEventHandlers as registerDeskproWindowEventHandlers } from '../DeskproWindow';
 
+import { connectRenderer, UIEvents } from '../UI'
+
 import AppClient from './AppClient';
 
 import InstanceProps from './InstanceProps';
@@ -83,21 +85,31 @@ export const createAppFromProps = ({
   return new AppClient(appProps);
 };
 
+
 /**
- * @function
- * @param {createAppCallback} cb a callback to be invoked after the app is ready
+ * @param {function(AppClient)} createRenderer a callback to be invoked after the app is ready
+ * @param widgetWin
  */
-export const createApp = (cb, widgetWin) => {
+export function createApp(createRenderer, widgetWin)
+{
   const WidgetWindow = widgetWin || WidgetFactories.windowBridgeFromWindow(window);
 
   WidgetWindow.connect(createAppFromProps)
     .then(registerAppEventListeners.bind(null, WidgetWindow))
-    .then(cb);
-};
+    .then(dpapp => {
+
+      const connectedRenderer = connectRenderer(dpapp, createRenderer);
+      dpapp.on(UIEvents.EVENT_UI_CHANGED, connectedRenderer);
+      // trigger the connected rendererer
+      connectedRenderer();
+    })
+  ;
+}
 
 /**
  * @function
  * @param {createAppCallback} cb a callback to be invoked after the app is ready
+ * @param options
  */
 export const createMockApp = (cb, options = {}) => {
   const WidgetWindow = WidgetFactories.windowBridgeFromMockData(options.window || document.getElementById('testAppFrame') || window, options);
@@ -105,7 +117,7 @@ export const createMockApp = (cb, options = {}) => {
   WidgetWindow.connect(createAppFromProps)
     .then(registerAppEventListeners.bind(null, WidgetWindow))
     .then(cb);
-}
+};
 
 export default createApp;
 

@@ -24,7 +24,7 @@ export const STATE_READY = 'ready';
  * @readonly
  * @type {string}
  */
-export const STATE_ERROR = 'visible';
+export const STATE_ERROR = 'error';
 
 /**
  * @readonly

@@ -6,6 +6,7 @@
 import * as UIEvents from './events';
 import * as UIConstants from './constants';
 import UIFacade from './UIFacade';
+import connectRenderer from './render';
 
 export {
   /**
@@ -16,6 +17,11 @@ export {
    * @type {module:UI/constants}
    */
   UIConstants,
+
+  /**
+   * @type {function}
+   */
+    connectRenderer
 };
 
 /**
@@ -28,3 +34,4 @@ export {
 export const create = (outgoingDispatcher, internalEventDispatcher) => {
   return new UIFacade(outgoingDispatcher, internalEventDispatcher);
 };
+

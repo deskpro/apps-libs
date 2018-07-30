@@ -10,6 +10,7 @@ const nameToClassnames = {
   right: 'dp-IconArrow iconArrow--right',
   add: 'dp-IconPlus',
   close: 'dp-IconClose',
+  'close-heavy': 'dp-IconCloseFatty',
   edit: 'dp-IconEdit',
   lock: 'dp-IconLock',
   refresh: 'dp-RefreshIcon',

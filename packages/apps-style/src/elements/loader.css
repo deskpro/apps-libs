@@ -1,0 +1,27 @@
+.dp-Loader {
+  background-image: svg-load("../svg/loader.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+}
+
+.dp-Loader--isActive {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-name: loader-spin;
+  animation-timing-function: linear;
+}
+
+@keyframes loader-spin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+

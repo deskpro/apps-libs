@@ -12,6 +12,7 @@
       "components/dp-ListItem",
       "components/dp-Scrollable",
       "components/dp-ActionPanel",
+      "components/dp-Notification",
       "components/dp-TabSwitcher",
       "components/dp-DataTable",
       "components/dp-DataDefList",

@@ -1,8 +1,8 @@
 {
-  "name": "@deskpro/apps-sdk-core",
-  "version": "3.0.0",
+  "name": "@deskpro/apps-sdk",
+  "version": "0.4.0",
   "description": "core component of deskpro apps sdk",
-  "main": "lib/sdk-core.js",
+  "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib dist es coverage",
     "format": "prettier --write \"{src,test}/**/*.js\"",

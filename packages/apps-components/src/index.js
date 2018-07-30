@@ -9,3 +9,5 @@ export { default as Icon } from './Icon';
 export { default as Button } from './Button';
 export { default as Content } from './Content';
 export { Avatar } from './Image';
+export { default as Loader } from './Loader';
+export { default as Notification } from './Notification';

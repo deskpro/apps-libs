@@ -26,25 +26,6 @@ function normalize(component) {
   return component;
 }
 
-function propTypeReactElement(
-  props,
-  key,
-  componentName,
-  location,
-  propFullName,
-) {
-  if (!React.isValidElement(props[key])) {
-    return new Error(
-      'Invalid prop `' +
-        propFullName +
-        '` supplied to' +
-        ' `' +
-        componentName +
-        '`. Validation failed.',
-    );
-  }
-}
-
 /**
  * @param orientation
  * @param className
@@ -68,10 +49,7 @@ const ActionList = ({ orientation, className, children }) => (
       className,
     )}
   >
-    {children &&
-      React.Children.map(children, action => renderAction(action))
-        .map(normalize)
-        .filter(React.isValidElement)}
+    {children}
   </div>
 );
 

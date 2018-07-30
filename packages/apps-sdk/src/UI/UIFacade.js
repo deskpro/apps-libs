@@ -2,6 +2,13 @@ import * as Events from './events';
 import * as AppEvents from '../Core/AppEvents';
 import * as Constants from './constants';
 
+function setProps(newProps)
+{
+  const { eventDispatcher, props: oldProps } = this;
+  this.props = {  ...oldProps, ...newProps };
+  eventDispatcher.emit(Events.EVENT_UI_CHANGED, oldProps, this.props);
+}
+
 /**
  * A facade which allows application code to interact with the UI Container
  *
@@ -13,25 +20,40 @@ class UIFacade {
    * @param {AppEventEmitter} UIEventsDispatcher
    */
   constructor(outgoingDispatcher, UIEventsDispatcher) {
+
+    this.outgoingDispatcher = outgoingDispatcher;
+    this.eventDispatcher = UIEventsDispatcher;
+    this.setProps = setProps.bind(this);
+    this.subscribers = [];
+
     this.props = {
-      outgoingDispatcher: outgoingDispatcher,
-      eventDispatcher: UIEventsDispatcher,
-      display: Constants.DISPLAY_EXPANDED, // expanded, collapsed
-      visibility: Constants.VISIBILITY_VISIBLE, // visible, hidden
-      state: Constants.STATE_READY, // loading, ready, empty, error, ? partial
-      menu: Constants.VISIBILITY_VISIBLE, // visible, hidden
-      badge: Constants.VISIBILITY_HIDDEN, // visible, hidden
-      settings: Constants.VISIBILITY_HIDDEN, // visible, hidden
-      badgeCount: 0,
-      isResizing: false,
-    };
+      display:            Constants.DISPLAY_EXPANDED, // expanded, collapsed
+      visibility:         Constants.VISIBILITY_VISIBLE, // visible, hidden
+      state:              Constants.STATE_READY, // loading, ready, empty, error, ? partial
+      menu:               Constants.VISIBILITY_VISIBLE, // visible, hidden
+      badgeVisibility:    Constants.VISIBILITY_HIDDEN, // visible, hidden
+      badgeCount:         0,
+
+      settingsVisibility: Constants.VISIBILITY_HIDDEN, // visible, hidden
+      isResizing:         false,
+
+      notification:            null,
+      notificationType:        null
+    }
   }
+
+  /**
+   * Subscribe to ui props changes using the {subscriber}
+   *
+   * @param {function} subscriber
+   */
+  subscribe = (subscriber) => {
+    this.subscribers.push(subscriber);
+  };
 
   // MENU API
 
-  get menu() {
-    return this.props.menu;
-  }
+  get menu() { return this.props.menu; }
 
   /**
    * Shows the UI container's application menu
@@ -39,16 +61,12 @@ class UIFacade {
    * @method
    */
   showMenu = () => {
-    const { eventDispatcher, menu: oldVisibility } = this.props;
+
+    const { menu: oldVisibility } = this.props;
     const newVisibility = Constants.VISIBILITY_VISIBLE;
 
     if (oldVisibility !== newVisibility) {
-      this.props.menu = newVisibility;
-      eventDispatcher.emit(
-        Events.EVENT_MENU_VISIBILITYCHANGED,
-        newVisibility,
-        oldVisibility,
-      );
+      this.setProps({ menu: newVisibility });
     }
   };
 
@@ -58,16 +76,11 @@ class UIFacade {
    * @method
    */
   hideMenu = () => {
-    const { eventDispatcher, menu: oldVisibility } = this.props;
+    const { menu: oldVisibility } = this.props;
     const newVisibility = Constants.VISIBILITY_HIDDEN;
 
     if (oldVisibility !== newVisibility) {
-      this.props.menu = newVisibility;
-      eventDispatcher.emit(
-        Events.EVENT_MENU_VISIBILITYCHANGED,
-        newVisibility,
-        oldVisibility,
-      );
+      this.setProps({ menu: newVisibility });
     }
   };
 
@@ -79,8 +92,8 @@ class UIFacade {
    * @readonly
    * @type {string}
    */
-  get badge() {
-    return this.props.badge;
+  get badgeVisibility() {
+    return this.props.badgeVisibility;
   }
 
   /**
@@ -89,23 +102,14 @@ class UIFacade {
    * @method
    */
   showBadgeCount = () => {
+    const { badgeVisibility: oldVisibility, badgeCount } = this.props;
     const newVisibility = Constants.VISIBILITY_VISIBLE;
-    const {
-      eventDispatcher,
-      outgoingDispatcher,
-      badge: oldVisibility,
-    } = this.props;
 
     if (oldVisibility !== newVisibility) {
-      this.props.badge = newVisibility;
-      eventDispatcher.emit(
-        Events.EVENT_BADGE_VISIBILITYCHANGED,
-        newVisibility,
-        oldVisibility,
-      );
-      outgoingDispatcher.emitAsync(AppEvents.EVENT_BADGE, {
+      this.setProps({ badgeVisibility: newVisibility });
+      this.outgoingDispatcher.emitAsync(AppEvents.EVENT_BADGE, {
         visibility: newVisibility,
-        count: this.badgeCount,
+        count: badgeCount,
       });
     }
   };
@@ -116,23 +120,14 @@ class UIFacade {
    * @method
    */
   hideBadgeCount = () => {
+    const { badgeVisibility: oldVisibility, badgeCount } = this.props;
     const newVisibility = Constants.VISIBILITY_HIDDEN;
-    const {
-      eventDispatcher,
-      outgoingDispatcher,
-      badge: oldVisibility,
-    } = this.props;
 
     if (oldVisibility !== newVisibility) {
-      this.props.badge = newVisibility;
-      eventDispatcher.emit(
-        Events.EVENT_BADGE_VISIBILITYCHANGED,
-        newVisibility,
-        oldVisibility,
-      );
-      outgoingDispatcher.emitAsync(AppEvents.EVENT_BADGE, {
+      this.setProps({ badgeVisibility: newVisibility });
+      this.outgoingDispatcher.emitAsync(AppEvents.EVENT_BADGE, {
         visibility: newVisibility,
-        count: this.badgeCount,
+        count:      badgeCount,
       });
     }
   };
@@ -152,16 +147,14 @@ class UIFacade {
    */
   set badgeCount(newCount) {
     const {
-      eventDispatcher,
-      outgoingDispatcher,
-      badge: visibility,
+      badgeVisibility: visibility,
       badgeCount: oldCount,
-    } = this.props;
-    this.props.badgeCount = newCount;
+    } = this.props.getState();
 
     if (oldCount !== newCount) {
-      eventDispatcher.emit(Events.EVENT_BADGE_COUNTCHANGED, newCount, oldCount);
-      outgoingDispatcher.emitAsync(AppEvents.EVENT_BADGE, {
+      this.setProps({ badgeCount: newCount });
+
+      this.outgoingDispatcher.emitAsync(AppEvents.EVENT_BADGE, {
         visibility,
         count: newCount,
       });
@@ -209,17 +202,10 @@ class UIFacade {
    */
   show = () => {
     const newVisibility = Constants.VISIBILITY_VISIBLE;
-    const { eventDispatcher, visibility: oldVisibility } = this.props;
+    const { visibility: oldVisibility } = this.props;
 
     if (oldVisibility !== newVisibility) {
-      const emit = eventDispatcher.emitCancelable(
-        Events.EVENT_UI_BEFOREVISIBILITYCHANGED,
-        () => {
-          this.props.visibility = newVisibility;
-        },
-      );
-
-      emit(Events.EVENT_UI_VISIBILITYCHANGED, newVisibility, oldVisibility);
+      this.setProps({ visibility: newVisibility })
     }
   };
 
@@ -230,17 +216,10 @@ class UIFacade {
    */
   hide = () => {
     const newVisibility = Constants.VISIBILITY_HIDDEN;
-    const { eventDispatcher, visibility: oldVisibility } = this.props;
+    const { visibility: oldVisibility } = this.props;
 
     if (oldVisibility !== newVisibility) {
-      const emit = eventDispatcher.emitCancelable(
-        Events.EVENT_UI_BEFOREVISIBILITYCHANGED,
-        () => {
-          this.props.visibility = newVisibility;
-        },
-      );
-
-      emit(Events.EVENT_UI_VISIBILITYCHANGED, newVisibility, oldVisibility);
+      this.setProps({ visibility: newVisibility })
     }
   };
 
@@ -285,17 +264,10 @@ class UIFacade {
    */
   collapse = () => {
     const newDisplay = Constants.DISPLAY_COLLAPSED;
-    const { eventDispatcher, display: oldDisplay } = this.props;
+    const { display: oldDisplay } = this.props;
 
     if (oldDisplay !== newDisplay) {
-      const emit = eventDispatcher.emitCancelable(
-        Events.EVENT_UI_BEFOREDISPLAYCHANGED,
-        () => {
-          this.props.display = newDisplay;
-        },
-      );
-
-      emit(Events.EVENT_UI_DISPLAYCHANGED, newDisplay, oldDisplay);
+      this.setProps({ display: newDisplay })
     }
   };
 
@@ -306,17 +278,10 @@ class UIFacade {
    */
   expand = () => {
     const newDisplay = Constants.DISPLAY_EXPANDED;
-    const { eventDispatcher, display: oldDisplay } = this.props;
+    const { display: oldDisplay } = this.props;
 
     if (oldDisplay !== newDisplay) {
-      const emit = eventDispatcher.emitCancelable(
-        Events.EVENT_UI_BEFOREDISPLAYCHANGED,
-        () => {
-          this.props.display = newDisplay;
-        },
-      );
-
-      emit(Events.EVENT_UI_DISPLAYCHANGED, newDisplay, oldDisplay);
+      this.setProps({ display: newDisplay });
     }
   };
 
@@ -355,20 +320,27 @@ class UIFacade {
   };
 
   /**
+   * Checks if the UI is in a loading state
+   *
+   * @method
+   *
+   * @return {boolean}
+   */
+  isError = () => {
+    return this.props.state === Constants.STATE_ERROR;
+  };
+
+
+  /**
    * Shows a loading indicator
    *
    * @method
    */
   showLoading = () => {
-    const { eventDispatcher, state } = this.props;
+    const { state } = this.props;
 
     if (state !== Constants.STATE_LOADING) {
-      this.props.state = Constants.STATE_LOADING;
-      eventDispatcher.emit(
-        Events.EVENT_UI_STATECHANGED,
-        Constants.STATE_LOADING,
-        state,
-      );
+      this.setProps({ state: Constants.STATE_LOADING });
     }
   };
 
@@ -378,16 +350,36 @@ class UIFacade {
    * @method
    */
   hideLoading = () => {
-    const { eventDispatcher, state } = this.props;
+    const { state } = this.props;
 
     if (state === Constants.STATE_LOADING) {
-      this.props.state = Constants.STATE_READY;
-      eventDispatcher.emit(
-        Events.EVENT_UI_STATECHANGED,
-        Constants.STATE_READY,
-        state,
-      );
+      this.setProps({ state: Constants.STATE_READY });
     }
+  };
+
+
+  // Message API
+
+  /**
+   * The UI container state property
+   *
+   * @readonly
+   * @type {string|Error}
+   */
+  get notification() { return this.props.notification; }
+
+  get notificationType() { return this.props.notificationType; }
+
+  showNotification = (notification, notificationType) => {
+    this.setProps({ notification, notificationType });
+  };
+  /**
+   * @param {Error} error
+   */
+  showErrorNotification = (error) => { this.showNotification(error.message, 'error') };
+
+  closeNotification = () => {
+    this.setProps({ notification:null, notificationType:null });
   };
 
   // SETTINGS API
@@ -399,15 +391,10 @@ class UIFacade {
    */
   showSettings = () => {
     const newVisibility = Constants.VISIBILITY_VISIBLE;
-    const { eventDispatcher, settings: oldVisibility } = this.props;
+    const { settingsVisibility: oldVisibility } = this.props;
 
     if (oldVisibility !== newVisibility) {
-      this.props.settings = newVisibility;
-      eventDispatcher.emit(
-        Events.EVENT_SETTINGS_VISIBILITYCHANGED,
-        newVisibility,
-        oldVisibility,
-      );
+      this.setProps({ settingsVisibility: newVisibility });
     }
   };
 }
