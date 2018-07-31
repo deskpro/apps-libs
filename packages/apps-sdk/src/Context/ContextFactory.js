@@ -8,7 +8,6 @@ import { propertyProviderTab } from './properties';
  * @ignore
  *
  * @param {AppEventEmitter} outgoingDispatcher the outgoing events dispatcher
- * @param {AppEventEmitter} incomingDispatcher the incoming events dispatcher
  * @param {InstanceProps} instanceProps the instance properties bag
  * @param {ContextProps} contextProps the context properties bag
  *
@@ -16,7 +15,6 @@ import { propertyProviderTab } from './properties';
  */
 function createCustomFieldClient({
   outgoingDispatcher,
-  incomingDispatcher,
   instanceProps,
   contextProps,
 }) {
@@ -68,20 +66,17 @@ class ContextFactory {
    * @method
    *
    * @param {AppEventEmitter} outgoingDispatcher the outgoing events dispatcher
-   * @param {AppEventEmitter} incomingDispatcher the incoming events dispatcher
    * @param {InstanceProps} instanceProps the instance properties bag
    * @param {ContextProps} contextProps the context properties bag
    * @return {Context}
    */
   static create(
     outgoingDispatcher,
-    incomingDispatcher,
     instanceProps,
     contextProps,
   ) {
     const customFields = createCustomFieldClient({
       outgoingDispatcher,
-      incomingDispatcher,
       instanceProps,
       contextProps,
     });

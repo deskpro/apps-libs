@@ -55,20 +55,17 @@ export function registerEventHandlers(windowBridge, app) {
  * @function
  *
  * @param {AppEventEmitter} outgoingDispatcher
- * @param {AppEventEmitter} internalDispatcher
  * @param {InstanceProps} instanceProps
  * @param {ContextProps} contextProps
  * @return {OauthFacade}
  */
 export function createOauthAPIClient(
   outgoingDispatcher,
-  internalDispatcher,
   instanceProps,
   contextProps,
 ) {
   const storageClient = createStorageAPIClient(
     outgoingDispatcher,
-    internalDispatcher,
     instanceProps,
     contextProps,
   );

@@ -1,8 +1,7 @@
 import getSize from 'get-size';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import postRobot from 'post-robot';
-import WidgetRequest from './WidgetRequest';
-import WidgetResponse from './WidgetResponse';
+import { nextRequest, nextResponse } from './messages';
 import { EVENT_WINDOW_MOUSEEVENT, EVENT_WINDOW_RESIZE } from './events';
 
 /**
@@ -164,7 +163,7 @@ class WidgetWindowBridge {
    */
   async emitResponse(eventName, error, data, request) {
     const { widgetId } = this;
-    const response = WidgetResponse.nextResponse(
+    const response = nextResponse(
       request,
       error ? error : data,
       !!error,
@@ -188,7 +187,7 @@ class WidgetWindowBridge {
    */
   async emitRequest(eventName, data) {
     const { widgetId } = this;
-    const request = WidgetRequest.nextRequest(widgetId, data);
+    const request = nextRequest(widgetId, data);
 
     const payload = { eventName, ...request.toJS() };
     const event = `urn:deskpro:apps.widget.event?widgetId=${widgetId}`;

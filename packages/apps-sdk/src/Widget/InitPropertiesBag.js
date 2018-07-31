@@ -10,10 +10,9 @@ const paramPrefix = 'dp.';
 /**
  * @ignore
  *
- * @type {{dpXconfTag: string, dpWidgetId: string}}
+ * @type {{dpWidgetId: string}}
  */
 const propNamesMap = {
-  dpXconfTag: 'dp.xconf.tag',
   dpWidgetId: 'dp.widgetId',
 };
 
@@ -98,7 +97,7 @@ class InitPropertiesBag extends PropertyBag {
   }
 
   /**
-   * @type {{dpXconfTag: string, dpWidgetId: string}}
+   * @type {{dpWidgetId: string}}
    */
   static get PROP_NAMES() {
     return propNamesMap;
@@ -165,21 +164,11 @@ class InitPropertiesBag extends PropertyBag {
   }
 
   /**
-   * @param {string} dpXconfTag
    * @param {string} dpWidgetId
    * @param rest
    */
-  constructor({ dpXconfTag, dpWidgetId, ...rest }) {
-    super({ dpXconfTag, dpWidgetId, ...rest });
-  }
-
-  /**
-   * @deprecated
-   *
-   * @type {String}
-   */
-  get dpXconfTag() {
-    return this.props.dpXconfTag;
+  constructor({ dpWidgetId, ...rest }) {
+    super({ dpWidgetId, ...rest });
   }
 
   /**

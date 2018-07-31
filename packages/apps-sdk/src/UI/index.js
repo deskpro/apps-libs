@@ -31,7 +31,7 @@ export {
  * @param {AppEventEmitter} internalEventDispatcher
  * @return {UIFacade}
  */
-export const create = (outgoingDispatcher, internalEventDispatcher) => {
+export const createUIFacade = (outgoingDispatcher, internalEventDispatcher) => {
   return new UIFacade(outgoingDispatcher, internalEventDispatcher);
 };
 

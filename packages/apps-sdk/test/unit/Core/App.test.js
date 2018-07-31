@@ -1,40 +1,31 @@
 import AppClient from '../../../src/Core/AppClient';
-import AppEventEmitter from '../../../src/Core/AppEventEmitter';
-import ContextProps from '../../../src/Core/ContextProps';
-import InstanceProps from '../../../src/Core/InstanceProps';
-import WidgetWindowBridge from '../../../src/Widget/WidgetWindowBridge';
-import InitPropertiesBag from '../../../src/Widget/InitPropertiesBag';
+import { createAppFromProps } from '../../../src/Core/create';
+import AppEventEmitter from "../../../src/Core/AppEventEmitter";
 
-test('successfully create an application', done => {
-  const params = {
-    outgoingDispatcher: new AppEventEmitter(),
+test('successfully create an application with default params', done => {
+
+  const app = createAppFromProps({
+    registerEventHandlers: function() {},
+    localDispatcher:    new AppEventEmitter(),
     incomingDispatcher: new AppEventEmitter(),
-    internalDispatcher: new AppEventEmitter(),
-    instanceProps: new InstanceProps({
+    outgoingDispatcher: new AppEventEmitter(),
+    instanceProps: {
       appId: '1',
       appTitle: 'title',
       appPackageName: 'com.deskpro.app',
       instanceId: '1',
-    }),
-    contextProps: new ContextProps({
+    },
+    contextProps: {
       type: 'ticket',
       entityId: '1',
       locationId: '1',
       tabId: 'tab-1',
       tabUrl: 'https://127.0.0.1',
-    }),
-    appWindow: new WidgetWindowBridge(
-      {
-        addEventListener: () => ({}),
-        document: { readyState: 'ready' },
-      },
-      new InitPropertiesBag({ dpXconfTag: '' }),
-    ),
-  };
+    }
+  });
 
-  const app = new AppClient(params);
 
-  expect(app).toBeTruthy();
+  expect(app instanceof AppClient).toBeTruthy();
   done();
 });
 
@@ -45,42 +36,31 @@ test('retrieve properties', done => {
     contextExperimentalThree: 3,
   };
 
-  const instanceProps = new InstanceProps({
-    appId: '1',
-    appTitle: 'title',
-    appPackageName: 'com.deskpro.app',
-    instanceId: '1',
+  const app = createAppFromProps({
+      registerEventHandlers: function () {},
+      localDispatcher:    new AppEventEmitter(),
+      incomingDispatcher: new AppEventEmitter(),
+      outgoingDispatcher: new AppEventEmitter(),
+      instanceProps: {
+        appId: '1',
+        appTitle: 'title',
+        appPackageName: 'com.deskpro.app',
+        instanceId: '1',
 
-    instanceExperimentalOne: experimental.instanceExperimentalOne,
-    instanceExperimentalTwo: experimental.instanceExperimentalTwo,
-  });
-
-  const contextProps = new ContextProps({
-    type: 'ticket',
-    entityId: '1',
-    locationId: '1',
-    tabId: 'tab-1',
-    tabUrl: 'https://127.0.0.1',
-
-    contextExperimentalThree: experimental.contextExperimentalThree,
-  });
-
-  const params = {
-    outgoingDispatcher: new AppEventEmitter(),
-    incomingDispatcher: new AppEventEmitter(),
-    internalDispatcher: new AppEventEmitter(),
-    instanceProps,
-    contextProps,
-    appWindow: new WidgetWindowBridge(
-      {
-        addEventListener: () => ({}),
-        document: { readyState: 'ready' },
+        instanceExperimentalOne: experimental.instanceExperimentalOne,
+        instanceExperimentalTwo: experimental.instanceExperimentalTwo
       },
-      new InitPropertiesBag({ dpXconfTag: '' }),
-    ),
-  };
+      contextProps: {
+        type: 'ticket',
+        entityId: '1',
+        locationId: '1',
+        tabId: 'tab-1',
+        tabUrl: 'https://127.0.0.1',
 
-  const app = new AppClient(params);
+        contextExperimentalThree: experimental.contextExperimentalThree
+      }
+    }
+  );
 
   expect(app.getProperty('appId')).toEqual('1');
   expect(app.getProperty('contextType')).toEqual('ticket');
@@ -95,52 +75,46 @@ test('retrieve properties', done => {
   done();
 });
 
-test('retrieve property', done => {
+test('retrieve all application properties', done => {
   const experimental = {
     instanceExperimentalOne: 'instanceExperimentalOne',
     instanceExperimentalTwo: 'instanceExperimentalTwo',
     contextExperimentalThree: 3,
   };
 
-  const instanceProps = new InstanceProps({
-    appId: '1',
-    appTitle: 'title',
+  const instanceProps = {
+    appId:          '1',
+    appTitle:       'title',
     appPackageName: 'com.deskpro.app',
-    instanceId: '1',
+    instanceId:     '1',
 
     instanceExperimentalOne: experimental.instanceExperimentalOne,
-    instanceExperimentalTwo: experimental.instanceExperimentalTwo,
-  });
-
-  const contextProps = new ContextProps({
-    type: 'ticket',
-    entityId: '1',
-    locationId: '1',
-    tabId: 'tab-1',
-    tabUrl: 'https://127.0.0.1',
-
-    contextExperimentalThree: experimental.contextExperimentalThree,
-  });
-
-  const params = {
-    outgoingDispatcher: new AppEventEmitter(),
-    incomingDispatcher: new AppEventEmitter(),
-    internalDispatcher: new AppEventEmitter(),
-    instanceProps,
-    contextProps,
-    appWindow: new WidgetWindowBridge(
-      {
-        addEventListener: () => ({}),
-        document: { readyState: 'ready' },
-      },
-      new InitPropertiesBag({ dpXconfTag: '' }),
-    ),
+    instanceExperimentalTwo: experimental.instanceExperimentalTwo
   };
 
-  const app = new AppClient(params);
+  const contextProps = {
+    type:       'ticket',
+    entityId:   '1',
+    locationId: '1',
+    tabId:      'tab-1',
+    tabUrl:     'https://127.0.0.1',
+
+    contextExperimentalThree: experimental.contextExperimentalThree
+  };
+
+  const app = createAppFromProps({
+    registerEventHandlers: function() {},
+    localDispatcher:    new AppEventEmitter(),
+    incomingDispatcher: new AppEventEmitter(),
+    outgoingDispatcher: new AppEventEmitter(),
+    instanceProps,
+    contextProps
+  });
+
+  const { type: contextType, ...expectedContextProps } = contextProps;
 
   expect(app.properties).toEqual(
-    Object.assign({}, instanceProps.toJS(), contextProps.toJS()),
+    Object.assign({}, instanceProps, { contextType, ...expectedContextProps }),
   );
   done();
 });

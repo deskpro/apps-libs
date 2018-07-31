@@ -1,6 +1,4 @@
-import * as Events from './events';
 import StorageAdapter from './StorageAdapter';
-
 const APP_TYPE = 'app';
 
 const validName = nameString =>
@@ -48,7 +46,6 @@ const validateNameValuePairsList = batch => {
 class StorageApiFacade {
   /**
    * @param {AppEventEmitter} outgoingDispatcher the outgoing event dispatcher
-   * @param {AppEventEmitter} internalDispatcher the interval event dispatcher
    * @param {StorageAdapter} storageAdapter a storage adapter
    * @param {String} instanceId the id of this application's instance
    * @param {String} appId the id of this application
@@ -58,7 +55,6 @@ class StorageApiFacade {
    */
   constructor(
     outgoingDispatcher,
-    internalDispatcher,
     storageAdapter,
     { instanceId, appId, contextEntityType, contextEntityId, ...other },
   ) {
@@ -69,7 +65,6 @@ class StorageApiFacade {
     }
     this.props = {
       outgoingDispatcher,
-      internalDispatcher,
       storageAdapter,
       instanceId,
       contextEntityType,
@@ -117,20 +112,7 @@ class StorageApiFacade {
         );
       }
 
-      return storageAdapter
-        .handleSetStorage(Promise.resolve(this.props), name, value, entityId)
-        .then(resp => {
-          this.props.internalDispatcher.emit(
-            entityId.indexOf(APP_TYPE) === 0
-              ? Events.EVENT_APP_CHANGED
-              : Events.EVENT_ENTITY_CHANGED,
-            entityId,
-            name,
-            value,
-          );
-
-          return resp;
-        });
+      return storageAdapter.handleSetStorage(Promise.resolve(this.props), name, value, entityId);
     }
 
     if (args.length === 2) {
@@ -140,19 +122,7 @@ class StorageApiFacade {
         throw batchError;
       }
 
-      return storageAdapter
-        .handleSetBatchStorage(Promise.resolve(this.props), batch, entityId)
-        .then(resp => {
-          this.props.internalDispatcher.emit(
-            entityId.indexOf(APP_TYPE) === 0
-              ? Events.EVENT_APP_CHANGED
-              : Events.EVENT_ENTITY_CHANGED,
-            entityId,
-            batch,
-          );
-
-          return resp;
-        });
+      return storageAdapter.handleSetBatchStorage(Promise.resolve(this.props), batch, entityId);
     }
 
     throw new Error(`Bad method call: unknown number of args: ${args.length}`);
@@ -259,19 +229,7 @@ class StorageApiFacade {
           name,
           entityId,
           defaultValue || null,
-        )
-        .then(value => {
-          this.props.internalDispatcher.emit(
-            entityId.indexOf(APP_TYPE) === 0
-              ? Events.EVENT_APP_FETCHED
-              : Events.EVENT_ENTITY_FETCHED,
-            entityId,
-            name,
-            value,
-          );
-
-          return value;
-        });
+        );
     }
 
     const batch = name;
@@ -294,19 +252,7 @@ class StorageApiFacade {
           batch,
           entityId,
           defaultValue || null,
-        )
-        .then(values => {
-          this.props.internalDispatcher.emit(
-            entityId.indexOf(APP_TYPE) === 0
-              ? Events.EVENT_APP_FETCHED
-              : Events.EVENT_ENTITY_FETCHED,
-            entityId,
-            batch,
-            values,
-          );
-
-          return values;
-        });
+        );
     }
 
     throw new Error('Bad method call');
@@ -344,56 +290,6 @@ class StorageApiFacade {
     return this.getStorage(name, entityId, defaultValue);
   }
 
-  /**
-   * @deprecated
-   * @public
-   * @method
-   *
-   * @param args
-   * @return {Promise}
-   */
-  async setAppState(...args) {
-    return this.setAppStorage(...args);
-  }
-
-  /**
-   * @deprecated
-   * @public
-   * @method
-   *
-   * @return {Promise}
-   */
-  async setEntityState(...args) {
-    return this.setEntityStorage(...args);
-  }
-
-  /**
-   * @ignore
-   * @deprecated
-   * @public
-   * @method
-   *
-   * @param name
-   * @param defaultValue
-   * @return {Promise}
-   */
-  async getEntityState(name, defaultValue = null) {
-    return this.getEntityStorage(name, defaultValue);
-  }
-
-  /**
-   * @ignore
-   * @deprecated
-   * @public
-   * @method
-   *
-   * @param name
-   * @param defaultValue
-   * @return {Promise}
-   */
-  async getAppState(name, defaultValue = null) {
-    return this.getAppStorage(name, defaultValue);
-  }
 }
 
 export default StorageApiFacade;

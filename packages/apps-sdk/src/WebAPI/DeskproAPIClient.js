@@ -30,22 +30,6 @@ class DeskproAPIClient {
   }
 
   /**
-   * An alias for fetchProxy
-   *
-   * @method
-   * @deprecated
-   * @internal
-   *
-   * @param {string} url the resource's relative url
-   * @param {object} init a fetch init object. See {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch}
-   *
-   * @return {Promise<DeskproAPIResponse, Error>}
-   */
-  async fetchCORS(url, init) {
-    return this.fetchProxy(url, init);
-  }
-
-  /**
    * Executes a fetch style request via the server-side proxy
    * This is useful for making secure requests or to access non-CORS enabled third parties
    *

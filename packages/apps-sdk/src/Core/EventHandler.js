@@ -10,9 +10,9 @@ import {
   IncomingEventDispatcher,
   OutgoingEventDispatcher,
 } from './emit';
-import WidgetFactories from '../Widget/WidgetFactories';
-import WidgetRequest from '../Widget/WidgetRequest';
-import WidgetResponse from '../Widget/WidgetResponse';
+
+import { parseWidgetMessage, WidgetRequest, WidgetResponse } from '../Widget'
+
 import {
   INVOCATION_REQUESTRESPONSE,
   INVOCATION_FIREANDFORGET,
@@ -92,7 +92,7 @@ class EventHandler {
 const dispatchIncomingEvent = (windowBridge, eventName, eventProps, event) => {
   const { data: rawMessage } = event;
 
-  const message = WidgetFactories.parseMessageFromJS(rawMessage);
+  const message = parseWidgetMessage(rawMessage);
   if (
     message instanceof WidgetRequest &&
     eventProps.invocationType === INVOCATION_REQUESTRESPONSE

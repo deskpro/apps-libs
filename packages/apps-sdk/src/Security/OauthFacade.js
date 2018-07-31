@@ -70,19 +70,6 @@ class OauthFacade {
   }
 
   /**
-   * Alias for OauthFacade.requestAccess
-   *
-   * @param {string} provider the provider id
-   * @param {{protocolVersion:String}} [options] a map of properties describing the oauth client. Only `protocolVersion` is supported for the moment
-   * @internal
-   * @deprecated
-   * @returns {Promise.<OauthToken, Error>}
-   */
-  async access(provider, options) {
-    return this.requestAccess(provider, options);
-  }
-
-  /**
    * Requests an access token. If `protocolVersion` is not specified in `options` then it defaults to `2.0`
    * if `options` has an object property  named `query`, it will be used as additional query parameters appended to the
    * authorization url

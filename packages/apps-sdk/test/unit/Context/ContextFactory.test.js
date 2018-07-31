@@ -13,25 +13,24 @@ test('can create a ticket context', done => {
   );
 
   const outgoingDispatcher = new AppEventEmitter();
-  const incomingDispatcher = new AppEventEmitter();
+
   const instanceProps = new InstanceProps({
-    appId: '1',
-    appTitle: 'title',
+    appId:          '1',
+    appTitle:       'title',
     appPackageName: 'com.deskpro.app',
-    instanceId: '1',
+    instanceId:     '1',
   });
   const contextProps = new ContextProps({
     type: contextType,
-    entityId: '1',
-    locationId: 'install',
-    manifest: { field: 'value' },
-    tabId: 1,
-    tabUrl: 'http://localhost',
+    entityId:     '1',
+    locationId:   'install',
+    manifest:     { field: 'value' },
+    tabId:        1,
+    tabUrl:       'http://localhost',
   });
 
   const context = ContextFactory.create(
     outgoingDispatcher,
-    incomingDispatcher,
     instanceProps,
     contextProps,
   );
@@ -48,7 +47,6 @@ test('can create a default context', done => {
   expect(ContextFactory.contextObjectTypes.indexOf(contextType)).toBe(-1);
 
   const outgoingDispatcher = new AppEventEmitter();
-  const incomingDispatcher = new AppEventEmitter();
   const instanceProps = new InstanceProps({
     appId: '1',
     appTitle: 'title',
@@ -66,7 +64,6 @@ test('can create a default context', done => {
 
   const context = ContextFactory.create(
     outgoingDispatcher,
-    incomingDispatcher,
     instanceProps,
     contextProps,
   );

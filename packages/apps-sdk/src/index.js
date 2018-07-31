@@ -6,15 +6,17 @@ export {
    * @function
    */
   createApp,
+
   /**
    * @function
    */
   createAppFromProps,
+
   /**
    * @function
    */
   createMockApp
-} from './Core/createApp';
+} from './Core/create';
 
 /**
  * @type {AppClient}
@@ -39,12 +41,6 @@ export {
   UIConstants,
 } from './UI';
 
-export {
-  /**
-   * @type {module:Storage/events}
-   */
-  StorageEvents,
-} from './Storage';
 
 export {
   /**

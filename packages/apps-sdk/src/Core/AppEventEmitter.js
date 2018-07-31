@@ -6,7 +6,6 @@ import { Event } from './Event';
  * own UI container implementation
  *
  * @class
- * @extends {EventEmitter}
  * @see https://github.com/primus/eventemitter3
  */
 class AppEventEmitter extends EventEmitter {

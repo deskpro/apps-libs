@@ -6,7 +6,7 @@
 import WidgetWindowBridge from './WidgetWindowBridge';
 import WidgetRequest from './WidgetRequest';
 import WidgetResponse from './WidgetResponse';
-import WidgetFactories from './WidgetFactories';
+import { createMockWindowBridge, createDefaultWindowBridge, createWindowBridge, parseWidgetMessage } from './factories'
 
 export {
   /**
@@ -21,8 +21,12 @@ export {
    * @type {WidgetResponse}
    */
   WidgetResponse,
-  /**
-   * @type {WidgetFactories}
-   */
-  WidgetFactories,
+
+  createMockWindowBridge,
+
+  createDefaultWindowBridge,
+
+  createWindowBridge,
+
+  parseWidgetMessage
 };

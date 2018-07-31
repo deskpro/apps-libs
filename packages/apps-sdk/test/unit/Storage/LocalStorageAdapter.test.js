@@ -33,11 +33,9 @@ describe('LocalStorageAdapter', () => {
   };
 
   const outgoingDispatcher = new AppEventEmitter();
-  const internalDispatcher = new AppEventEmitter();
   const localStorage = new LocalStorageAdapter(localStorageMock);
   const storage = new StorageApiFacade(
     outgoingDispatcher,
-    internalDispatcher,
     localStorage,
     params,
   );

@@ -1,12 +1,4 @@
 import * as AppEvents from './AppEvents';
-
-import { createContext } from '../Context';
-import { create as createUI } from '../UI';
-import { createStorageAPIClient } from '../Storage';
-import { createDeskproApiClient } from '../WebAPI';
-import { createDeskproWindowFacade } from '../DeskproWindow';
-import { createOauthAPIClient } from '../Security';
-
 import * as Event from './Event';
 
 /**
@@ -16,73 +8,55 @@ import * as Event from './Event';
  */
 class AppClient {
   /**
+   *
    * @param {function} registerEventHandlers registers on demand event handlers via the {@link AppClient.subscribe} method
    * @param {AppEventEmitter} outgoingDispatcher the outgoing events dispatcher
    * @param {AppEventEmitter} incomingDispatcher the outgoing events dispatcher
-   * @param {AppEventEmitter} internalDispatcher the internal events dispatcher
+   * @param {AppEventEmitter} localDispatcher the internal events dispatcher
    * @param {InstanceProps} instanceProps the property bag containing instance props
    * @param {ContextProps} contextProps the property bag containing context props
+   * @param {Context} context instance of the {@link Context} client
+   * @param {DeskproAPIClient} restApi instance of the deskpro api client
+   * @param {StorageApiFacade} storageApi instance of the storage api client
+   * @param {DeskproWindowFacade} deskproWindow instance of the deskpro window client
+   * @param {OauthFacade} oauth instanceof of the oauth client
+   * @param {UIFacade} ui instance of the ui client
    */
   constructor({
     registerEventHandlers,
     outgoingDispatcher,
     incomingDispatcher,
-    internalDispatcher,
+    localDispatcher,
     instanceProps,
     contextProps,
+    context,
+    restApi,
+    storageApi,
+    deskproWindow,
+    oauth,
+    ui
   }) {
-    const context = createContext(
-      outgoingDispatcher,
-      incomingDispatcher,
-      instanceProps,
-      contextProps,
-    );
     this.props = {
       registerEventHandlers,
       outgoingDispatcher,
       incomingDispatcher,
-      internalDispatcher,
+      localDispatcher,
       instanceProps,
       contextProps,
       context,
-      restApi: createDeskproApiClient(outgoingDispatcher),
-      storageApi: createStorageAPIClient(
-        outgoingDispatcher,
-        internalDispatcher,
-        instanceProps,
-        contextProps,
-      ),
-      deskproWindow: createDeskproWindowFacade(outgoingDispatcher),
-      oauth: createOauthAPIClient(
-        outgoingDispatcher,
-        internalDispatcher,
-        instanceProps,
-        contextProps,
-      ),
-      ui: createUI(outgoingDispatcher, internalDispatcher),
+      restApi,
+      storageApi,
+      deskproWindow,
+      oauth,
+      ui
     };
 
     this._state = {
-      isResizing: false,
       appTitle: instanceProps.appTitle,
-      badgeCount: 0,
     };
   }
 
   // EVENT EMITTER API
-  // TODO this should not be made public since it is only intended for integrations with UI sdks like apps-react-sdk
-
-  /**
-   * Returns an instance of the internal event dispatcher
-   *
-   * @ignore
-   * @public
-   * @return {AppEventEmitter}
-   */
-  get eventDispatcher() {
-    return this.props.internalDispatcher;
-  }
-
   /**
    * Registers an event listener. For the moment, you can only listen to internal events via this method
    *
@@ -92,7 +66,7 @@ class AppClient {
    */
   on = (eventName, listener) => {
     // TODO need to check if eventName is an internal one, for now just assume everyything is
-    this.eventDispatcher.on(eventName, listener);
+    this.props.localDispatcher.on(eventName, listener);
   };
 
   /**
@@ -187,9 +161,9 @@ class AppClient {
     }
 
     // internal event
-    const { internalDispatcher } = this.props;
+    const { localDispatcher } = this.props;
     const dispatcherArgs = [event].concat(args);
-    internalDispatcher.emit.apply(internalDispatcher, dispatcherArgs);
+    localDispatcher.emit.apply(localDispatcher, dispatcherArgs);
     return Promise.resolve(args);
   }
 
@@ -311,17 +285,6 @@ class AppClient {
     return this.props.instanceProps.appPackageName;
   }
 
-  // Settings API
-
-  /**
-   * @public
-   * @readonly
-   * @type {Array}
-   */
-  get settings() {
-    return [];
-  }
-
   // Misc API
 
   /**
@@ -332,20 +295,13 @@ class AppClient {
    * @method
    */
   refresh = () => {
-    const { internalDispatcher: eventDispatcher } = this.props;
-    eventDispatcher.emit(AppEvents.EVENT_REFRESH);
+
+    if (window && window.location && typeof window.location.reload === 'function') {
+      window.location.reload(true);
+    }
+
   };
 
-  /**
-   * Emits an internal event that signals its handlers the application initiated the unload process
-   *
-   * @internal
-   * @method
-   */
-  unload = () => {
-    const { internalDispatcher: eventDispatcher } = this.props;
-    eventDispatcher.emit(AppEvents.EVENT_UNLOAD);
-  };
 
   // CLIENTS
 
@@ -391,17 +347,6 @@ class AppClient {
    */
   get restApi() {
     return this.props.restApi;
-  }
-
-  /**
-   * @deprecated
-   *
-   * @internal
-   * @ignore
-   * @type {StorageApiFacade}
-   */
-  get state() {
-    return this.props.storageApi;
   }
 
   /**

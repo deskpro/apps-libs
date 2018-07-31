@@ -3,17 +3,11 @@
  * @module Storage
  */
 
-import * as StorageEvents from './events';
 import StorageApiFacade from './StorageApiFacade';
 import FetchStorageAdapter from './FetchStorageAdapter';
 import LocalStorageAdapter from './LocalStorageAdapter';
 
 export {
-  /**
-   * @type {module:Storage/events}
-   * @constant
-   */
-  StorageEvents,
   /**
    * @type {StorageApiFacade}
    */
@@ -35,7 +29,6 @@ function storageAdapterProps(instanceProps, contextProps) {
  * @method
  *
  * @param {AppEventEmitter} outgoingDispatcher
- * @param {AppEventEmitter} internalDispatcher
  * @param {InstanceProps} instanceProps
  * @param {ContextProps} contextProps
  *
@@ -43,7 +36,6 @@ function storageAdapterProps(instanceProps, contextProps) {
  */
 export const createStorageAPIClient = (
   outgoingDispatcher,
-  internalDispatcher,
   instanceProps,
   contextProps,
 ) => {
@@ -60,7 +52,6 @@ export const createStorageAPIClient = (
 
   return new StorageApiFacade(
     outgoingDispatcher,
-    internalDispatcher,
     storageAdapter,
     props,
   );

@@ -1,12 +1,11 @@
 import * as Events from './events';
-import * as AppEvents from '../Core/AppEvents';
 import * as Constants from './constants';
 
 function setProps(newProps)
 {
-  const { eventDispatcher, props: oldProps } = this;
+  const { localDispatcher, props: oldProps } = this;
   this.props = {  ...oldProps, ...newProps };
-  eventDispatcher.emit(Events.EVENT_UI_CHANGED, oldProps, this.props);
+  localDispatcher.emit(Events.EVENT_UI_CHANGED, this.props, oldProps);
 }
 
 /**
@@ -17,14 +16,13 @@ function setProps(newProps)
 class UIFacade {
   /**
    * @param {AppEventEmitter} outgoingDispatcher
-   * @param {AppEventEmitter} UIEventsDispatcher
+   * @param {AppEventEmitter} localDispatcher
    */
-  constructor(outgoingDispatcher, UIEventsDispatcher) {
+  constructor(outgoingDispatcher, localDispatcher) {
 
     this.outgoingDispatcher = outgoingDispatcher;
-    this.eventDispatcher = UIEventsDispatcher;
+    this.localDispatcher = localDispatcher;
     this.setProps = setProps.bind(this);
-    this.subscribers = [];
 
     this.props = {
       display:            Constants.DISPLAY_EXPANDED, // expanded, collapsed
@@ -41,15 +39,6 @@ class UIFacade {
       notificationType:        null
     }
   }
-
-  /**
-   * Subscribe to ui props changes using the {subscriber}
-   *
-   * @param {function} subscriber
-   */
-  subscribe = (subscriber) => {
-    this.subscribers.push(subscriber);
-  };
 
   // MENU API
 
@@ -107,10 +96,6 @@ class UIFacade {
 
     if (oldVisibility !== newVisibility) {
       this.setProps({ badgeVisibility: newVisibility });
-      this.outgoingDispatcher.emitAsync(AppEvents.EVENT_BADGE, {
-        visibility: newVisibility,
-        count: badgeCount,
-      });
     }
   };
 
@@ -125,10 +110,6 @@ class UIFacade {
 
     if (oldVisibility !== newVisibility) {
       this.setProps({ badgeVisibility: newVisibility });
-      this.outgoingDispatcher.emitAsync(AppEvents.EVENT_BADGE, {
-        visibility: newVisibility,
-        count:      badgeCount,
-      });
     }
   };
 
@@ -147,17 +128,11 @@ class UIFacade {
    */
   set badgeCount(newCount) {
     const {
-      badgeVisibility: visibility,
       badgeCount: oldCount,
-    } = this.props.getState();
+    } = this.props;
 
     if (oldCount !== newCount) {
       this.setProps({ badgeCount: newCount });
-
-      this.outgoingDispatcher.emitAsync(AppEvents.EVENT_BADGE, {
-        visibility,
-        count: newCount,
-      });
     }
   }
 
