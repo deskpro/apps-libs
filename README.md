@@ -4,8 +4,7 @@ This monorepos contains four packages:
 
 * `@deskpro/apps-components` are ReactJS components you should use in your apps
 * `@deskpro/apps-components-style` is the pure CSS implementations of components.
-* `@deskpro/apps-sdk-core` contains basic plumbing for hooking up apps in the Deskpro interface
-* `@deskpro/apps-sdk-react` contains basic plumbing for ReactJS apps. Right now, ALL apps are implemented with React. Some boilerplates (e.g. jquery) expose special handlers, but are ultimately just a normal React app.
+* `@deskpro/apps-sdk` contains basic functionality for hooking up apps in the Deskpro interface
 
 See also [@deskpro/apps-react-scripts](https://github.com/deskpro/apps-create) which is a fork of create-react-app.
 
@@ -38,16 +37,14 @@ cd /my/dev/home/dir
 # You need to tell npm to link these packages.
 # This only needs to be done once.
 (cd apps-libs/packages/apps-components; npm link)
-(cd apps-libs/packages/sdk-core; npm link)
-(cd apps-libs/packages/sdk-react; npm link)
+(cd apps-libs/packages/apps-sdk; npm link)
 (cd apps-create; npm link)
 
 # And then here you're getting your app to actually use those linked packages.
 # You need to do this whenever you update npm deps because any change to node_modules removes the local links
 cd my-app/
 npm link @deskpro/apps-components
-npm link @deskpro/apps-sdk-core
-npm link @deskpro/apps-sdk-react
+npm link @deskpro/apps-sdk
 ```
 
 ## Be sure to build
@@ -55,7 +52,7 @@ npm link @deskpro/apps-sdk-react
 When you link like this, it's literally creating a link on in your filesystem to your local dir.
 
 ```
-~/dev/my-app/node_modules/@deskpro/sdk-core -> ~/dev/apps-libs/packages/sdk-core
+~/dev/my-app/node_modules/@deskpro/apps-sdk -> ~/dev/apps-libs/packages/apps-sdk
 ```
 
 Since your app is going to be importing code from this package, the package must actually be _built_. Building the package happens during `lerna bootstrap` automatically, but as you make changes, you need to keep the build up to date. You can do this either by building manually yourself, or with the `dev` command.
@@ -63,7 +60,7 @@ Since your app is going to be importing code from this package, the package must
 ```
 $ npm run dev
 rollup v0.63.4
-bundles src/index.js → lib/sdk-core.js...
+bundles src/index.js → lib/apps-sdk.js...
 created lib/sdk-core.js in 2.5s
 
 [2018-07-25 14:59:07] waiting for changes...
