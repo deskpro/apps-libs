@@ -5,13 +5,13 @@ set -e
 DIR_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 cd $DIR_ROOT
 
-if [ ! -d ./packages/components/target/storybook ]; then
-  echo "Missing: packages/components/storybook-static"
+if [ ! -d ./packages/apps-components/target/storybook ]; then
+  echo "Missing: packages/components/target/storybook"
   echo "Did you build first?"
   exit 1
 fi
 
-if [ ! -d ./packages/style/website/build/style ]; then
+if [ ! -d ./packages/apps-style/website/build/style ]; then
   echo "Missing: packages/style/website/build/style"
   echo "Did you build first?"
   exit 1
@@ -23,8 +23,8 @@ fi
 
 mkdir -p ./target/gh-pages
 
-mv ./packages/components/target/storybook ./target/gh-pages/components
-mv ./packages/style/website/build/style ./target/gh-pages/style
+mv ./packages/apps-components/target/storybook ./target/gh-pages/components
+mv ./packages/apps-style/website/build/style ./target/gh-pages/style
 
 cat << EOF > ./target/gh-pages/index.html
 <html>

@@ -6,7 +6,7 @@ before_install:
   - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > packages/style/.npmrc
   - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > packages/components/.npmrc
 before_script:
-  - npm run bootstrap-ci
+  - npm run bootstrap
 script:
   - npm run build
   - test "${TRAVIS_BRANCH}" = "master" || echo "site building is only enabled on the master branch"
@@ -19,11 +19,12 @@ cache:
     - node_modules
     - packages/apps-components/node_modules
     - packages/apps-style/website/node_modules
-    - packages/sdk-core/node_modules
+    - packages/apps-style/node_modules
+    - packages/apps-sdk/node_modules
 before_cache:
   - rm -rf packages/apps-components/node_modules/@deskpro
   - rm -rf packages/apps-style/website/node_modules/@deskpro
-  - rm -rf packages/sdk-core/node_modules/@deskpro
+  - rm -rf packages/apps-sdk/node_modules/@deskpro
 deploy:
   - provider: pages
     skip-cleanup: true
