@@ -23,35 +23,25 @@ function repeat(times, prototype) {
   return list;
 }
 
-storiesOf('AppFrame', module)
-  .add('empty', wrapInAppPanel(
-    <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"} actions={['refresh', <Action icon='up' />]} />
-  ))
-  .add('empty and disabled', wrapInAppPanel(
-    <AppFrame isInactive title={"Deskpro"} iconUrl={"/dp-logo.svg"} actions={['refresh', <Action icon="up" />]} />
-  ))
-  .add('normal', wrapInAppPanel(
-    <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"} actions={['refresh', <Action icon="up" /> ]} >
-      <ActionBar>
-        <Action icon={"search"} label={"Find"}/>,
-        <Action icon={"search"} label={"Create"}/>
-      </ActionBar>
-      <List>
-          <ListItem>
-            <ActionBar iconUrl={"/jira-logo.svg"} title={"Blog calender"}>
-              {renderMenu(true)}
-            </ActionBar>
+function content()
+{
+  return (
+    <List>
+      <ListItem>
+        <ActionBar iconUrl={"/jira-logo.svg"} title={"Blog calender"}>
+          {renderMenu(true)}
+        </ActionBar>
 
-            <Level>
-              <Level align={"left"}>
-                <span>Ready</span><span> | </span><span>Linked 12/06/2018</span>
-              </Level>
-              <Level align={"right"}>
-                <Avatar shape={"round"} src={"/jira-logo.svg"}/>
-              </Level>
-            </Level>
+        <Level>
+          <Level align={"left"}>
+            <span>Ready</span><span> | </span><span>Linked 12/06/2018</span>
+          </Level>
+          <Level align={"right"}>
+            <Avatar shape={"round"} src={"/jira-logo.svg"}/>
+          </Level>
+        </Level>
 
-          </ListItem>
+      </ListItem>
 
       {
         repeat(5,
@@ -69,10 +59,35 @@ storiesOf('AppFrame', module)
               </Level>
             </Level>
 
-        </ListItem>
-      )}
-      </List>
+          </ListItem>
+        )}
+    </List>
+  );
+}
 
+storiesOf('AppFrame', module)
+  .add('empty', wrapInAppPanel(
+    <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"}  />
+  ))
+  .add('empty and disabled', wrapInAppPanel(
+    <AppFrame isInactive title={"Deskpro"} iconUrl={"/dp-logo.svg"} />
+  ))
+  .add('normal', wrapInAppPanel(
+    <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"} >
+      <ActionBar>
+        <Action icon={"search"} label={"Find"}/>,
+        <Action icon={"search"} label={"Create"}/>
+      </ActionBar>
+      {content()}
+    </AppFrame>
+  ))
+  .add('with error', wrapInAppPanel(
+    <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"} notification={"what is going on ?"} notificationType={"error"} >
+      <ActionBar>
+        <Action icon={"search"} label={"Find"}/>,
+        <Action icon={"search"} label={"Create"}/>
+      </ActionBar>
+      {content()}
     </AppFrame>
   ))
 ;

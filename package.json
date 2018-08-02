@@ -1,5 +1,13 @@
 {
-	"devDependencies": {
-		"lerna": "^2.11.0"
-	}
+  "devDependencies": {
+    "lerna": "^2.11.0"
+	},
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run --stream build",
+    "lint": "lerna run --stream lint",
+    "test": "lerna run --stream test",
+    "publish-git": "lerna publish --force-publish --skip-npm --yes",
+    "publish-npm": "lerna publish --force-publish --skip-git --yes"
+  }
 }

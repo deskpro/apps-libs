@@ -34,7 +34,7 @@ export function wrapInApp(body)
   return sizeToSidebar(
     <div className={"dp-AppPanel"}>
       <div className={"dp-AppPanelBody"}>
-        <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"} actions={['refresh', () => <Action type='up' />]} >
+        <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"} >
           { body }
         </AppFrame>
       </div>

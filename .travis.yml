@@ -1,0 +1,43 @@
+language: node_js
+node_js:
+  - '8'
+before_install:
+  - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+  - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > packages/style/.npmrc
+  - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > packages/components/.npmrc
+before_script:
+  - npm run bootstrap
+script:
+  - npm run build
+  - test "${TRAVIS_BRANCH}" = "master" || echo "site building is only enabled on the master branch"
+  - test "${TRAVIS_BRANCH}" != "master" || test "${TRAVIS_PULL_REQUEST}" != "false" || bin/travis-prep-website.sh
+
+  - test "${TRAVIS_BRANCH}" != "${TRAVIS_TAG}" || echo "tests are disabled on builds triggered by a tag"
+  - test "${TRAVIS_BRANCH}" = "${TRAVIS_TAG}" || npm run test
+cache:
+  directories:
+    - node_modules
+    - packages/apps-components/node_modules
+    - packages/apps-style/website/node_modules
+    - packages/apps-style/node_modules
+    - packages/apps-sdk/node_modules
+before_cache:
+  - rm -rf packages/apps-components/node_modules/@deskpro
+  - rm -rf packages/apps-style/website/node_modules/@deskpro
+  - rm -rf packages/apps-sdk/node_modules/@deskpro
+deploy:
+  - provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    keep-history: true
+    local-dir: target/gh-pages
+    target-branch: gh-pages
+    on:
+      branch: master
+  - provider: script
+    skip-cleanup: true
+    script: npm run publish-npm -- --repo-version $(node bin/lerna-version.js)
+    on:
+      tags: true
+
+

@@ -23,6 +23,7 @@
   cursor: pointer;
   display: inline-block;
   height: 11px;
+  margin: 2px;
   width: 11px;
 }
 
@@ -110,6 +111,7 @@
   background-size: contain;
   display: inline-block;
   height: 10px;
+  margin: 2px;
   width: 10px;
 }
 
@@ -123,8 +125,8 @@
   background-repeat: no-repeat;
   background-size: contain;
   display: inline-block;
-  height: 14px;
-  width: 14px;
+  height: 13px;
+  width: 13px;
 }
 
 .dp---is-hoverable:hover .dp-IconPlusRound,
@@ -139,6 +141,7 @@
   display: inline-block;
   fill: var(--gray-light);
   height: 9px;
+  margin: 4px;
   width: 9px;
 }
 
@@ -152,8 +155,9 @@
   background-repeat: no-repeat;
   background-size: contain;
   display: inline-block;
-  height: 8px;
-  width: 8px;
+  height: 9px;
+  margin: 2px;
+  width: 9px;
 }
 
 .dp---is-hoverable:hover .dp-IconCloseFatty,
@@ -180,8 +184,8 @@
   background-repeat: no-repeat;
   background-size: contain;
   display: inline-block;
-  height: 15px;
-  width: 15px;
+  height: 13px;
+  width: 13px;
 }
 
 .dp---is-hoverable:hover .dp-IconLock,
@@ -291,8 +295,9 @@
   background-repeat: no-repeat;
   background-size: contain;
   display: inline-block;
-  height: 10px;
-  width: 10px;
+  height: 11px;
+  margin: 1px;
+  width: 11px;
 }
 
 .dp---is-hoverable:hover .dp-IconLink,
