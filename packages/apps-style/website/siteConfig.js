@@ -4,8 +4,8 @@
 const siteConfig = {
   title: 'Apps Style',
   tagline: 'Styles for Deskpro Apps',
-  url: 'https://deskpro.github.io/apps-components/style',
-  baseUrl: '/apps-components/style/',
+  url: 'https://deskpro.github.io/apps-libs/style',
+  baseUrl: '/apps-libs/style/',
 
   projectName: 'style',
   organizationName: 'Deskpro',
