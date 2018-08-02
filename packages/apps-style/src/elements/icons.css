@@ -23,8 +23,8 @@
   cursor: pointer;
   display: inline-block;
   height: 11px;
-  width: 11px;
   margin: 2px;
+  width: 11px;
 }
 
 .dp-IconArrow {
@@ -111,8 +111,8 @@
   background-size: contain;
   display: inline-block;
   height: 10px;
-  width: 10px;
   margin: 2px;
+  width: 10px;
 }
 
 .dp---is-hoverable:hover .dp-IconPlus,
@@ -141,8 +141,8 @@
   display: inline-block;
   fill: var(--gray-light);
   height: 9px;
-  width: 9px;
   margin: 4px;
+  width: 9px;
 }
 
 .dp---is-hoverable:hover .dp-IconClose,
@@ -156,8 +156,8 @@
   background-size: contain;
   display: inline-block;
   height: 9px;
-  width: 9px;
   margin: 2px;
+  width: 9px;
 }
 
 .dp---is-hoverable:hover .dp-IconCloseFatty,
@@ -296,8 +296,8 @@
   background-size: contain;
   display: inline-block;
   height: 11px;
-  width: 11px;
   margin: 1px;
+  width: 11px;
 }
 
 .dp---is-hoverable:hover .dp-IconLink,

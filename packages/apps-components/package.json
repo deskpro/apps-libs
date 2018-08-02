@@ -15,7 +15,7 @@
     "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
     "lint": "eslint src test",
     "test": "cross-env NODE_ENV=test BABEL_ENV=test jest",
-    "build-storybook": "build-storybook -c .storybook -o gen/storybook",
+    "build-storybook": "build-storybook -c .storybook -o target/storybook",
     "prepare": "npm run prebuild && npm run build:es2015",
     "dev": "start-storybook -s storybook/static -p 6006"
   },

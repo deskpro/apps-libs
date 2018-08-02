@@ -24,7 +24,6 @@ test('successfully create an application with default params', done => {
     }
   });
 
-
   expect(app instanceof AppClient).toBeTruthy();
   done();
 });
