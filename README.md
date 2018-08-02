@@ -23,7 +23,7 @@ Note that any time you run `npm install` inside of a package, the local links wi
 git clone git@github.com:deskpro/apps-libs.git
 cd apps-libs
 lerna bootstrap
-cd packages/sdk-react
+cd packages/apps-sdk
 npm run dev
 ```
 
