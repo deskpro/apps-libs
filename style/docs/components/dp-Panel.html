@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Panel · Apps Style</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="```html @preview"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Panel · Apps Style"/><meta property="og:type" content="website"/><meta property="og:url" content="https://deskpro.github.io/apps-components/style/apps-components/style/index.html"/><meta property="og:description" content="```html @preview"/><meta property="og:image" content="https://deskpro.github.io/apps-components/style/apps-components/style/img/dp-logo.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://deskpro.github.io/apps-components/style/apps-components/style/img/dp-logo.svg"/><link rel="shortcut icon" href="/apps-components/style/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"/><link rel="alternate" type="application/atom+xml" href="https://deskpro.github.io/apps-components/style/apps-components/style/blog/atom.xml" title="Apps Style Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://deskpro.github.io/apps-components/style/apps-components/style/blog/feed.xml" title="Apps Style Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/apps-components/style/js/code-collapsed-toggle.js"></script><link rel="stylesheet" href="/apps-components/style/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/apps-components/style/"><img class="logo" src="/apps-components/style/img/dp-logo-white.svg" alt="Apps Style"/><h2 class="headerTitleWithLogo">Apps Style</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/apps-components/style/docs/intro.html" target="_self">Docs</a></li><li class=""><a href="/apps-components/style/blog" target="_self">News</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Components</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/intro.html">Introduction</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/colors.html">Color Palette</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Components</h3><ul><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-Level.html">Level - alignment</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-ButtonTabs.html">Button Tabs</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-AppBar.html">App Bar</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-ActionList.html">Action List</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-AppBody.html">App Body</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-AppFrame.html">App Frame</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-AppPanel.html">App Panel</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-ListItem.html">List Item</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-Scrollable.html">Scrollable</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-ActionPanel.html">Action Panel - Search List Items</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-Notification.html">App Notification</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-TabSwitcher.html">Tab Switcher</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-DataTable.html">Date Table</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-DataDefList.html">Data Def List</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/apps-components/style/docs/components/dp-Panel.html">Panel</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Elements</h3><ul><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/elements/dp-Button.html">Buttons</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/elements/dp-Forms.html">Forms</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/elements/dp-Content.html">Content</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/elements/dp-Title.html">Titles</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/elements/dp-Icons.html">Icons</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Panel</h1></header><article><div><span><div class="html-with-preview"><div class="rendered dp-style-wrapper dp-Body"><div class="dp-Panel">
+  <div class="dp-PanelHeader dp-Level">
+    <span class="dp-PanelHeaderTitle">Order number #4357</span>
+    <div class="dp-ActionList">
+      <a href="" class="dp-ActionListItem">
+        <i class="dp-IconClose"></i>
+      </a>
+    </div>
+  </div>
+  <div class="dp-PanelBody">
+    <section class="dp-Section">
+      <div class="dp-Level">
+        <div class="dp-LevelLeft">
+          <dl class="dp-DataDefList">
+            <dt class="dp-DataDefListKey dp-PT--none">Payment status</dt>
+            <dd class="dp-DataDefListValue"><span class="dp-Tag dp-Tag--green">Paid</span></dd>
+          </dl>
+        </div>
+        <div class="dp-ActionList dp-LevelRight dp-ActionList--grey dp-LevelTop">
+          <a href="" class="dp-ActionListItem">
+            <i class="dp-IconEdit"></i>
+            <span class="dp-ActionListLabel">edit</span>
+          </a>
+        </div>
+      </div>
+      <dl class="dp-DataDefList">
+        <dt class="dp-DataDefListKey">Fulfillment status</dt>
+        <dd class="dp-DataDefListValue"><span class="dp-Tag dp-Tag--green">Fulfilled</span></dd>
+        <dt class="dp-DataDefListKey">Order notes</dt>
+        <dd class="dp-DataDefListValue">No notes have been added yet</dd>
+
+        <dt class="dp-DataDefListKey">Addresses</dt>
+        <dd class="dp-DataDefListValue dp-DataDefListAddress">
+          <span class="dp-DataDefListShipping">SHIPPING</span> <br>
+            John Jones <br>
+            1657 Oceanside Drive, <br>
+            San Clemente <br>
+            CA 96001 <br>
+            <span class="dp-DataDefListBilling">BILLING</span> <br>
+            John Jones <br>
+            1657 Oceanside Drive, <br>
+            San Clemente <br>
+            CA 96001 <br>
+        </dd>
+        <dt class="dp-DataDefListKey">Sub total</dt>
+        <dd class="dp-DataDefListValue">$600 USD</dd>
+        <dt class="dp-DataDefListKey">Shipping</dt>
+        <dd class="dp-DataDefListValue">£25 USD (UPS same day delivery)</dd>
+        <dt class="dp-DataDefListKey">Total price</dt>
+        <dd class="dp-DataDefListValue">$625 USD</dd>
+        <dt class="dp-DataDefListKey">Created</dt>
+        <dd class="dp-DataDefListValue">21/06/18  |  13:27PM</dd>
+      </dl>
+    </section>
+  </div>
+</div>
+<div class="code-collapsed-toggle">toggle code</div></div><div class="source collapsed"><pre><code class="hljs css languages- html @preview"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Panel"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-PanelHeader dp-Level"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-PanelHeaderTitle"</span>&gt;</span>Order number #4357<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconClose"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-PanelBody"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Section"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Level"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">dl</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefList"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">dt</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListKey dp-PT--none"</span>&gt;</span>Payment status<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListValue"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Tag dp-Tag--green"</span>&gt;</span>Paid<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-LevelRight dp-ActionList--grey dp-LevelTop"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconEdit"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>edit<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">dl</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefList"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListKey"</span>&gt;</span>Fulfillment status<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListValue"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Tag dp-Tag--green"</span>&gt;</span>Fulfilled<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListKey"</span>&gt;</span>Order notes<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListValue"</span>&gt;</span>No notes have been added yet<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListKey"</span>&gt;</span>Addresses<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListValue dp-DataDefListAddress"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListShipping"</span>&gt;</span>SHIPPING<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            John Jones <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            1657 Oceanside Drive, <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            San Clemente <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            CA 96001 <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListBilling"</span>&gt;</span>BILLING<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            John Jones <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            1657 Oceanside Drive, <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            San Clemente <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            CA 96001 <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListKey"</span>&gt;</span>Sub total<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListValue"</span>&gt;</span>$600 USD<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListKey"</span>&gt;</span>Shipping<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListValue"</span>&gt;</span>£25 USD (UPS same day delivery)<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListKey"</span>&gt;</span>Total price<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListValue"</span>&gt;</span>$625 USD<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListKey"</span>&gt;</span>Created<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-DataDefListValue"</span>&gt;</span>21/06/18  |  13:27PM<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+</div></div></span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/apps-components/style/docs/components/dp-DataDefList.html">← Data Def List</a><a class="docs-next button" href="/apps-components/style/docs/elements/dp-Button.html">Buttons →</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/apps-components/style/" class="nav-home"><img src="/apps-components/style/img/dp-logo.svg" alt="Apps Style" width="66" height="58"/></a><div><h5>Docs</h5><a href="/apps-components/style/docs/en/doc1.html">Getting Started</a></div><div><h5>More</h5><a href="/apps-components/style/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/deskpro/apps-style/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Deskpro</section></footer></div></body></html>

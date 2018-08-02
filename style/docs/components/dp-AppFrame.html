@@ -1,0 +1,623 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>App Frame · Apps Style</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="```html @preview"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="App Frame · Apps Style"/><meta property="og:type" content="website"/><meta property="og:url" content="https://deskpro.github.io/apps-components/style/apps-components/style/index.html"/><meta property="og:description" content="```html @preview"/><meta property="og:image" content="https://deskpro.github.io/apps-components/style/apps-components/style/img/dp-logo.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://deskpro.github.io/apps-components/style/apps-components/style/img/dp-logo.svg"/><link rel="shortcut icon" href="/apps-components/style/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"/><link rel="alternate" type="application/atom+xml" href="https://deskpro.github.io/apps-components/style/apps-components/style/blog/atom.xml" title="Apps Style Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://deskpro.github.io/apps-components/style/apps-components/style/blog/feed.xml" title="Apps Style Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/apps-components/style/js/code-collapsed-toggle.js"></script><link rel="stylesheet" href="/apps-components/style/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/apps-components/style/"><img class="logo" src="/apps-components/style/img/dp-logo-white.svg" alt="Apps Style"/><h2 class="headerTitleWithLogo">Apps Style</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/apps-components/style/docs/intro.html" target="_self">Docs</a></li><li class=""><a href="/apps-components/style/blog" target="_self">News</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Components</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/intro.html">Introduction</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/colors.html">Color Palette</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Components</h3><ul><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-Level.html">Level - alignment</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-ButtonTabs.html">Button Tabs</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-AppBar.html">App Bar</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-ActionList.html">Action List</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-AppBody.html">App Body</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/apps-components/style/docs/components/dp-AppFrame.html">App Frame</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-AppPanel.html">App Panel</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-ListItem.html">List Item</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-Scrollable.html">Scrollable</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-ActionPanel.html">Action Panel - Search List Items</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-Notification.html">App Notification</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-TabSwitcher.html">Tab Switcher</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-DataTable.html">Date Table</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-DataDefList.html">Data Def List</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/components/dp-Panel.html">Panel</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Elements</h3><ul><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/elements/dp-Button.html">Buttons</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/elements/dp-Forms.html">Forms</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/elements/dp-Content.html">Content</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/elements/dp-Title.html">Titles</a></li><li class="navListItem"><a class="navItem" href="/apps-components/style/docs/elements/dp-Icons.html">Icons</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">App Frame</h1></header><article><div><span><div class="html-with-preview"><div class="rendered dp-style-wrapper dp-Body"><div class="dp-AppFrame">
+    <div class="dp-AppBar dp-Level">
+      <div class="dp-LevelLeft">
+        <div class="dp-AppBarIcon-wrap">
+          <div class="dp-Icon">
+            <img src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E" alt="">
+          </div>
+          <span class="dp-IconBadge is-inactive">3</span>
+        </div>
+        <span class="dp-AppBarTitle">Trello</span>
+      </div>
+      <div class="dp-LevelRight">
+        <div class="dp-ActionList">
+            <a href="" class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+              <i class="dp-RefreshIcon"></i>
+            </a>
+            <a href="" class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+              <i class="dp-IconArrow iconArrow--top"></i>
+            </a>
+        </div>
+      </div>
+    </div>
+    <section class="dp-AppBody dp-Section">
+      <div class="dp-Level">
+        <div class="dp-LevelLeft">
+          <span class="dp-AppBodyTitle">Linked cards</span>
+        </div>
+        <div class="dp-ActionList dp-LevelRight">
+          <a href="" class="dp-ActionListItem">
+            <i class="dp-IconSearch"></i>
+            <span class="dp-ActionListLabel">Find</span>
+          </a>
+          <a href="" class="dp-ActionListItem">
+            <i class="dp-IconPlus"></i>
+            <span class="dp-ActionListLabel">Create</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="dp-ListItem dp---is-hoverable">
+            <div class="dp-ListItemRow">
+                <div class="dp-ActionBar dp-Level">
+                    <div class="dp-LevelLeft">
+                        <i class="dp-Icon"><img src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E"></i>
+                        <span class="dp-ActionBarTitle">Blog calender</span>
+                    </div>
+                
+                    <div class="dp-ActionList dp-LevelRight">
+                        <div class="dp-ActionListItem">
+                            <div class="dp-Menu">
+                                <i class="dp-IconSettings"></i>
+                                <div class="dp-ActionList dp-ActionList--is-vertical dp---is-hidden">
+                                    <a class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+                                        <i class="dp-IconOpen"></i>
+                                        <span class="dp-ActionListLabel">Open</span>
+                                    </a>
+                                    <a class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+                                        <i class="dp-IconUnlink"></i>
+                                        <span class="dp-ActionListLabel">Unlink</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dp-ListItemRow">
+                <div class="dp-Level">
+                    <div class="dp-LevelLeft">
+                        <span>Ready</span><span> | </span><span>Linked 12/06/2018</span>
+                    </div>
+                    <div class="dp-LevelRight">
+                        <i class="dp-Icon dp-Icon--Round">
+                          <img src="/apps-style/img/docs/AppBodyIcon.jpg" alt="">
+                        </i>
+                    </div> 
+                </div>
+            </div>
+        </div>
+      <div class="dp-ListItem dp---is-hoverable">
+            <div class="dp-ListItemRow">
+                <div class="dp-ActionBar dp-Level">
+                    <div class="dp-LevelLeft">
+                        <i class="dp-Icon"><img src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E" alt=""></i>
+                        <span class="dp-ActionBarTitle">Blog calender</span>
+                    </div>
+                
+                    <div class="dp-ActionList dp-LevelRight">
+                        <div class="dp-ActionListItem">
+                            <div class="dp-Menu">
+                                <i class="dp-IconSettings"></i>
+                                <div class="dp-ActionList dp-ActionList--is-vertical dp---is-hidden">
+                                    <a class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+                                        <i class="dp-IconOpen"></i>
+                                        <span class="dp-ActionListLabel">Open</span>
+                                    </a>
+                                    <a class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+                                        <i class="dp-IconUnlink"></i>
+                                        <span class="dp-ActionListLabel">Unlink</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dp-ListItemRow">
+                <div class="dp-Level">
+                    <div class="dp-LevelLeft">
+                        <span>Ready</span><span> | </span><span>Linked 12/06/2018</span>
+                    </div>
+                    <div class="dp-LevelRight">
+                        <i class="dp-Icon dp-Icon--Round">
+                          <img src="/apps-style/img/docs/AppBodyIcon.jpg" alt="">
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </section>
+
+</div>
+<div class="code-collapsed-toggle">toggle code</div></div><div class="source collapsed"><pre><code class="hljs css languages- html @preview"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppFrame"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBar dp-Level"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBarIcon-wrap"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconBadge is-inactive"</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBarTitle"</span>&gt;</span>Trello<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelRight"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-RefreshIcon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconArrow iconArrow--top"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBody dp-Section"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Level"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBodyTitle"</span>&gt;</span>Linked cards<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-LevelRight"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconSearch"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Find<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconPlus"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Create<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItem dp---is-hoverable"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItemRow"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionBar dp-Level"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionBarTitle"</span>&gt;</span>Blog calender<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-LevelRight"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Menu"</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconSettings"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-ActionList--is-vertical dp---is-hidden"</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconOpen"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Open<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconUnlink"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Unlink<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItemRow"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Level"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Ready<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> | <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Linked 12/06/2018<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelRight"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon dp-Icon--Round"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/apps-style/img/docs/AppBodyIcon.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> 
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItem dp---is-hoverable"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItemRow"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionBar dp-Level"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionBarTitle"</span>&gt;</span>Blog calender<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-LevelRight"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Menu"</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconSettings"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-ActionList--is-vertical dp---is-hidden"</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconOpen"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Open<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconUnlink"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Unlink<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItemRow"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Level"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Ready<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> | <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Linked 12/06/2018<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelRight"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon dp-Icon--Round"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/apps-style/img/docs/AppBodyIcon.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+</div></div><h1><a class="anchor" aria-hidden="true" id="inactive"></a><a href="#inactive" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Inactive</h1>
+<p>Need add class &quot;is-inactive&quot; for dp-AppFrame</p>
+<div class="html-with-preview"><div class="rendered dp-style-wrapper dp-Body"><div class="dp-AppFrame is-inactive">
+  <div class="dp-AppBar dp-Level">
+    <div class="dp-LevelLeft">
+      <div class="dp-AppBarIcon-wrap">
+        <div class="dp-Icon">
+          <img src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E" alt="">
+        </div>
+        <span class="dp-IconBadge is-inactive">3</span>
+      </div>
+      <span class="dp-AppBarTitle">Trello</span>
+    </div>
+    <div class="dp-LevelRight">
+      <div class="dp-ActionList">
+          <a href="" class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+            <i class="dp-RefreshIcon"></i>
+          </a>
+          <a href="" class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+            <i class="dp-IconArrow iconArrow--top"></i>
+          </a>
+      </div>
+    </div>
+  </div>
+  <section class="dp-AppBody dp-Section">
+    <div class="dp-Level">
+      <div class="dp-LevelLeft">
+        <span class="dp-AppBodyTitle">Linked cards</span>
+      </div>
+      <div class="dp-ActionList dp-LevelRight">
+        <a href="" class="dp-ActionListItem">
+          <i class="dp-IconSearch"></i>
+          <span class="dp-ActionListLabel">Find</span>
+        </a>
+        <a href="" class="dp-ActionListItem">
+          <i class="dp-IconPlus"></i>
+          <span class="dp-ActionListLabel">Create</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="code-collapsed-toggle">toggle code</div></div><div class="source collapsed"><pre><code class="hljs css languages- html @preview"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppFrame is-inactive"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBar dp-Level"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBarIcon-wrap"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconBadge is-inactive"</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBarTitle"</span>&gt;</span>Trello<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelRight"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-RefreshIcon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconArrow iconArrow--top"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBody dp-Section"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Level"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBodyTitle"</span>&gt;</span>Linked cards<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-LevelRight"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconSearch"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Find<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconPlus"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Create<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+</div></div><h1><a class="anchor" aria-hidden="true" id="collapsed"></a><a href="#collapsed" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Collapsed</h1>
+<p>Need add class &quot;is-colapsed&quot; for dp-AppFrame</p>
+<div class="html-with-preview"><div class="rendered dp-style-wrapper dp-Body"><div class="dp-AppFrame is-colapsed">
+  <div class="dp-AppBar dp-Level">
+    <div class="dp-LevelLeft">
+      <div class="dp-AppBarIcon-wrap">
+        <div class="dp-Icon">
+          <img src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E" alt="">
+        </div>
+        <span class="dp-IconBadge is-inactive">3</span>
+      </div>
+      <span class="dp-AppBarTitle">Trello</span>
+    </div>
+    <div class="dp-LevelRight">
+      <div class="dp-ActionList">
+          <a href="" class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+            <i class="dp-RefreshIcon"></i>
+          </a>
+          <a href="" class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+            <i class="dp-IconArrow iconArrow--top"></i>
+          </a>
+      </div>
+    </div>
+  </div>
+  <section class="dp-AppBody dp-Section">
+        <div class="dp-Level">
+          <div class="dp-LevelLeft">
+            <span class="dp-AppBodyTitle">Linked cards</span>
+          </div>
+          <div class="dp-ActionList dp-LevelRight">
+            <a href="" class="dp-ActionListItem">
+              <i class="dp-IconSearch"></i>
+              <span class="dp-ActionListLabel">Find</span>
+            </a>
+            <a href="" class="dp-ActionListItem">
+              <i class="dp-IconPlus"></i>
+              <span class="dp-ActionListLabel">Create</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="dp-ListItem dp---is-hoverable">
+              <div class="dp-ListItemRow">
+                  <div class="dp-ActionBar dp-Level">
+                      <div class="dp-LevelLeft">
+                          <i class="dp-Icon"><img src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E"></i>
+                          <span class="dp-ActionBarTitle">Blog calender</span>
+                      </div>
+                  
+                      <div class="dp-ActionList dp-LevelRight">
+                          <div class="dp-ActionListItem">
+                              <div class="dp-Menu">
+                                  <i class="dp-IconSettings"></i>
+                                  <div class="dp-ActionList dp-ActionList--is-vertical dp---is-hidden">
+                                      <a class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+                                          <i class="dp-IconOpen"></i>
+                                          <span class="dp-ActionListLabel">Open</span>
+                                      </a>
+                                      <a class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+                                          <i class="dp-IconUnlink"></i>
+                                          <span class="dp-ActionListLabel">Unlink</span>
+                                      </a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="dp-ListItemRow">
+                  <div class="dp-Level">
+                      <div class="dp-LevelLeft">
+                          <span>Ready</span><span> | </span><span>Linked 12/06/2018</span>
+                      </div>
+                      <div class="dp-LevelRight">
+                          <i class="dp-Icon dp-Icon--Round">
+                            <img src="/apps-style/img/docs/AppBodyIcon.jpg" alt="">
+                          </i>
+                      </div> 
+                  </div>
+              </div>
+          </div>
+          
+        <div class="dp-ListItem dp---is-hoverable">
+              <div class="dp-ListItemRow">
+                  <div class="dp-ActionBar dp-Level">
+                      <div class="dp-LevelLeft">
+                          <i class="dp-Icon"><img src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E" alt=""></i>
+                          <span class="dp-ActionBarTitle">Blog calender</span>
+                      </div>
+                  
+                      <div class="dp-ActionList dp-LevelRight">
+                          <div class="dp-ActionListItem">
+                              <div class="dp-Menu">
+                                  <i class="dp-IconSettings"></i>
+                                  <div class="dp-ActionList dp-ActionList--is-vertical dp---is-hidden">
+                                      <a class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+                                          <i class="dp-IconOpen"></i>
+                                          <span class="dp-ActionListLabel">Open</span>
+                                      </a>
+                                      <a class="dp-ActionListItem dp-ActionListIcon dp---is-hoverable">
+                                          <i class="dp-IconUnlink"></i>
+                                          <span class="dp-ActionListLabel">Unlink</span>
+                                      </a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="dp-ListItemRow">
+                  <div class="dp-Level">
+                      <div class="dp-LevelLeft">
+                          <span>Ready</span><span> | </span><span>Linked 12/06/2018</span>
+                      </div>
+                      <div class="dp-LevelRight">
+                          <i class="dp-Icon dp-Icon--Round">
+                            <img src="/apps-style/img/docs/AppBodyIcon.jpg" alt="">
+                          </i>
+                      </div>
+                  </div>
+              </div>
+          </div>  
+      </section>
+</div>
+<div class="code-collapsed-toggle">toggle code</div></div><div class="source collapsed"><pre><code class="hljs css languages- html @preview"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppFrame is-colapsed"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBar dp-Level"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBarIcon-wrap"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconBadge is-inactive"</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBarTitle"</span>&gt;</span>Trello<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelRight"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-RefreshIcon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconArrow iconArrow--top"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBody dp-Section"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Level"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AppBodyTitle"</span>&gt;</span>Linked cards<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-LevelRight"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconSearch"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Find<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconPlus"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Create<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItem dp---is-hoverable"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItemRow"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionBar dp-Level"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionBarTitle"</span>&gt;</span>Blog calender<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-LevelRight"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+                              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Menu"</span>&gt;</span>
+                                  <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconSettings"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-ActionList--is-vertical dp---is-hidden"</span>&gt;</span>
+                                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+                                          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconOpen"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Open<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+                                          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconUnlink"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Unlink<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItemRow"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Level"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Ready<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> | <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Linked 12/06/2018<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelRight"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon dp-Icon--Round"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/apps-style/img/docs/AppBodyIcon.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+                          <span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> 
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItem dp---is-hoverable"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItemRow"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionBar dp-Level"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url%28%23linear-gradient%29;%7D.cls-2%7Bfill:%23fff;%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='2.23' y1='289.61' x2='2.23' y2='286.67' gradientTransform='matrix%28200, 0, 0, -200, -149, 57927%29' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%232e8ccc'/%3E%3Cstop offset='1' stop-color='%230d7abf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctitle%3Eapp_icons%3C/title%3E%3Cg id='Mark'%3E%3Crect id='Board' class='cls-1' x='3.59' y='5.41' width='588.43' height='588.43' rx='73.55' ry='73.55'/%3E%3Crect id='Right-List' class='cls-2' x='336.05' y='81.91' width='179.47' height='257.44' rx='35.31' ry='35.31'/%3E%3Crect id='Left-List' class='cls-2' x='80.08' y='81.91' width='179.47' height='404.55' rx='35.31' ry='35.31'/%3E%3C/g%3E%3C/svg%3E"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionBarTitle"</span>&gt;</span>Blog calender<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-LevelRight"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem"</span>&gt;</span>
+                              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Menu"</span>&gt;</span>
+                                  <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconSettings"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionList dp-ActionList--is-vertical dp---is-hidden"</span>&gt;</span>
+                                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+                                          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconOpen"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Open<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListItem dp-ActionListIcon dp---is-hoverable"</span>&gt;</span>
+                                          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconUnlink"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                                          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ActionListLabel"</span>&gt;</span>Unlink<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-ListItemRow"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Level"</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Ready<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> | <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Linked 12/06/2018<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelRight"</span>&gt;</span>
+                          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Icon dp-Icon--Round"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/apps-style/img/docs/AppBodyIcon.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+                          <span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  
+      <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+</div></div><h1><a class="anchor" aria-hidden="true" id="add-app"></a><a href="#add-app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Add App</h1>
+<div class="html-with-preview"><div class="rendered dp-style-wrapper dp-Body"><div class="dp-AddApp">
+  <div class="dp-Level">
+    <a href="" class="dp-LevelLeft">
+      <i class="dp-IconPlus"></i>
+      <span class="dp-AddApp-text">Add an app</span>
+    </a>
+    <a href="" class="dp-LevelRight">
+      <i class="dp-IconClose"></i>
+    </a>
+  </div>
+</div>
+<div class="code-collapsed-toggle">toggle code</div></div><div class="source collapsed"><pre><code class="hljs css languages- html @preview"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AddApp"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-Level"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelLeft"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconPlus"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-AddApp-text"</span>&gt;</span>Add an app<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-LevelRight"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dp-IconClose"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+</div></div></span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/apps-components/style/docs/components/dp-AppBody.html">← App Body</a><a class="docs-next button" href="/apps-components/style/docs/components/dp-AppPanel.html">App Panel →</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/apps-components/style/" class="nav-home"><img src="/apps-components/style/img/dp-logo.svg" alt="Apps Style" width="66" height="58"/></a><div><h5>Docs</h5><a href="/apps-components/style/docs/en/doc1.html">Getting Started</a></div><div><h5>More</h5><a href="/apps-components/style/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/deskpro/apps-style/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Deskpro</section></footer></div></body></html>
