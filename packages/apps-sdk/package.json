@@ -3,6 +3,9 @@
   "version": "0.3.7",
   "description": "core component of deskpro apps sdk",
   "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "clean": "rimraf lib dist es coverage",
     "format": "prettier --write \"{src,test}/**/*.js\"",
