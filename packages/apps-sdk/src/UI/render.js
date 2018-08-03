@@ -34,7 +34,7 @@ export default function connectRenderer(dpapp, createRenderer)
         state,
 
         title:           dpapp.appTitle ,
-        iconUrl:         "../assets/icon.png" ,
+        iconUrl:         "assets/icon.png" ,
 
         ...actions
       });
