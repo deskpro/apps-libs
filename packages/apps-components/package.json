@@ -1,6 +1,6 @@
 {
   "name": "@deskpro/apps-components",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "author": "DeskPRO <support@deskpro.com>",
   "license": "BSD 3-Clause License",
   "main": "lib/index.js",
@@ -20,7 +20,7 @@
     "dev": "start-storybook -s storybook/static -p 6006"
   },
   "dependencies": {
-    "@deskpro/apps-components-style": "^0.3.6",
+    "@deskpro/apps-components-style": "^0.3.7",
     "classnames": "^2.2.6",
     "react-custom-scrollbars": "^4.2.1"
   },
@@ -49,7 +49,6 @@
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
     "enzyme": "^3.3.0",
-    "prettier": "^1.12.1",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "17.0.0",
@@ -66,12 +65,13 @@
     "html-webpack-plugin": "2.29.0",
     "jest": "23.4.1",
     "object-assign": "4.1.1",
+    "prettier": "^1.12.1",
     "promise": "8.0.1",
     "prop-types": "^15.6.2",
     "raf": "3.4.0",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
     "react-dev-utils": "^4.2.1",
+    "react-dom": "^16.4.1",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
