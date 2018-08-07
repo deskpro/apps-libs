@@ -14,16 +14,13 @@ import {
   CHANNEL_OUTGOING,
   INVOCATION_FIREANDFORGET,
   INVOCATION_REQUESTRESPONSE,
-  buildMap,
-  matchEvent as match,
 } from '../Core/Event';
 
 /**
  * @readonly
  * @type {string}
  */
-export const EVENT_DESKPROWINDOW_SHOW_NOTIFICATION =
-  'deskpro_window.show_notification';
+export const EVENT_DESKPROWINDOW_SHOW_NOTIFICATION = 'deskpro_window.show_notification';
 
 /**
  * @readonly
@@ -38,9 +35,11 @@ export const EVENT_DESKPROWINDOW_DOM_INSERT = 'deskpro_window.dom_insert';
 export const EVENT_DESKPROWINDOW_DOM_QUERY = 'deskpro_window.dom_query';
 
 /**
+ * @readonly
+ * @enum
  * @type {{EVENT_DESKPROWINDOW_SHOW_NOTIFICATION: {channelType: string, invocationType: string}, EVENT_DESKPROWINDOW_DOM_INSERT: {channelType: string, invocationType: string}, EVENT_DESKPROWINDOW_DOM_QUERY: {channelType: string, invocationType: string}}}
  */
-const events = {
+export const props = {
   EVENT_DESKPROWINDOW_SHOW_NOTIFICATION: {
     channelType: CHANNEL_OUTGOING,
     invocationType: INVOCATION_FIREANDFORGET,
@@ -55,29 +54,34 @@ const events = {
   },
 };
 
-/**
- * @readonly
- * @enum
- * @type {{EVENT_DESKPROWINDOW_SHOW_NOTIFICATION: {channelType: string, invocationType: string}, EVENT_DESKPROWINDOW_DOM_INSERT: {channelType: string, invocationType: string}, EVENT_DESKPROWINDOW_DOM_QUERY: {channelType: string, invocationType: string}}}
- */
-export const props = events;
+const eventNames = {
+  EVENT_DESKPROWINDOW_SHOW_NOTIFICATION,
+  EVENT_DESKPROWINDOW_DOM_INSERT,
+  EVENT_DESKPROWINDOW_DOM_QUERY,
+};
+
+
 
 /**
- * The map of events
- *
- * @type {EventMap}
- */
-export const eventMap = buildMap(events, props);
-
-/**
- * Checks if an event is a DeskproWindow event
- *
- * @function
- *
  * @param {string} eventName
- * @param {string} channelType
- * @param {string} invocationType
+ * @return {{ channelType: string, invocationType:string }|null}
+ */
+export function getDefinition(eventName)
+{
+  for (const key of Object.keys(eventNames)) {
+    if (eventNames[key] === eventName) {
+      return props[key];
+    }
+  }
+
+  return null;
+}
+
+
+/**
+ * @method
+ *
+ * @param {string} name
  * @return {boolean}
  */
-export const matchEvent = (eventName, { channelType, invocationType }) =>
-  match(eventName, { channelType, invocationType }, eventMap);
+export const isEventName = name => Object.keys(eventNames).map(key => events[key]).indexOf(name) !== -1;

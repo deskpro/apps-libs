@@ -48,7 +48,7 @@ export {
    */
   ContextUserEvents,
 };
-export { TicketEvents, TabEvents } from './Context';
+export { ObjectEvents, TabEvents } from './Context';
 
 export {
   /**
@@ -67,3 +67,11 @@ export {
    */
   SecurityEvents,
 } from './Security';
+
+
+export {
+  /**
+   * @type {module:Widget/events}
+   */
+  WidgetEvents
+} from './Widget'

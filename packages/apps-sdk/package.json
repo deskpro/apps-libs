@@ -41,6 +41,7 @@
     "get-size": "^2.0.2",
     "invariant": "^2.2.4",
     "post-robot": "^7.0.8",
+    "query-string": "^6.1.0",
     "warning": "^4.0.1"
   },
   "devDependencies": {

@@ -5,12 +5,11 @@
  */
 
 import ContextFactory from './ContextFactory';
-import * as TicketEvents from './eventsTicket';
 import * as TabEvents from './eventsTab';
 import * as ObjectEvents from './eventsObject';
 import { handleOutgoingEvent } from '../Core/EventHandler';
 
-export { ContextFactory, TicketEvents, TabEvents };
+export { ContextFactory, TabEvents, ObjectEvents };
 
 /**
  * @function

@@ -1,5 +1,5 @@
 /**
- * @module Core/events
+ * @module Widget/events
  */
 
 import { CHANNEL_OUTGOING, INVOCATION_FIREANDFORGET } from '../Core/Event';
@@ -17,7 +17,12 @@ export const EVENT_WINDOW_MOUSEEVENT = 'window.mouseevent';
  */
 export const EVENT_WINDOW_RESIZE = 'app.reset_size';
 
-const events = {
+/**
+ * @enum
+ * @readonly
+ * @type {{EVENT_WINDOW_MOUSEEVENT: {channelType: string, invocationType: string}, EVENT_WINDOW_RESIZE: {channelType: string, invocationType: string}}}
+ */
+export const props = {
   EVENT_WINDOW_MOUSEEVENT: {
     channelType: CHANNEL_OUTGOING,
     invocationType: INVOCATION_FIREANDFORGET,
@@ -29,18 +34,27 @@ const events = {
   },
 };
 
-/**
- * @enum
- * @readonly
- * @type {{EVENT_WINDOW_MOUSEEVENT: {channelType: string, invocationType: string}, EVENT_WINDOW_RESIZE: {channelType: string, invocationType: string}}}
- */
-export const props = events;
+const eventNames = {
+  EVENT_WINDOW_MOUSEEVENT,
+  EVENT_WINDOW_RESIZE
+};
+
 
 /**
- * @readonly
- * @type {Array<string>}
+ * @param {string} eventName
+ * @return {{ channelType: string, invocationType:string }|null}
  */
-export const eventNames = Object.keys(events).map(key => events[key]);
+export function getDefinition(eventName)
+{
+  for (const key of Object.keys(eventNames)) {
+    if (eventNames[key] === eventName) {
+      return props[key];
+    }
+  }
+
+  return null;
+}
+
 
 /**
  * @method
@@ -48,4 +62,4 @@ export const eventNames = Object.keys(events).map(key => events[key]);
  * @param {string} name
  * @return {boolean}
  */
-export const isEventName = name => eventNames.indexOf(name) !== -1;
+export const isEventName = name => Object.keys(eventNames).map(key => events[key]).indexOf(name) !== -1;

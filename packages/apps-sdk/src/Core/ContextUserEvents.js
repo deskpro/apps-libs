@@ -13,25 +13,39 @@ import { handleOutgoingEvent } from './EventHandler';
  */
 export const EVENT_ME_GET = 'context.me_get';
 
-const events = {
+/**
+ * @enum
+ * @readonly
+ * @type {{EVENT_ME_GET: {channelType: string, invocationType: string}}}
+ */
+export const props = {
   EVENT_ME_GET: {
     channelType: CHANNEL_OUTGOING,
     invocationType: INVOCATION_REQUESTRESPONSE,
   },
 };
 
-/**
- * @enum
- * @readonly
- * @type {{EVENT_ME_GET: {channelType: string, invocationType: string}, EVENT_TAB_DATA: {channelType: string, invocationType: string}, EVENT_TAB_ACTIVATE: {channelType: string, invocationType: string}, EVENT_TAB_CLOSE: {channelType: string, invocationType: string}}}
- */
-export const props = events;
+const eventNames = {
+  EVENT_ME_GET
+};
+
+
 
 /**
- * @readonly
- * @type {Array<string>}
+ * @param {string} eventName
+ * @return {{ channelType: string, invocationType:string }|null}
  */
-export const eventNames = Object.keys(events).map(key => events[key]);
+export function getDefinition(eventName)
+{
+  for (const key of Object.keys(eventNames)) {
+    if (eventNames[key] === eventName) {
+      return props[key];
+    }
+  }
+
+  return null;
+}
+
 
 /**
  * @method
@@ -39,7 +53,7 @@ export const eventNames = Object.keys(events).map(key => events[key]);
  * @param {string} name
  * @return {boolean}
  */
-export const isEventName = name => eventNames.indexOf(name) !== -1;
+export const isEventName = name => Object.keys(eventNames).map(key => events[key]).indexOf(name) !== -1;
 
 /**
  * @method
@@ -47,5 +61,5 @@ export const isEventName = name => eventNames.indexOf(name) !== -1;
  * @param {AppClient} app
  */
 export const registerEventHandlers = (windowBridge, app) => {
-  handleOutgoingEvent(windowBridge, app, EVENT_ME_GET, events.EVENT_ME_GET);
+  handleOutgoingEvent(windowBridge, app, EVENT_ME_GET, props.EVENT_ME_GET);
 };

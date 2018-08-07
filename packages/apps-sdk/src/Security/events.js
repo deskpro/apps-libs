@@ -12,7 +12,12 @@ export const EVENT_SECURITY_SETTINGS_OAUTH = 'security.settings.oauth';
 
 export const EVENT_SECURITY_OAUTH_REFRESH = 'security.oauth.refresh';
 
-const events = {
+/**
+ * @readonly
+ * @enum
+ * @type {{EVENT_SECURITY_AUTHENTICATE_OAUTH: {channelType: string, invocationType: string}, EVENT_SECURITY_OAUTH_REFRESH: {channelType: string, invocationType: string}, EVENT_SECURITY_SETTINGS_OAUTH: {channelType: string, invocationType: string}}}
+ */
+export const props = {
   EVENT_SECURITY_AUTHENTICATE_OAUTH: {
     channelType: CHANNEL_OUTGOING,
     invocationType: INVOCATION_REQUESTRESPONSE,
@@ -27,22 +32,35 @@ const events = {
   },
 };
 
-/**
- * @readonly
- * @enum
- * @type {{EVENT_SECURITY_AUTHENTICATE_OAUTH: {channelType: string, invocationType: string}, EVENT_SECURITY_OAUTH_REFRESH: {channelType: string, invocationType: string}, EVENT_SECURITY_SETTINGS_OAUTH: {channelType: string, invocationType: string}}}
- */
-export const props = events;
+
+const eventNames = {
+  EVENT_SECURITY_AUTHENTICATE_OAUTH,
+  EVENT_SECURITY_SETTINGS_OAUTH,
+  EVENT_SECURITY_OAUTH_REFRESH,
+};
+
+
 
 /**
- * @readonly
- * @type {Array}
+ * @param {string} eventName
+ * @return {{ channelType: string, invocationType:string }|null}
  */
-export const eventNames = Object.keys(events).map(key => events[key]);
+export function getDefinition(eventName)
+{
+  for (const key of Object.keys(eventNames)) {
+    if (eventNames[key] === eventName) {
+      return props[key];
+    }
+  }
+
+  return null;
+}
+
 
 /**
  * @method
- * @param {String} name
+ *
+ * @param {string} name
  * @return {boolean}
  */
-export const isEventName = name => eventNames.indexOf(name) !== -1;
+export const isEventName = name => Object.keys(eventNames).map(key => events[key]).indexOf(name) !== -1;

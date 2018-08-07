@@ -24,14 +24,6 @@ export const EVENT_TAB_DATA = 'context.tab_data';
  */
 export const EVENT_TAB_ACTIVATE = 'context.tab_activate';
 
-/**
- * This is not used at the moment
- *
- * @ignore
- * @readonly
- * @type {string}
- */
-export const EVENT_BEFORE_TAB_DEACTIVATED = 'context.before_tab_deactivated';
 
 /**
  * @readonly
@@ -40,15 +32,11 @@ export const EVENT_BEFORE_TAB_DEACTIVATED = 'context.before_tab_deactivated';
 export const EVENT_TAB_CLOSE = 'context.tab_close';
 
 /**
- * This is not used at the moment
- *
- * @ignore
+ * @enum
  * @readonly
- * @type {string}
+ * @type {{EVENT_ME_GET: {channelType: string, invocationType: string}, EVENT_TAB_DATA: {channelType: string, invocationType: string}, EVENT_TAB_ACTIVATE: {channelType: string, invocationType: string}, EVENT_TAB_CLOSE: {channelType: string, invocationType: string}}}
  */
-export const EVENT_BEFORE_TAB_CLOSED = 'context.before_tab_closed';
-
-const events = {
+export const props = {
   EVENT_TAB_DATA: {
     channelType: CHANNEL_OUTGOING,
     invocationType: INVOCATION_REQUESTRESPONSE,
@@ -65,18 +53,27 @@ const events = {
   },
 };
 
-/**
- * @enum
- * @readonly
- * @type {{EVENT_ME_GET: {channelType: string, invocationType: string}, EVENT_TAB_DATA: {channelType: string, invocationType: string}, EVENT_TAB_ACTIVATE: {channelType: string, invocationType: string}, EVENT_TAB_CLOSE: {channelType: string, invocationType: string}}}
- */
-export const props = events;
+const eventNames = {
+  EVENT_TAB_DATA,
+  EVENT_TAB_ACTIVATE,
+  EVENT_TAB_CLOSE
+};
 
 /**
- * @readonly
- * @type {Array<string>}
+ * @param {string} eventName
+ * @return {{ channelType: string, invocationType:string }|null}
  */
-export const eventNames = Object.keys(events).map(key => events[key]);
+export function getDefinition(eventName)
+{
+  for (const key of Object.keys(eventNames)) {
+    if (eventNames[key] === eventName) {
+      return props[key];
+    }
+  }
+
+  return null;
+}
+
 
 /**
  * @method
@@ -84,4 +81,4 @@ export const eventNames = Object.keys(events).map(key => events[key]);
  * @param {string} name
  * @return {boolean}
  */
-export const isEventName = name => eventNames.indexOf(name) !== -1;
+export const isEventName = name => Object.keys(eventNames).map(key => events[key]).indexOf(name) !== -1;
