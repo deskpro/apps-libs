@@ -2,6 +2,8 @@
  * @module UI/events
  */
 
+import {props} from "../Context/eventsObject";
+
 /**
  * @type {string}
  */
@@ -16,15 +18,32 @@ export const events = {
   EVENT_UI_CHANGED
 };
 
+const eventNames = {
+  EVENT_UI_CHANGED
+};
+
+
+
 /**
- * @readonly
- * @type {Array}
+ * @param {string} eventName
+ * @return {{ channelType: string, invocationType:string }|null}
  */
-export const eventNames = Object.keys(events).map(key => events[key]);
+export function getDefinition(eventName)
+{
+  for (const key of Object.keys(eventNames)) {
+    if (eventNames[key] === eventName) {
+      return props[key];
+    }
+  }
+
+  return null;
+}
+
 
 /**
  * @method
- * @param {String} name
+ *
+ * @param {string} name
  * @return {boolean}
  */
-export const isEventName = name => eventNames.indexOf(name) !== -1;
+export const isEventName = name => Object.keys(eventNames).map(key => events[key]).indexOf(name) !== -1;

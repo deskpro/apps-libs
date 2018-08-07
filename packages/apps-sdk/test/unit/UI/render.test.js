@@ -40,7 +40,7 @@ test('connectRenderer connects a renderer function', () => {
   expect(render.mock.calls[0][0]).toHaveProperty('badgeVisibility', Constants.VISIBILITY_HIDDEN);
   expect(render.mock.calls[0][0]).toHaveProperty('display', Constants.DISPLAY_EXPANDED);
   expect(render.mock.calls[0][0]).toHaveProperty('title', 'title');
-  expect(render.mock.calls[0][0]).toHaveProperty('iconUrl', "../assets/icon.png");
+  expect(render.mock.calls[0][0]).toHaveProperty('iconUrl', "assets/icon.png");
   expect(render.mock.calls[0][0]).toHaveProperty('notification', null);
   expect(render.mock.calls[0][0]).toHaveProperty('notificationType', null);
   expect(render.mock.calls[0][0]).toHaveProperty('state', Constants.STATE_READY);
