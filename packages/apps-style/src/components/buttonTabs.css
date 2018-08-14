@@ -14,55 +14,57 @@
   flex: 0 0 39px;
 
   height: 39px;
-  width: 39px;
 
   justify-content: center;
   position: relative;
+  width: 39px;
 
   &.dp---is-classic {
 
     &::after {
-       background-color: var(--blue);
-       bottom: -2px;
-       content: "";
-       display: block;
-       height: 2px;
-       left: 0;
-       position: absolute;
-       right: auto;
-       transition: width var(--animation-speed);
-       width: 0;
-       z-index: 1;
+      background-color: var(--blue);
+      bottom: -2px;
+      content: "";
+      display: block;
+      height: 2px;
+      left: 0;
+      position: absolute;
+      right: auto;
+      transition: width var(--animation-speed);
+      width: 0;
+      z-index: 1;
     }
 
     &.dp---is-selected,
     &:hover {
+
       &::after {
-         transition: width var(--animation-speed);
-         width: 100%;
-       }
+        transition: width var(--animation-speed);
+        width: 100%;
+      }
     }
 
     &.dp---is-selected,
     &:hover {
-       background-color: var(--bg-app-panel-hover);
-       cursor: pointer;
-       transition: all var(--animation-speed);
-     }
+      background-color: var(--bg-app-panel-hover);
+      cursor: pointer;
+      transition: all var(--animation-speed);
+    }
   }
 
   &.dp---is-pulse {
+
     .dp-ButtonsImg {
-      transition: opacity var(--animation-speed);
       opacity: 1;
+      transition: opacity var(--animation-speed);
     }
 
     &.dp---is-selected .dp-ButtonsImg,
     &:hover .dp-ButtonsImg {
-       transition: opacity var(--animation-speed);
-       opacity: 0.6;
-     }
- }
+      opacity: 0.6;
+      transition: opacity var(--animation-speed);
+    }
+  }
 
 }
 
@@ -87,10 +89,11 @@
 }
 
 .dp-AppTabs .dp-AppTabs--control {
+
   &::before,
   &::after {
-   background-color: #828494;
- }
+    background-color: #828494;
+  }
 }
 
 .dp-AppTabs.is-horizontal .dp-ButtonTabs--wrap {
@@ -119,7 +122,7 @@
   top: 0;
 
   &:hover {
-     background-color: var(--bg-app-panel-hover);
+    background-color: var(--bg-app-panel-hover);
   }
 }
 
