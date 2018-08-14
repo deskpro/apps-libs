@@ -34,23 +34,25 @@ class AppFrame extends React.PureComponent {
 
     return (
 
-      <div
-        className={classnames(
-          'dp-AppFrame',
-          state === 'inactive' ? 'is-inactive' : '',
-          display === 'collapsed' ? 'is-colapsed' : '',
-          this.props.className,
-        )}
-      >
-        <AppBar iconUrl={iconUrl} title={title} badgeText={badgeVisibility === 'visible' ? badgeCount : null}>
-          <Action icon='refresh' onClick={refresh} />
-          <Action icon={ display === 'collapsed' ? 'down' : 'up'  } onClick={ display === 'collapsed' ? expand : collapse } />
-        </AppBar>
+      <div className={"dp-Root"}>
+        <div
+          className={classnames(
+            'dp-AppFrame',
+            state === 'inactive' ? 'is-inactive' : '',
+            display === 'collapsed' ? 'is-colapsed' : '',
+            this.props.className,
+          )}
+        >
+          <AppBar iconUrl={iconUrl} title={title} badgeText={badgeVisibility === 'visible' ? badgeCount : null}>
+            <Action icon='refresh' onClick={refresh} />
+            <Action icon={ display === 'collapsed' ? 'down' : 'up'  } onClick={ display === 'collapsed' ? expand : collapse } />
+          </AppBar>
 
-        <AppBody>
-          { notification && <Notification type={notificationType} dismiss={closeNotification}>{notification}</Notification> }
-          {children}
-        </AppBody>
+          <AppBody>
+            { notification && <Notification type={notificationType} dismiss={closeNotification}>{notification}</Notification> }
+            {children}
+          </AppBody>
+        </div>
       </div>
     );
   }
