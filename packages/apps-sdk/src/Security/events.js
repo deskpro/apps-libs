@@ -39,8 +39,6 @@ const eventNames = {
   EVENT_SECURITY_OAUTH_REFRESH,
 };
 
-
-
 /**
  * @param {string} eventName
  * @return {{ channelType: string, invocationType:string }|null}
@@ -55,7 +53,6 @@ export function getDefinition(eventName)
 
   return null;
 }
-
 
 /**
  * @method

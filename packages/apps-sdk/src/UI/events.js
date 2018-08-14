@@ -2,26 +2,30 @@
  * @module UI/events
  */
 
-import {props} from "../Context/eventsObject";
+import { CHANNEL_OUTGOING, INVOCATION_FIREANDFORGET } from "../Core/Event";
 
 /**
+ *
+ *
  * @type {string}
  */
 export const EVENT_UI_CHANGED = 'ui.changed';
-
-/**
- * @readonly
- * @enum {string}
- * @type {{EVENT_UI_CHANGED: string}}
- */
-export const events = {
-  EVENT_UI_CHANGED
-};
 
 const eventNames = {
   EVENT_UI_CHANGED
 };
 
+/**
+ * @readonly
+ * @enum {string}
+ * @type {{EVENT_UI_CHANGED: {channelType: string, invocationType: string}}}
+ */
+export const props = {
+  EVENT_UI_CHANGED: {
+    channelType: CHANNEL_OUTGOING,
+    invocationType: INVOCATION_FIREANDFORGET,
+  },
+};
 
 
 /**
