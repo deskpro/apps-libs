@@ -7,6 +7,8 @@ import * as UIEvents from './events';
 import * as UIConstants from './constants';
 import UIFacade from './UIFacade';
 import connectRenderer from './render';
+import { handleOutgoingEvent } from '../Core/EventHandler';
+
 
 export {
   /**
@@ -23,6 +25,25 @@ export {
    */
     connectRenderer
 };
+
+/**
+ * Registers helpdesk window events with the event dispatching system
+ *
+ * @function
+ *
+ * @param {WidgetWindowBridge} windowBridge
+ * @param {AppClient} app
+ */
+export function registerEventHandlers(windowBridge, app) {
+
+  handleOutgoingEvent(
+    windowBridge,
+    app,
+    UIEvents.EVENT_UI_CHANGED,
+    UIEvents.props.EVENT_UI_CHANGED,
+  );
+
+}
 
 /**
  * @method

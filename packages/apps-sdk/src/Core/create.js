@@ -20,6 +20,7 @@ import { registerEventHandlers as registerContextEventHandlers } from '../Contex
 import { registerEventHandlers as registerContextUserEventHandlers } from './ContextUserEvents';
 import { registerEventHandlers as registerWebAPIEventHandlers } from '../WebAPI';
 import { registerEventHandlers as registerDeskproWindowEventHandlers } from '../DeskproWindow';
+import { registerEventHandlers as registerUIEventHandlers } from '../UI';
 
 import { createContext } from '../Context';
 import { createUIFacade, connectRenderer } from '../UI';
@@ -51,6 +52,7 @@ function registerAppEventListeners (windowBridge, app) {
     registerContextEventHandlers,
     registerWebAPIEventHandlers,
     registerDeskproWindowEventHandlers,
+    registerUIEventHandlers
   ].forEach(registrar =>
     registrar(
       windowBridge,

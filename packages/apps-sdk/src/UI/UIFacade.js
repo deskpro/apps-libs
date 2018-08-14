@@ -3,9 +3,10 @@ import * as Constants from './constants';
 
 function setProps(newProps)
 {
-  const { localDispatcher, props: oldProps } = this;
+  const { localDispatcher, outgoingDispatcher, props: oldProps } = this;
   this.props = {  ...oldProps, ...newProps };
   localDispatcher.emit(Events.EVENT_UI_CHANGED, this.props, oldProps);
+  outgoingDispatcher.emitAsync(Events.EVENT_UI_CHANGED, this.props);
 }
 
 /**

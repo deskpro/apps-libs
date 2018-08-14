@@ -24,7 +24,7 @@ const AppBar = ({ iconUrl, title, badgeText, children, className }) => (
           </i>
         )}
 
-        {badgeText && <span className="dp-IconBadge">{badgeText}</span>}
+        {!!badgeText && <span className="dp-IconBadge">{badgeText}</span>}
       </div>
 
       <span className="dp-AppBarTitle">{title}</span>

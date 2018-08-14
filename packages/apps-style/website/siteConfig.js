@@ -31,7 +31,7 @@ const siteConfig = {
     theme: 'vs2015',
   },
 
-  scripts: ['https://buttons.github.io/buttons.js', '/apps-components/style/js/code-collapsed-toggle.js'],
+  scripts: ['https://buttons.github.io/buttons.js', '/apps-libs/style/js/code-collapsed-toggle.js'],
 
   onPageNav: 'separate',
 
