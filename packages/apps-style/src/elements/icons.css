@@ -32,6 +32,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconArrow,
+.dp---is-selected .dp-IconArrow,
 .dp-IconArrow:hover {
   background-image: svg-load("../svg/arrow.svg", fill=var(--blue));
 }
@@ -116,6 +117,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconPlus,
+.dp---is-selected .dp-IconPlus,
 .dp-IconPlus:hover {
   background-image: svg-load("../svg/plus.svg", fill=var(--blue));
 }
@@ -146,6 +148,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconClose,
+.dp---is-selected .dp-IconClose,
 .dp-IconClose:hover {
   background-image: svg-load("../svg/close.svg", fill=var(--blue));
 }
@@ -161,6 +164,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconCloseFatty,
+.dp---is-selected .dp-IconCloseFatty,
 .dp-IconCloseFatty:hover {
   background-image: svg-load("../svg/close-bold.svg", fill=var(--blue));
 }
@@ -175,6 +179,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconEdit,
+.dp---is-selected .dp-IconEdit,
 .dp-IconEdit:hover {
   background-image: svg-load("../svg/edit.svg", fill=var(--blue));
 }
@@ -189,6 +194,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconLock,
+.dp---is-selected .dp-IconLock,
 .dp-IconLock:hover {
   background-image: svg-load("../svg/lock.svg", fill=var(--blue));
 }
@@ -225,6 +231,7 @@
 }
 
 .dp---is-hoverable:hover .dp-RefreshIcon,
+.dp---is-selected .dp-RefreshIcon,
 .dp-RefreshIcon:hover {
   background-image: svg-load("../svg/refresh.svg", fill=var(--blue));
 }
@@ -244,6 +251,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconSearch,
+.dp---is-selected .dp-IconSearch,
 .dp-IconSearch:hover {
   background-image: svg-load("../svg/search.svg", fill=var(--blue));
 }
@@ -258,6 +266,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconTag,
+.dp---is-selected .dp-IconTag,
 .dp-IconTag:hover {
   background-image: svg-load("../svg/tag.svg", fill=var(--blue));
 }
@@ -272,6 +281,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconOpen,
+.dp---is-selected .dp-IconOpen,
 .dp-IconOpen:hover {
   background-image: svg-load("../svg/open.svg", fill=var(--blue));
 }
@@ -286,6 +296,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconUnlink,
+.dp---is-selected .dp-IconUnlink,
 .dp-IconUnlink:hover {
   background-image: svg-load("../svg/unlink.svg", fill=var(--blue));
 }
@@ -301,6 +312,7 @@
 }
 
 .dp---is-hoverable:hover .dp-IconLink,
+.dp---is-selected .dp-IconLink,
 .dp-IconLink:hover {
   background-image: svg-load("../svg/link.svg", fill=var(--blue));
 }
@@ -315,6 +327,22 @@
 }
 
 .dp---is-hoverable:hover .dp-IconSettings,
+.dp---is-selected .dp-IconSettings,
 .dp-IconSettings:hover {
   background-image: svg-load("../svg/settings.svg", fill=var(--blue));
+}
+
+.dp-IconHamburger {
+  background-image: svg-load("../svg/hamburger.svg", fill=var(--gray-light));
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 13px;
+  width: 13px;
+}
+
+.dp---is-hoverable:hover .dp-IconHamburger,
+.dp---is-selected .dp-IconHamburger,
+.dp-IconHamburger:hover {
+  background-image: svg-load("../svg/hamburger.svg", fill=var(--blue));
 }

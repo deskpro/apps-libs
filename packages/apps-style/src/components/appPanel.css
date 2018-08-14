@@ -2,7 +2,6 @@
   background-color: var(--bg-app-panel);
   border: 1px solid var(--border-color);
   display: block;
-  width: var(--width-app);
 }
 
 .dp-AppPanelBody {

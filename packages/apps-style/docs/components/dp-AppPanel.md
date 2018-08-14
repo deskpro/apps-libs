@@ -6,7 +6,7 @@ title: App Panel
 <div class="dp-AppPanel">
   <div class="dp-AppTabs is-horizontal">
     <div class="dp-ButtonTabs--wrap">
-      <button class="dp-ButtonTabs is-selected">
+      <button class="dp-ButtonTabs dp---is-selected">
         <span class="dp-IconHamburger"></span>
         <span class="dp-IconBadge">1</span>
       </button>
@@ -27,7 +27,7 @@ title: App Panel
           <span class="dp-IconBadge">2</span>
         </button>
     </div>
-    <button class="dp-ButtonTabs ButtonTabs-arrow">
+    <button class="dp-ButtonTabs dp-AppTabs--control">
       <i class="dp-IconArrow"></i>
     </button>
   </div>
