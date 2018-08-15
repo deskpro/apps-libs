@@ -23,7 +23,7 @@ export default function connectRenderer(dpapp, createRenderer)
   function connectedRenderer(props)
   {
     try {
-      const { badgeVisibility, badgeCount, display, notification, notificationType, state } = props;
+      const { badgeVisibility, badgeCount, display, notification, notificationType, state, title } = props;
 
       renderer ({
         badgeVisibility,
@@ -33,7 +33,7 @@ export default function connectRenderer(dpapp, createRenderer)
         notificationType,
         state,
 
-        title:           dpapp.appTitle ,
+        title:           title || dpapp.appTitle ,
         iconUrl:         "assets/icon.png" ,
 
         ...actions

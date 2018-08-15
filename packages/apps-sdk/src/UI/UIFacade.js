@@ -37,9 +37,25 @@ class UIFacade {
       isResizing:         false,
 
       notification:            null,
-      notificationType:        null
+      notificationType:        null,
+      title: null
     }
   }
+
+  // TITLE API
+
+  /**
+   * Resets the display title the application
+   *
+   * @param {string|null} [title]
+   */
+  changeTitle = (title) =>
+  {
+    const { title: oldTitle } = this.props;
+    if (title !== oldTitle) {
+      this.setProps({ title: !!title ? title : null })
+    }
+  };
 
   // MENU API
 

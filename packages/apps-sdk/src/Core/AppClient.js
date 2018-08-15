@@ -79,7 +79,7 @@ class AppClient {
    */
   off = (eventName, listener) => {
     // TODO need to check if eventName is an internal one, for now just assume everything is
-    this.eventDispatcher.removeListener(eventName, listener);
+    this.props.localDispatcher.removeListener(eventName, listener);
   };
 
   /**
@@ -92,7 +92,7 @@ class AppClient {
    */
   once = (eventName, listener) => {
     // TODO need to check if eventName is an internal one, for now just assume everything is
-    this.eventDispatcher.once(eventName, listener);
+    this.props.localDispatcher.once(eventName, listener);
   };
 
   // EVENT SUBSCRIBER API
@@ -246,33 +246,8 @@ class AppClient {
    * @return {String}
    */
   get appTitle() {
-    return this._state.appTitle;
+    return this.props.instanceProps.appTitle;
   }
-
-  /**
-   * @ignore
-   * @param {String} newTitle
-   */
-  set appTitle(newTitle) {
-    const oldTitle = this._state.appTitle;
-
-    if (newTitle !== oldTitle) {
-      this._state.appTitle = newTitle;
-
-      const { eventDispatcher } = this.props;
-      eventDispatcher.emit(AppEvents.EVENT_TITLE_CHANGED, newTitle, oldTitle);
-    }
-  }
-
-  /**
-   * Resets the display title of this application
-   *
-   * @public
-   * @method
-   */
-  resetAppTitle = () => {
-    this.appTitle = this.props.instanceProps.appTitle;
-  };
 
   /**
    * The package name (from package.json) of this application

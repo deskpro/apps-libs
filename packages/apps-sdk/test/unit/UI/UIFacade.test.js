@@ -74,6 +74,23 @@ test('menu visibility change event fires everytime menu visibility changes', don
   done();
 });
 
+test('changing title fires an ui change event', done => {
+  const emitMock = jest.fn();
+  const outgoingDispatcher = new AppEventEmitter();
+  const eventDispatcher = new AppEventEmitter();
+  eventDispatcher.emit = emitMock;
+
+  const ui = createUIFacade(outgoingDispatcher, eventDispatcher);
+  ui.changeTitle("a title");
+  ui.changeTitle("a title");
+
+  expect(emitMock.mock.calls.length).toBe(1);
+  expect(emitMock.mock.calls[0][0]).toBe(UIEvents.EVENT_UI_CHANGED);
+  expect(emitMock.mock.calls[0][1]).toHaveProperty('title', "a title");
+
+  done();
+});
+
 test('showLoading does not emit event if ui is in loading state ', done => {
   const emitMock = jest.fn();
   const outgoingDispatcher = new AppEventEmitter();
