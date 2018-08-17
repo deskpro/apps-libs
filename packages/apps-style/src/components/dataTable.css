@@ -1,11 +1,11 @@
-.dp-DateTable {
+.dp-DataTable {
   display: block;
-  margin: 0 calc(var(--padding-app) * -1);
+
+  /* margin: 0 calc(var(--padding-app) * -1); */
 }
 
-table tr.dp-DateTableRow {
+table tr.dp-DataTableRow {
   background-color: #fff;
-  cursor: pointer;
   display: table-row;
 
   &:hover {
@@ -13,70 +13,23 @@ table tr.dp-DateTableRow {
   }
 }
 
-.dp-DateTableRow * {
+.dp-DataTableRow * {
   cursor: pointer;
 }
 
-.dp-DateTable tbody {
+.dp-DataTable tbody {
   display: table;
   width: 100%;
 }
 
-.dp-DateTable td {
+.dp-DataTable td {
   display: table-cell;
   font-size: var(--h4);
   padding: 3px var(--padding-app);
 }
 
-.dp-DateTable tr,
-.dp-DateTable td {
+.dp-DataTable tr,
+.dp-DataTable td {
   border: none;
   vertical-align: middle;
-}
-
-.dp-DateTableRow:hover td {
-
-  &:not(.dp-DateTableTag) {
-    text-decoration: underline;
-  }
-}
-
-.dp-DateTableText {
-  font-size: var(--h4);
-}
-
-.dp-DateTableSku {
-  color: var(--blue);
-}
-
-.dp-DateTableRow:hover .dp-DateTableText {
-  color: var(--blue);
-}
-
-.dp-Tag {
-  border-radius: 2px;
-  color: #fff;
-  display: block;
-  font-size: 7px;
-  letter-spacing: 0.5px;
-  padding: 4px 0;
-  text-align: center;
-  text-transform: uppercase;
-  width: 50px;
-}
-
-.dp-Tag--green {
-  background-color: var(--green);
-}
-
-.dp-Tag--blue {
-  background-color: var(--blue);
-}
-
-.dp-Tag--blue {
-  background-color: var(--blue);
-}
-
-.dp-Tag--orange {
-  background-color: var(--orange);
 }

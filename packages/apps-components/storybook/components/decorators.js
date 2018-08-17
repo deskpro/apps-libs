@@ -2,6 +2,7 @@ import React from 'react';
 import '../custom-css.css';
 
 import {AppFrame, Action} from '../../src'
+import dpLogo from '../static/dp-logo.svg';
 
 /**
  * Returns a function that can be used with storiesOf.add which wraps the component in a div as wide as the apps sidebar
@@ -34,7 +35,7 @@ export function wrapInApp(body)
   return sizeToSidebar(
     <div className={"dp-AppPanel"}>
       <div className={"dp-AppPanelBody"}>
-        <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"} >
+        <AppFrame title={"Deskpro"} iconUrl={dpLogo} >
           { body }
         </AppFrame>
       </div>

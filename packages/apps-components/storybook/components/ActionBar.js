@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 
 import { ActionBar, Action } from '../../src/Action';
 import Menu from '../../src/Menu';
-
-import { sizeToSidebar, wrapInApp } from './decorators'
+import jiraLogo from '../static/jira-logo.svg';
+import {wrapInApp } from './decorators'
 
 
 function onAction(actionType)
@@ -14,11 +14,11 @@ function onAction(actionType)
 
 storiesOf('ActionBar', module)
   .add('empty' , wrapInApp([
-    <ActionBar iconUrl={"/jira-logo.svg"} title={'Ticket DP-109'}/>,
+    <ActionBar iconUrl={jiraLogo} title={'Ticket DP-109'}/>,
     <p>No actions available</p>
   ]))
   .add('with actions' , wrapInApp([
-    <ActionBar title={'Ticket DP-109'} iconUrl={"/jira-logo.svg"} >
+    <ActionBar title={'Ticket DP-109'} iconUrl={jiraLogo} >
       <Action icon={'open'} onClick={() => onAction('open')} />
       {'close'}
       {'settings'}
@@ -28,7 +28,7 @@ storiesOf('ActionBar', module)
     <p>Do you have any documentation stating how to integrate microsoft dynamics 365 and also shopify?</p>
   ]))
   .add('only title and menu opened' , wrapInApp([
-    <ActionBar iconUrl={"/jira-logo.svg"} title={'Ticket DP-109'}>
+    <ActionBar iconUrl={jiraLogo} title={'Ticket DP-109'}>
       {'open'}
       {'close'}
       <Menu isOpen={true}>
