@@ -3,6 +3,9 @@ import { storiesOf } from '@storybook/react';
 
 import { Level, Menu, Action, AppFrame, ActionBar, ListItem, List, Avatar } from '../../src';
 import { wrapInAppPanel } from './decorators'
+import jiraLogo from '../static/jira-logo.svg';
+import dpLogo from '../static/dp-logo.svg';
+
 
 function renderMenu(isOpen)
 {
@@ -28,7 +31,7 @@ function content()
   return (
     <List>
       <ListItem>
-        <ActionBar iconUrl={"/jira-logo.svg"} title={"Blog calender"}>
+        <ActionBar iconUrl={jiraLogo} title={"Blog calender"}>
           {renderMenu(true)}
         </ActionBar>
 
@@ -37,7 +40,7 @@ function content()
             <span>Ready</span><span> | </span><span>Linked 12/06/2018</span>
           </Level>
           <Level align={"right"}>
-            <Avatar shape={"round"} src={"/jira-logo.svg"}/>
+            <Avatar shape={"round"} src={jiraLogo}/>
           </Level>
         </Level>
 
@@ -46,7 +49,7 @@ function content()
       {
         repeat(5,
           <ListItem>
-            <ActionBar iconUrl={"/jira-logo.svg"} title={"Design of messages"}>
+            <ActionBar iconUrl={jiraLogo} title={"Design of messages"}>
               {renderMenu()}
             </ActionBar>
 
@@ -55,7 +58,7 @@ function content()
                 <span>In Planning</span><span> | </span><span>Linked 12/06/2018</span>
               </Level>
               <Level align={"right"}>
-                <Avatar shape={"round"} src={"/jira-logo.svg"}/>
+                <Avatar shape={"round"} src={jiraLogo}/>
               </Level>
             </Level>
 
@@ -67,13 +70,13 @@ function content()
 
 storiesOf('AppFrame', module)
   .add('empty', wrapInAppPanel(
-    <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"}  />
+    <AppFrame title={"Deskpro"} iconUrl={dpLogo}  />
   ))
   .add('empty and disabled', wrapInAppPanel(
-    <AppFrame isInactive title={"Deskpro"} iconUrl={"/dp-logo.svg"} />
+    <AppFrame isInactive title={"Deskpro"} iconUrl={dpLogo} />
   ))
   .add('normal', wrapInAppPanel(
-    <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"} >
+    <AppFrame title={"Deskpro"} iconUrl={dpLogo} >
       <ActionBar>
         <Action icon={"search"} label={"Find"}/>,
         <Action icon={"search"} label={"Create"}/>

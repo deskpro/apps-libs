@@ -1,5 +1,6 @@
 @import "fonts.css";
 @import "vars.css";
+@import "components/root.css";
 @import "components/swatches.css";
 @import "components/buttonTabs.css";
 @import "components/appBar.css";
@@ -16,9 +17,9 @@
 @import "components/dataTable.css";
 @import "components/dataDefList.css";
 @import "components/panel.css";
-@import "components/root.css";
 @import "components/notification.css";
 @import "elements/buttons.css";
+@import "elements/tags.css";
 @import "elements/forms.css";
 @import "elements/content.css";
 @import "elements/title.css";

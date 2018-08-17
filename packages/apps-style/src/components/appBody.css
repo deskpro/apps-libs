@@ -2,8 +2,13 @@
   display: block;
 }
 
+.dp-SectionTitle {
+  color: var(--gray-500);
+  font-size: var(--h2);
+}
+
 .dp-AppBody.dp-Section {
-  padding-top: 11px;
+  padding-top: 1em;
 }
 
 .dp---is-hidden.dp-AppBody {

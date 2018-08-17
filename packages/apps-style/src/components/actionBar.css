@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+.dp-ActionBarIcon {
+  margin-right: 4px;
+}
+
 .dp-ActionBarTitle {
   font-size: var(--h3);
 
@@ -11,7 +15,7 @@
   font-weight: normal;
   line-height: 1.2;
   margin-bottom: 0;
-  margin-left: 4px;
+
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

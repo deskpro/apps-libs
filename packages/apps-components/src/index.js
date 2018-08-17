@@ -11,3 +11,5 @@ export { default as Content } from './Content';
 export { Avatar } from './Image';
 export { default as Loader } from './Loader';
 export { default as Notification } from './Notification';
+export { default as Tag} from './Tag';
+export { DataTable, DataList } from './Data';

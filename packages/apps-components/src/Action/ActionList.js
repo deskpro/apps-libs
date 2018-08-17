@@ -49,7 +49,7 @@ const ActionList = ({ orientation, className, children }) => (
       className,
     )}
   >
-    {children}
+    {children && React.Children.map(children, renderAction).map(normalize)}
   </div>
 );
 
@@ -60,7 +60,7 @@ ActionList.propTypes = {
   orientation: PropTypes.oneOf(['horizontal', 'vertical']),
 
   /**
-   * any additional classnames to be applied to the AppBar container
+   * any additional classnames to be applied to the root element of this component
    */
   className: PropTypes.string,
 

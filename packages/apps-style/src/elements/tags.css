@@ -1,0 +1,31 @@
+.dp-Tag {
+  border-radius: 2px;
+  color: #fff;
+  display: block;
+  font-size: 7px;
+  letter-spacing: 0.5px;
+  padding: 4px 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 50px;
+}
+
+.dp-Tag--green {
+  background-color: var(--green);
+}
+
+.dp-Tag--blue {
+  background-color: var(--blue);
+}
+
+.dp-Tag--blue {
+  background-color: var(--blue);
+}
+
+.dp-Tag--orange {
+  background-color: var(--orange);
+}
+
+.dp-Tag--red {
+  background-color: var(--red);
+}
