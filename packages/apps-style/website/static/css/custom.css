@@ -44,3 +44,42 @@
   font-size: 12px;
   line-height: 1.2em;
 }
+
+
+/* required for Panel examples Start */
+
+.dp-PanelHeader .dp-IconClose {
+  height: 11px;
+  width: 11px;
+}
+
+.dp-PanelBody {
+  display: block;
+}
+
+.dp-PT--none {
+  padding-top: 0;
+}
+
+.dp-DataDefListAddress {
+  font-size: 12px;
+}
+
+.dp-DataDefListShipping {
+  padding-top: 2px;
+}
+
+.dp-DataDefListShipping,
+.dp-DataDefListBilling {
+  color: #5f768a;
+  display: inline-block;
+  font-weight: 600;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.dp-DataDefListBilling {
+  padding-top: 8px;
+}
+
+/* required for Panel examples End */

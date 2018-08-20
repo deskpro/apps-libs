@@ -7,7 +7,9 @@ const DataTable = function ({ className, columns, data })
 {
   return (
     <table className={classnames("dp-DataTable", className)}>
-      { data.map(row => renderRow(columns, row)) }
+      <tbody>
+        { data.map(row => renderRow(columns, row)) }
+      </tbody>
     </table>
   )
 };
@@ -38,7 +40,6 @@ DataTable.propTypes = {
     ])
   )
 };
-
 
 /**
  * @param {Array} columns

@@ -1,12 +1,12 @@
 .dp-DataTable {
-  display: block;
-
-  /* margin: 0 calc(var(--padding-app) * -1); */
+  border-collapse: separate;
+  border-spacing: var(--card-border) var(--card-border);
+  display: table;
+  width: 100%;
 }
 
 table tr.dp-DataTableRow {
   background-color: #fff;
-  display: table-row;
 
   &:hover {
     background-color: #f0f4f6;
@@ -17,15 +17,9 @@ table tr.dp-DataTableRow {
   cursor: pointer;
 }
 
-.dp-DataTable tbody {
-  display: table;
-  width: 100%;
-}
-
 .dp-DataTable td {
   display: table-cell;
   font-size: var(--h4);
-  padding: 3px var(--padding-app);
 }
 
 .dp-DataTable tr,

@@ -19,9 +19,9 @@ storiesOf('ActionBar', module)
   ]))
   .add('with actions' , wrapInApp([
     <ActionBar title={'Ticket DP-109'} iconUrl={jiraLogo} >
-      <Action icon={'open'} onClick={() => onAction('open')} />
-      {'close'}
-      {'settings'}
+      <Action icon={'open'} onClick={() => onAction('open')} label={"Pin"} labelDisplay={"onHover"}/>
+      <Action icon={'close'} label={"Close"} labelDisplay={"onHover"}/>
+      <Action icon={'settings'} />
     </ActionBar>
       ,
     <p><b>From:</b> John McEnroe</p>,
@@ -29,8 +29,8 @@ storiesOf('ActionBar', module)
   ]))
   .add('only title and menu opened' , wrapInApp([
     <ActionBar iconUrl={jiraLogo} title={'Ticket DP-109'}>
-      {'open'}
-      {'close'}
+      <Action icon={'open'} onClick={() => onAction('open')} label={"Pin"} labelDisplay={"onHover"}/>
+      <Action icon={'close'} label={"Close"} labelDisplay={"onHover"}/>
       <Menu isOpen={true}>
         <Action icon="lock" label={"Pin"} />
         <Action icon="link" label={"Link"} />
