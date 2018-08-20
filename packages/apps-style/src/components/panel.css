@@ -16,3 +16,11 @@
   font-size: var(--h2);
 }
 
+.dp-AppBody > .dp-Panel {
+  margin-top: 1em;
+}
+
+.dp-AppBody > .dp-Panel:first-child {
+  margin-top: 0;
+}
+

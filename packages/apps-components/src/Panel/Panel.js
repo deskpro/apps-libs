@@ -12,7 +12,7 @@ const Panel = function ({ className, title, iconUrl, children })
 
   React.Children.forEach(children, function (child) {
 
-    if (child.type === Action) {
+    if (child && child.type === Action) {
       actions.push(child);
     } else {
       bodyItems.push(child);
