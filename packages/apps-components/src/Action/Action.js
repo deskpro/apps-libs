@@ -7,7 +7,7 @@ import Icon from '../Icon';
 
 class Action extends React.PureComponent {
   render() {
-    const { icon, label, className, onClick } = this.props;
+    const { icon, label, labelDisplay, className, onClick } = this.props;
 
     return (
       <a
@@ -16,20 +16,52 @@ class Action extends React.PureComponent {
           className,
         )}
         onClick={onClick}
+
+        title={labelDisplay === 'onHover' ? label : ""}
       >
         <Icon name={icon} />
 
-        {label && <span className="dp-ActionListLabel">{label}</span>}
+        {label && labelDisplay === 'always' && <span className="dp-ActionListLabel">{label}</span>}
       </a>
     );
   }
 }
 
 Action.propTypes = {
+
+  /**
+   * any additional classnames to be applied to the root element
+   */
   className: PropTypes.string,
+
+  /**
+   * the name of an icon that represents the action
+   */
   icon: PropTypes.string.isRequired,
+
+  /**
+   * a handler function
+   */
   onClick: PropTypes.func,
+
+  /**
+   *the name of the action
+   */
   label: PropTypes.string,
+
+  /**
+   * A string indicating how to display the label. If the value is "always" the label is shown to the right of the icon. If value is "onHover" label will be shown when mouse is over the icon
+   */
+  labelDisplay: PropTypes.oneOf(
+    'always',
+    'onHover'
+  ),
+};
+
+
+Action.defaultProps = {
+
+  labelDisplay: 'always'
 };
 
 export default Action;

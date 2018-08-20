@@ -16,7 +16,7 @@ const DataList = function ({ className, title, children, data, rows})
   }
 
   return (
-    <div className={classnames(className)}>
+    <div className={classnames("dp-Section", className)}>
       <ActionBar title={title}>{children}</ActionBar>
 
       <dl className="dp-DataDefList">

@@ -3,6 +3,8 @@ import { storiesOf } from '@storybook/react';
 
 import { DataTable } from '../../src/Data';
 import { default as Tag } from '../../src/Tag';
+import { default as Panel } from '../../src/Panel';
+import { Action } from '../../src/Action';
 import {wrapInApp } from './decorators'
 
 
@@ -34,8 +36,12 @@ const columns = [
   }
 ];
 
-storiesOf('DataTable', module)
+storiesOf('Panel', module)
   .add('normal' , wrapInApp([
-    <DataTable columns={columns} data={data} />
+    <Panel title={"Products"}>
+      <Action icon="edit" label={"Edit"} labelDisplay={"onHover"} />
+      <Action icon="close-heavy" label={"Close"} labelDisplay={"onHover"} />
+      <DataTable columns={columns} data={data} />
+    </Panel>
   ]))
 ;

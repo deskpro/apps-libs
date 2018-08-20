@@ -55,7 +55,7 @@ AppBar.propTypes = {
   badgeText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * any additional classnames to be applied to the AppBar container
+   * any additional classnames to be applied to the root element
    */
   className: PropTypes.string,
 };

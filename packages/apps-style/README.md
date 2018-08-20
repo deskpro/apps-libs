@@ -3,7 +3,7 @@ Deskpro Apps
 
 CSS Styling for Deskpro Apps.
 
-**[View Documentation and Examples](https://deskpro.github.io/apps-style/)**
+**[View Documentation and Examples](https://deskpro.github.io/apps-libs/style)**
 
 Goals:
 
