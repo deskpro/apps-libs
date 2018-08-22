@@ -15,11 +15,12 @@ const alignToClassName = {
  * @param {string} [align]
  * @param {string} [className]
  * @param {*} [children]
+ * @param {Object} props
  * @return {*}
  * @constructor
  */
-const Level = ({ align, className, children }) => (
-  <div className={classnames(alignToClassName[align], className)}>
+const Level = ({ align, className, children, ...props }) => (
+  <div {...props} className={classnames(alignToClassName[align], className)}>
     {children}
   </div>
 );

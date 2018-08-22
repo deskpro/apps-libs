@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { DataList } from '../../src/Data';
 import { Action } from '../../src/Action';
+import Panel from '../../src/Panel';
 import {wrapInApp } from './decorators'
 
 
@@ -33,8 +34,12 @@ const data = [
 
 storiesOf('DataList', module)
   .add('normal' , wrapInApp([
-    <DataList title={"Company"} data={data} >
-      <Action icon={"edit"} label={"Edit"}></Action>
-    </DataList>
+    <DataList data={data} />
+  ]))
+  .add('in panel' , wrapInApp([
+    <Panel title={"Company"}>
+      <Action icon={"edit"} label={"Edit"} labelDisplay={"onHover"}></Action>
+      <DataList data={data} />
+    </Panel>
   ]))
 ;

@@ -11,10 +11,10 @@ const colorToClass = {
   red: "dp-Tag--red"
 };
 
-const Tag = function ({ className, color, children })
+const Tag = function ({ className, color, children, ...props })
 {
   return (
-    <span className={classnames("dp-Tag", colorToClass[color], className)}>{children}</span>
+    <span {...props} className={classnames("dp-Tag", colorToClass[color], className)}>{children}</span>
   )
 };
 

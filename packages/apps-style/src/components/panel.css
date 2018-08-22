@@ -5,6 +5,11 @@
   padding: 5px 4px 5px 7px;
 }
 
+.dp-Panel--borderless {
+  border: 0;
+  border-radius: 0;
+}
+
 .dp-PanelHeader {
   border-bottom: 1px solid var(--border-color-light);
   display: block;

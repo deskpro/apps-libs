@@ -31,8 +31,8 @@ const nameToClassnames = {
  * @return {*}
  * @constructor
  */
-const Icon = ({ name, className, children }) => (
-  <i className={classnames(nameToClassnames[name], className)}>{children}</i>
+const Icon = ({ name, className, children, ...props }) => (
+  <i {...props} className={classnames(nameToClassnames[name], className)}>{children}</i>
 );
 
 Icon.propTypes = {

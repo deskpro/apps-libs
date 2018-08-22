@@ -18,20 +18,30 @@ const shapeClassNames = {
  * @param {string} src
  * @param {string} [shape]
  * @param {string} [className]
+ * @param props
  * @return {*}
  * @constructor
  */
-const Avatar = ({ src, shape, className }) => (
-  <i className={classnames(shapeClassNames[shape], className)}>
-    <img src={src} alt="" />
+const Avatar = ({ src, shape, className, ...props }) => (
+  <i {...props} className={classnames(shapeClassNames[shape], className)}>
+    <img src={src} title="" />
   </i>
 );
 
 Avatar.propTypes = {
+  /**
+   * any additional classnames to be applied to the root element of this component
+   */
   className: PropTypes.string,
 
+  /**
+   * The image source
+   */
   src: PropTypes.string.isRequired,
 
+  /**
+   * The shape of the avatar
+   */
   shape: PropTypes.oneOf(['round', 'auto']),
 };
 

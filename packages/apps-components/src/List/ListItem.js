@@ -21,8 +21,8 @@ function renderChildren(children) {
   return React.Children.map(children, map);
 }
 
-const ListItem = ({ children, className }) => (
-  <div className={classnames('dp-ListItem dp---is-hoverable', className)}>
+const ListItem = ({ children, className, ...props }) => (
+  <div {...props} className={classnames('dp-ListItem dp---is-hoverable', className)}>
     {renderChildren(children)}
   </div>
 );
