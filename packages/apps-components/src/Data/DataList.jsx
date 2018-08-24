@@ -1,12 +1,9 @@
 import React from 'react';
 import '@deskpro/apps-components-style';
-import classnames from 'classnames';
 import PropTypes from "prop-types";
-import { ActionBar } from "../Action";
 
-const DataList = function ({ className, title, children, data, rows})
+const DataList = function ({ className, data, rows, ...props})
 {
-
   let dlRows;
   if (rows) {
     dlRows = rows.map(row => renderRow(row, data))
@@ -16,13 +13,9 @@ const DataList = function ({ className, title, children, data, rows})
   }
 
   return (
-    <div className={classnames("dp-Section", className)}>
-      <ActionBar title={title}>{children}</ActionBar>
-
-      <dl className="dp-DataDefList">
+      <dl {...props} className="dp-DataDefList">
         { dlRows.reduce((head, tail) => head.concat(tail), []) }
       </dl>
-    </div>
   );
 };
 

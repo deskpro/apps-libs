@@ -41,8 +41,9 @@ function normalize(component) {
  * @return {*}
  * @constructor
  */
-const ActionList = ({ orientation, className, children }) => (
+const ActionList = ({ orientation, className, children, ...props }) => (
   <div
+    {...props}
     className={classnames(
       'dp-ActionList',
       orientation === 'vertical' ? 'dp-ActionList--is-vertical' : '',

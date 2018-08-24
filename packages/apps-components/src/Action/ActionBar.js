@@ -15,8 +15,8 @@ import { Level } from '../Layout';
  * @param {string} className
  * @constructor
  */
-const ActionBar = ({ iconUrl, title, children, className }) => (
-  <div className={classnames('dp-ActionBar dp-Level', className)}>
+const ActionBar = ({ iconUrl, title, children, className, ...props }) => (
+  <div {...props} className={classnames('dp-ActionBar dp-Level', className)}>
     <Level align={'left'}>
       {iconUrl && (
         <i className="dp-Icon dp-ActionBarIcon">

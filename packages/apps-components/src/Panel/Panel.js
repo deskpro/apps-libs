@@ -5,7 +5,12 @@ import PropTypes from 'prop-types';
 
 import { ActionBar, Action } from '../Action'
 
-const Panel = function ({ className, title, iconUrl, children })
+const borderToClassName = {
+  "solid": "",
+  "none": "dp-Panel--borderless"
+};
+
+const Panel = function ({ className, title, iconUrl, border, children, ...props })
 {
   const actions = [];
   const bodyItems = [];
@@ -19,8 +24,9 @@ const Panel = function ({ className, title, iconUrl, children })
     }
   });
 
+
   return (
-    <div className={classnames("dp-Panel", className)}>
+    <div {...props} className={classnames("dp-Panel", borderToClassName[border], className)}>
       <div className="dp-PanelHeader">
         <ActionBar title={title} iconUrl={iconUrl}>
           {actions}
@@ -49,6 +55,15 @@ Panel.propTypes = {
    * The text displayed on the left side
    */
   title: PropTypes.string,
+
+  /**
+   * The type of border surrounding this component
+   */
+  border: PropTypes.oneOf(["none", "solid"])
+};
+
+Panel.defaultProps = {
+  border: 'solid'
 };
 
 export default Panel

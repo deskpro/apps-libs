@@ -7,17 +7,17 @@ import Icon from '../Icon';
 
 class Action extends React.PureComponent {
   render() {
-    const { icon, label, labelDisplay, className, onClick } = this.props;
+    const { icon, label, labelDisplay, className, onClick, ...props } = this.props;
 
     return (
       <a
+        {...props}
         className={classnames(
           'dp-ActionListItem dp-ActionListIcon dp---is-hoverable',
           className,
         )}
         onClick={onClick}
-
-        title={labelDisplay === 'onHover' ? label : ""}
+        title=  {labelDisplay === 'onHover' ? label : ""}
       >
         <Icon name={icon} />
 

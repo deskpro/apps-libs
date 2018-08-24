@@ -14,8 +14,8 @@ import { ActionList } from '../Action';
  * @return {AppBar}
  * @constructor
  */
-const AppBar = ({ iconUrl, title, badgeText, children, className }) => (
-  <div className={classnames('dp-AppBar dp-Level', className)}>
+const AppBar = ({ iconUrl, title, badgeText, children, className, ...props }) => (
+  <div {...props} className={classnames('dp-AppBar dp-Level', className)}>
     <div className="dp-LevelLeft">
       <div className="dp-AppBarIcon-wrap">
         {iconUrl && (

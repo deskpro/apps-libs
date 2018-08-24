@@ -4,8 +4,8 @@ import classnames from 'classnames';
 
 import '@deskpro/apps-components-style';
 
-const AppBody = ({ className, children }) => (
-  <section className={classnames('dp-AppBody dp-Section', className)}>
+const AppBody = ({ className, children, ...props }) => (
+  <section {...props} className={classnames('dp-AppBody dp-Section', className)}>
     {children}
   </section>
 );

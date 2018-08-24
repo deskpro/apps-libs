@@ -3,10 +3,18 @@ import '@deskpro/apps-components-style';
 import classnames from 'classnames';
 import PropTypes from "prop-types";
 
-const DataTable = function ({ className, columns, data })
+/**
+ * @param className
+ * @param columns
+ * @param data
+ * @param props
+ * @return {*}
+ * @constructor
+ */
+const DataTable = function ({ className, columns, data, ...props })
 {
   return (
-    <table className={classnames("dp-DataTable", className)}>
+    <table {...props} className={classnames("dp-DataTable", className)}>
       <tbody>
         { data.map(row => renderRow(columns, row)) }
       </tbody>

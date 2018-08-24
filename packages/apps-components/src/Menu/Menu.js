@@ -6,8 +6,17 @@ import { ActionList } from '../Action';
 
 import '@deskpro/apps-components-style';
 
-const Menu = ({ className, children, isOpen, onClick }) => (
-  <div className={classnames('dp-Menu', className)}>
+/**
+ * @param string className
+ * @param children
+ * @param {bool} isOpen
+ * @param {function} onClick
+ * @param {object} props
+ * @return {*}
+ * @constructor
+ */
+const Menu = ({ className, children, isOpen, onClick, ...props }) => (
+  <div {...props} className={classnames('dp-Menu', className)}>
     <i className="dp-IconSettings" onClick={onClick} />
 
     <ActionList
@@ -20,12 +29,20 @@ const Menu = ({ className, children, isOpen, onClick }) => (
 );
 
 Menu.propsType = {
+
+  /**
+   * any additional classnames to be applied to the root element of this component
+   */
   classname: PropTypes.string,
 
-  type: PropTypes.string,
-
+  /**
+   * flag to indicate if the menu shows its options
+   */
   isOpen: PropTypes.bool,
 
+  /**
+   * a function to handle mouse clicks
+   */
   onClick: PropTypes.func,
 };
 
