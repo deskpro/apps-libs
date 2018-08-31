@@ -14,3 +14,4 @@ export { default as Notification } from './Notification';
 export { default as Tag} from './Tag';
 export { DataTable, DataList } from './Data';
 export { default as Panel } from './Panel';
+export { Tabs, TabMenu } from './Tabs';

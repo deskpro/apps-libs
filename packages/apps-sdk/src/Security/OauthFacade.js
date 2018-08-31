@@ -83,7 +83,7 @@ class OauthFacade {
   async requestAccess(provider, options) {
     let eventOptions = null;
     if (typeof options === 'object') {
-      eventOptions = { ...options, provider };
+      eventOptions = { protocolVersion: defaultProtocolVersion, ...options, provider };
     } else {
       eventOptions = { provider, protocolVersion: defaultProtocolVersion };
     }
@@ -109,7 +109,7 @@ class OauthFacade {
   async refreshAccess(provider, options) {
     let eventOptions = null;
     if (typeof options === 'object') {
-      eventOptions = { ...options, provider };
+      eventOptions = { protocolVersion: defaultProtocolVersion, ...options, provider };
     } else {
       eventOptions = { provider, protocolVersion: defaultProtocolVersion };
     }
