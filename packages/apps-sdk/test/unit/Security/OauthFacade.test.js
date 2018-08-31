@@ -37,13 +37,11 @@ const localStorage = new LocalStorageAdapter(localStorageMock);
  * Creates a dummy storage api facade
  *
  * @param {AppEventEmitter} outgoingDispatcher
- * @param {AppEventEmitter} internalDispatcher
  * @return {StorageApiFacade}
  */
-function createStorageApiFacade(outgoingDispatcher, internalDispatcher) {
+function createStorageApiFacade(outgoingDispatcher) {
   return new StorageApiFacade(
     outgoingDispatcher,
-    internalDispatcher,
     localStorage,
     {
       instanceId: '1',
@@ -69,28 +67,81 @@ function createOauth2TokenResponse({ protocolVersion, ...rest }) {
   };
 }
 
+/**
+ * @param {function} expects
+ * @return {AppEventEmitter}
+ */
+function createOutgoingDispatcherWithExpectations(event, expects)
+{
+  let handler;
+  if (event === EVENT_SECURITY_OAUTH_REFRESH || event === EVENT_SECURITY_AUTHENTICATE_OAUTH) {
+    handler = (resolve, reject, params) => {
+      try {
+        expects(params);
+        resolve(createOauth2TokenResponse(params));
+      } catch (e) {
+        reject(e);
+      }
+    };
+  } else {
+    handler = (resolve, reject, params) => {
+      try {
+        expects(params);
+        resolve(params);
+      } catch (e) {
+        reject(e);
+      }
+    };
+  }
+
+  const outgoingDispatcher = new AppEventEmitter();
+  outgoingDispatcher.on(event, handler);
+  return outgoingDispatcher;
+}
+
+
+
 describe('OauthFacade', () => {
   const localStorage = new LocalStorageAdapter(localStorageMock);
 
-  test('settings: default oauth version is 2.0', () => {
-    const internalDispatcher = new AppEventEmitter();
-    const outgoingDispatcher = new AppEventEmitter();
-    outgoingDispatcher.on(
-      EVENT_SECURITY_SETTINGS_OAUTH,
-      (resolve, reject, { provider, protocolVersion }) => {
-        try {
-          expect(protocolVersion).toEqual('2.0');
-          resolve(createOauth2TokenResponse({ protocolVersion }));
-        } catch (e) {
-          reject(e);
-        }
-      },
-    );
+  test('requestAccess: default oauth version is 2.0', () => {
 
-    const storageClient = createStorageApiFacade(
+    function expects( { provider, protocolVersion }) {
+      expect(protocolVersion).toEqual('2.0');
+    }
+
+    const outgoingDispatcher = createOutgoingDispatcherWithExpectations(EVENT_SECURITY_AUTHENTICATE_OAUTH, expects);
+    const storageClient = createStorageApiFacade(outgoingDispatcher);
+    const facade = new OauthFacade(
       outgoingDispatcher,
-      internalDispatcher,
+      storageClient.setAppStorage.bind(localStorage),
     );
+    return facade.requestAccess('jira');
+  });
+
+  test('requestAccess: custom oauth version is used', () => {
+
+    function expects({ provider, protocolVersion }) {
+      expect(protocolVersion).toEqual('1.0');
+    }
+
+    const outgoingDispatcher = createOutgoingDispatcherWithExpectations(EVENT_SECURITY_AUTHENTICATE_OAUTH, expects);
+    const storageClient = createStorageApiFacade(outgoingDispatcher);
+    const facade = new OauthFacade(
+      outgoingDispatcher,
+      storageClient.setAppStorage.bind(localStorage),
+    );
+    return facade.requestAccess('jira', { protocolVersion: '1.0' });
+  });
+
+  test('settings: default oauth version is 2.0', () => {
+
+    function expects({ provider, protocolVersion }) {
+      expect(protocolVersion).toEqual('2.0');
+    }
+
+    const outgoingDispatcher = createOutgoingDispatcherWithExpectations(EVENT_SECURITY_SETTINGS_OAUTH, expects);
+    const storageClient = createStorageApiFacade(outgoingDispatcher);
     const facade = new OauthFacade(
       outgoingDispatcher,
       storageClient.setAppStorage.bind(localStorage),
@@ -99,24 +150,13 @@ describe('OauthFacade', () => {
   });
 
   test('settings: custom oauth version is used', () => {
-    const internalDispatcher = new AppEventEmitter();
-    const outgoingDispatcher = new AppEventEmitter();
-    outgoingDispatcher.on(
-      EVENT_SECURITY_SETTINGS_OAUTH,
-      (resolve, reject, { provider, protocolVersion }) => {
-        try {
-          expect(protocolVersion).toEqual('1.0');
-          resolve(createOauth2TokenResponse({ protocolVersion }));
-        } catch (e) {
-          reject(e);
-        }
-      },
-    );
 
-    const storageClient = createStorageApiFacade(
-      outgoingDispatcher,
-      internalDispatcher,
-    );
+    function expects({ provider, protocolVersion }) {
+      expect(protocolVersion).toEqual('1.0');
+    }
+
+    const outgoingDispatcher = createOutgoingDispatcherWithExpectations(EVENT_SECURITY_SETTINGS_OAUTH, expects);
+    const storageClient = createStorageApiFacade(outgoingDispatcher);
     const facade = new OauthFacade(
       outgoingDispatcher,
       storageClient.setAppStorage.bind(localStorage),
@@ -149,31 +189,19 @@ describe('OauthFacade', () => {
   });
 
   test('requestAccess emits event EVENT_SECURITY_AUTHENTICATE_OAUTH', () => {
-    const internalDispatcher = new AppEventEmitter();
-    const outgoingDispatcher = new AppEventEmitter();
-    outgoingDispatcher.on(
-      EVENT_SECURITY_AUTHENTICATE_OAUTH,
-      (resolve, reject, { provider, protocolVersion, query }) => {
-        try {
-          expect(protocolVersion).toEqual('2.0');
-          expect(provider).toEqual('jira');
-          expect(query).toBeDefined();
-          expect(query).toEqual({
-            refresh_token: 'token',
-            random: 'param value',
-          });
 
-          resolve(createOauth2TokenResponse({ protocolVersion }));
-        } catch (e) {
-          reject(e);
-        }
-      },
-    );
+    function expects({ provider, protocolVersion, query }) {
+      expect(protocolVersion).toEqual('2.0');
+      expect(provider).toEqual('jira');
+      expect(query).toBeDefined();
+      expect(query).toEqual({
+        refresh_token: 'token',
+        random: 'param value',
+      });
+    }
 
-    const storageClient = createStorageApiFacade(
-      outgoingDispatcher,
-      internalDispatcher,
-    );
+    const outgoingDispatcher = createOutgoingDispatcherWithExpectations(EVENT_SECURITY_AUTHENTICATE_OAUTH, expects);
+    const storageClient = createStorageApiFacade(outgoingDispatcher);
     const facade = new OauthFacade(
       outgoingDispatcher,
       storageClient.setAppStorage.bind(localStorage),
@@ -186,31 +214,19 @@ describe('OauthFacade', () => {
   });
 
   test('refreshAccess emits event EVENT_SECURITY_OAUTH_REFRESH', () => {
-    const internalDispatcher = new AppEventEmitter();
-    const outgoingDispatcher = new AppEventEmitter();
-    outgoingDispatcher.on(
-      EVENT_SECURITY_OAUTH_REFRESH,
-      (resolve, reject, { provider, protocolVersion, query }) => {
-        try {
-          expect(protocolVersion).toEqual('2.0');
-          expect(provider).toEqual('jira');
-          expect(query).toBeDefined();
-          expect(query).toEqual({
-            refresh_token: 'token',
-            random: 'param value',
-          });
 
-          resolve(createOauth2TokenResponse({ protocolVersion }));
-        } catch (e) {
-          reject(e);
-        }
-      },
-    );
+    function expects({ provider, protocolVersion, query }) {
+      expect(protocolVersion).toEqual('2.0');
+      expect(provider).toEqual('jira');
+      expect(query).toBeDefined();
+      expect(query).toEqual({
+        refresh_token: 'token',
+        random: 'param value',
+      });
+    }
 
-    const storageClient = createStorageApiFacade(
-      outgoingDispatcher,
-      internalDispatcher,
-    );
+    const outgoingDispatcher = createOutgoingDispatcherWithExpectations(EVENT_SECURITY_OAUTH_REFRESH, expects);
+    const storageClient = createStorageApiFacade(outgoingDispatcher);
     const facade = new OauthFacade(
       outgoingDispatcher,
       storageClient.setAppStorage.bind(localStorage),
