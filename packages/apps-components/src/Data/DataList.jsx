@@ -27,11 +27,6 @@ DataList.propTypes = {
   className: PropTypes.string,
 
   /**
-   * the title of the list
-   */
-  title: PropTypes.string.isRequired,
-
-  /**
    * the list of values
    */
   data: PropTypes.oneOfType([
