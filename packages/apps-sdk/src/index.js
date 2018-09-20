@@ -15,7 +15,12 @@ export {
   /**
    * @function
    */
-  createMockApp
+  createMockApp,
+
+  /**
+   * @function
+   */
+  getDpApp,
 } from './Core/create';
 
 /**

@@ -34,6 +34,8 @@ import AppClient from './AppClient';
 import InstanceProps from './InstanceProps';
 import ContextProps from './ContextProps';
 
+let appInstanceSingleton;
+
 /**
  * @ignore
  * @internal
@@ -100,7 +102,28 @@ export function createAppFromProps({ registerEventHandlers, instanceProps, conte
   };
 
   const appProps = {  ...defaultProps, ...others, registerEventHandlers };
-  return new AppClient(appProps);
+  const appClient = new AppClient(appProps);
+
+  if (!others.noSetSingleton) {
+    if (!appInstanceSingleton || others.forceSetSingleton) {
+      appInstanceSingleton = appClient
+    }
+  }
+
+  return appClient;
+}
+
+/**
+ * Get the instance of the app client. Can only be called after an app client
+ * has actually been created.
+ *
+ * @return {AppClient}
+ */
+export function getDpApp() {
+  if (!appInstanceSingleton) {
+    throw new Error("You cannot use getDpApp() before the client has been created");
+  }
+  return appInstanceSingleton;
 }
 
 /**
