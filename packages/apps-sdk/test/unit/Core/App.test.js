@@ -1,12 +1,11 @@
 import AppClient from '../../../src/Core/AppClient';
 import { createAppFromProps } from '../../../src/Core/create';
-import AppEventEmitter from "../../../src/Core/AppEventEmitter";
+import AppEventEmitter from '../../../src/Core/AppEventEmitter';
 
 test('successfully create an application with default params', done => {
-
   const app = createAppFromProps({
     registerEventHandlers: function() {},
-    localDispatcher:    new AppEventEmitter(),
+    localDispatcher: new AppEventEmitter(),
     incomingDispatcher: new AppEventEmitter(),
     outgoingDispatcher: new AppEventEmitter(),
     instanceProps: {
@@ -21,7 +20,7 @@ test('successfully create an application with default params', done => {
       locationId: '1',
       tabId: 'tab-1',
       tabUrl: 'https://127.0.0.1',
-    }
+    },
   });
 
   expect(app instanceof AppClient).toBeTruthy();
@@ -36,30 +35,29 @@ test('retrieve properties', done => {
   };
 
   const app = createAppFromProps({
-      registerEventHandlers: function () {},
-      localDispatcher:    new AppEventEmitter(),
-      incomingDispatcher: new AppEventEmitter(),
-      outgoingDispatcher: new AppEventEmitter(),
-      instanceProps: {
-        appId: '1',
-        appTitle: 'title',
-        appPackageName: 'com.deskpro.app',
-        instanceId: '1',
+    registerEventHandlers: function() {},
+    localDispatcher: new AppEventEmitter(),
+    incomingDispatcher: new AppEventEmitter(),
+    outgoingDispatcher: new AppEventEmitter(),
+    instanceProps: {
+      appId: '1',
+      appTitle: 'title',
+      appPackageName: 'com.deskpro.app',
+      instanceId: '1',
 
-        instanceExperimentalOne: experimental.instanceExperimentalOne,
-        instanceExperimentalTwo: experimental.instanceExperimentalTwo
-      },
-      contextProps: {
-        type: 'ticket',
-        entityId: '1',
-        locationId: '1',
-        tabId: 'tab-1',
-        tabUrl: 'https://127.0.0.1',
+      instanceExperimentalOne: experimental.instanceExperimentalOne,
+      instanceExperimentalTwo: experimental.instanceExperimentalTwo,
+    },
+    contextProps: {
+      type: 'ticket',
+      entityId: '1',
+      locationId: '1',
+      tabId: 'tab-1',
+      tabUrl: 'https://127.0.0.1',
 
-        contextExperimentalThree: experimental.contextExperimentalThree
-      }
-    }
-  );
+      contextExperimentalThree: experimental.contextExperimentalThree,
+    },
+  });
 
   expect(app.getProperty('appId')).toEqual('1');
   expect(app.getProperty('contextType')).toEqual('ticket');
@@ -82,32 +80,32 @@ test('retrieve all application properties', done => {
   };
 
   const instanceProps = {
-    appId:          '1',
-    appTitle:       'title',
+    appId: '1',
+    appTitle: 'title',
     appPackageName: 'com.deskpro.app',
-    instanceId:     '1',
+    instanceId: '1',
 
     instanceExperimentalOne: experimental.instanceExperimentalOne,
-    instanceExperimentalTwo: experimental.instanceExperimentalTwo
+    instanceExperimentalTwo: experimental.instanceExperimentalTwo,
   };
 
   const contextProps = {
-    type:       'ticket',
-    entityId:   '1',
+    type: 'ticket',
+    entityId: '1',
     locationId: '1',
-    tabId:      'tab-1',
-    tabUrl:     'https://127.0.0.1',
+    tabId: 'tab-1',
+    tabUrl: 'https://127.0.0.1',
 
-    contextExperimentalThree: experimental.contextExperimentalThree
+    contextExperimentalThree: experimental.contextExperimentalThree,
   };
 
   const app = createAppFromProps({
     registerEventHandlers: function() {},
-    localDispatcher:    new AppEventEmitter(),
+    localDispatcher: new AppEventEmitter(),
     incomingDispatcher: new AppEventEmitter(),
     outgoingDispatcher: new AppEventEmitter(),
     instanceProps,
-    contextProps
+    contextProps,
   });
 
   const { type: contextType, ...expectedContextProps } = contextProps;

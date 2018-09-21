@@ -7,7 +7,6 @@ import WidgetMessage from './WidgetMessage';
  * @extends {WidgetMessage}
  */
 class WidgetResponse extends WidgetMessage {
-
   /**
    * @param {String} id the message id
    * @param {String} widgetId the widget it

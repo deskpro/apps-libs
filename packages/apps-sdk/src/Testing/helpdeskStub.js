@@ -15,8 +15,7 @@ import { CHANNEL_OUTGOING, INVOCATION_REQUESTRESPONSE } from '../Core/Event';
  * @param {string} eventName
  * @return {{ channelType:String, invocationType: String }|null}
  */
-function getEventDefinition(eventName)
-{
+function getEventDefinition(eventName) {
   const providers = [
     AppEvents,
     ContextUserEvents,
@@ -25,13 +24,13 @@ function getEventDefinition(eventName)
     DeskproWindowEvents,
     SecurityEvents,
     WebAPIEvents,
-    WidgetEvents
+    WidgetEvents,
   ];
 
-  for(const provider of providers) {
+  for (const provider of providers) {
     const event = provider.getDefinition(eventName);
     if (event) {
-      return event
+      return event;
     }
   }
 
@@ -44,22 +43,22 @@ let scenario = {
   name: null,
   request: 0,
   instanceProps: {},
-  contextProps: {}
+  contextProps: {},
 };
 
 const defaultInstanceProps = {
-  appId:          '1',
-  appTitle:       'Your title',
+  appId: '1',
+  appTitle: 'Your title',
   appPackageName: 'app',
-  instanceId:     '1',
+  instanceId: '1',
 };
 
 const defaultContextProps = {
-  type:       'ticket',
-  entityId:   '1',
+  type: 'ticket',
+  entityId: '1',
   locationId: '1',
-  tabId:      'tab-1',
-  tabUrl:     'https://127.0.0.1',
+  tabId: 'tab-1',
+  tabUrl: 'https://127.0.0.1',
 };
 
 /**
@@ -68,24 +67,23 @@ const defaultContextProps = {
  * @param {String} qs
  * @return {{name: null, instanceProps: {}, contextProps: {}}}
  */
-export function parseScenarioInitQueryString(qs)
-{
+export function parseScenarioInitQueryString(qs) {
   const qsProps = parse(qs);
 
   const props = {
-    name:           null,
-    instanceProps:  {},
-    contextProps:   {},
+    name: null,
+    instanceProps: {},
+    contextProps: {},
   };
 
   Object.keys(qsProps).forEach(qsProp => {
     if (qsProp.startsWith('instanceProps.')) {
-      const name = qsProp.replace(/instanceProps\\./, "");
+      const name = qsProp.replace(/instanceProps\\./, '');
       props.instanceProps[name] = qsProps[qsProp];
     } else if (qsProp.startsWith('contextProps.')) {
-      const name = qsProp.replace(/contextProps\\./, "");
+      const name = qsProp.replace(/contextProps\\./, '');
       props.contextProps[name] = qsProps[qsProp];
-    } else if(qsProp === 'scenario') {
+    } else if (qsProp === 'scenario') {
       props.name = qsProps[qsProp];
     }
   });
@@ -101,15 +99,14 @@ export function parseScenarioInitQueryString(qs)
  * @param {{}} instanceProps an object containing the instance props passed to the app at initialize time
  * @param {{}} contextProps an object containing the context props passed to the app at initialize time
  */
-export function setActiveScenario({name, instanceProps, contextProps}) {
-
+export function setActiveScenario({ name, instanceProps, contextProps }) {
   const steps = scenarioConfigurations[name];
-  if (! steps) {
+  if (!steps) {
     throw new Error(`Scenario with name: ${name} is not configured`);
   }
 
-  scenario.name     = name;
-  scenario.request  = 0;
+  scenario.name = name;
+  scenario.request = 0;
   scenario.instanceProps = { ...defaultInstanceProps, ...instanceProps };
   scenario.contextProps = { ...defaultContextProps, ...contextProps };
 }
@@ -126,26 +123,29 @@ export function addScenario(scenario, handlers) {
  * @param {{ data: {} }}  ev
  * @return {{}}
  */
-function getHandlerPayload(ev)
-{
+function getHandlerPayload(ev) {
   const { eventName, body } = ev.data;
 
-  if (-1 < [WebAPIEvents.EVENT_WEBAPI_REQUEST_DESKPRO, WebAPIEvents.EVENT_WEBAPI_REQUEST_FETCH].indexOf(eventName)) {
-    return { ... body.init, url: body.url }
+  if (
+    -1 <
+    [
+      WebAPIEvents.EVENT_WEBAPI_REQUEST_DESKPRO,
+      WebAPIEvents.EVENT_WEBAPI_REQUEST_FETCH,
+    ].indexOf(eventName)
+  ) {
+    return { ...body.init, url: body.url };
   }
-  return {...body};
+  return { ...body };
 }
 
-postRobot.on('urn:deskpro:apps.widget.onready?widgetId=dev', {}, function (ev) {
-
+postRobot.on('urn:deskpro:apps.widget.onready?widgetId=dev', {}, function(ev) {
   return {
-    instanceProps:  { ...scenario.instanceProps },
-    contextProps:   { ...scenario.contextProps },
-  }
+    instanceProps: { ...scenario.instanceProps },
+    contextProps: { ...scenario.contextProps },
+  };
 });
 
-postRobot.on('urn:deskpro:apps.widget.event?widgetId=dev', {}, function (ev) {
-
+postRobot.on('urn:deskpro:apps.widget.event?widgetId=dev', {}, function(ev) {
   const configuration = scenarioConfigurations[scenario.name];
   let response = null;
 
@@ -164,33 +164,53 @@ postRobot.on('urn:deskpro:apps.widget.event?widgetId=dev', {}, function (ev) {
   if (response) {
     const { body, status } = response;
     const { correlationId, widgetId, id } = ev.data;
-    postRobot.send(ev.source, eventName, { id, widgetId, correlationId, body: JSON.stringify(body), status: (status || 'success') });
-    return ;
+    postRobot.send(ev.source, eventName, {
+      id,
+      widgetId,
+      correlationId,
+      body: JSON.stringify(body),
+      status: status || 'success',
+    });
+    return;
   }
 
   // let's check if we have to send an error response
   let error = null;
   const definition = getEventDefinition(eventName);
 
-  const isRequestResponse = definition
-    && definition.channelType === CHANNEL_OUTGOING
-    && definition.invocationType === INVOCATION_REQUESTRESPONSE
-  ;
+  const isRequestResponse =
+    definition &&
+    definition.channelType === CHANNEL_OUTGOING &&
+    definition.invocationType === INVOCATION_REQUESTRESPONSE;
 
-  if (! scenario) {
-    error = { message: `scenario "${scenario.name}" is not configured `, data: scenario.name }
-    console.error(`scenario "${scenario.name}" is not configured `)
+  if (!scenario) {
+    error = {
+      message: `scenario "${scenario.name}" is not configured `,
+      data: scenario.name,
+    };
+    console.error(`scenario "${scenario.name}" is not configured `);
   }
 
-  if (! response && isRequestResponse) {
+  if (!response && isRequestResponse) {
     const { body } = ev.data;
-    error = { message: `No handler defined for event "${eventName}"`, data: { eventName, body } };
-    console.error(`No handler defined for event "${eventName}" with payload`, body);
+    error = {
+      message: `No handler defined for event "${eventName}"`,
+      data: { eventName, body },
+    };
+    console.error(
+      `No handler defined for event "${eventName}" with payload`,
+      body,
+    );
   }
 
   if (error && isRequestResponse) {
     const { correlationId, widgetId, id } = ev.data;
-    postRobot.send(ev.source, eventName, { id, widgetId, correlationId, body: JSON.stringify(error), status: "error" });
+    postRobot.send(ev.source, eventName, {
+      id,
+      widgetId,
+      correlationId,
+      body: JSON.stringify(error),
+      status: 'error',
+    });
   }
-
 });

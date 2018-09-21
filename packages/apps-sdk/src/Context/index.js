@@ -26,11 +26,7 @@ export function createContext(
   instanceProps,
   contextProps,
 ) {
-  return ContextFactory.create(
-    outgoingDispatcher,
-    instanceProps,
-    contextProps,
-  );
+  return ContextFactory.create(outgoingDispatcher, instanceProps, contextProps);
 }
 
 /**

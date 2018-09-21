@@ -20,6 +20,8 @@ export function propertyProviderTab(outgoingDispatcher, contextProps) {
 
   console.warn('missing tab id from context, property fetching will not work');
   return function(props) {
-    return Promise.reject(new Error('missing tab id from context, property fetching will not work'))
+    return Promise.reject(
+      new Error('missing tab id from context, property fetching will not work'),
+    );
   };
 }

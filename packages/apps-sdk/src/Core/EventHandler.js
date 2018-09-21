@@ -11,7 +11,7 @@ import {
   OutgoingEventDispatcher,
 } from './emit';
 
-import { parseWidgetMessage, WidgetRequest, WidgetResponse } from '../Widget'
+import { parseWidgetMessage, WidgetRequest, WidgetResponse } from '../Widget';
 
 import {
   INVOCATION_REQUESTRESPONSE,

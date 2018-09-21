@@ -70,11 +70,7 @@ class ContextFactory {
    * @param {ContextProps} contextProps the context properties bag
    * @return {Context}
    */
-  static create(
-    outgoingDispatcher,
-    instanceProps,
-    contextProps,
-  ) {
+  static create(outgoingDispatcher, instanceProps, contextProps) {
     const customFields = createCustomFieldClient({
       outgoingDispatcher,
       instanceProps,

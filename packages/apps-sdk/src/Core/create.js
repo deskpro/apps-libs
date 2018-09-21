@@ -43,7 +43,7 @@ let appInstanceSingleton;
  * @param {WidgetWindowBridge} windowBridge
  * @param {AppClient} app
  */
-function registerAppEventListeners (windowBridge, app) {
+function registerAppEventListeners(windowBridge, app) {
   handleInvokeEvents(windowBridge, app);
 
   [
@@ -54,7 +54,7 @@ function registerAppEventListeners (windowBridge, app) {
     registerContextEventHandlers,
     registerWebAPIEventHandlers,
     registerDeskproWindowEventHandlers,
-    registerUIEventHandlers
+    registerUIEventHandlers,
   ].forEach(registrar =>
     registrar(
       windowBridge,
@@ -74,15 +74,20 @@ function registerAppEventListeners (windowBridge, app) {
  * @param [others]
  * @return {AppClient}
  */
-export function createAppFromProps({ registerEventHandlers, instanceProps, contextProps, ...others })
-{
+export function createAppFromProps({
+  registerEventHandlers,
+  instanceProps,
+  contextProps,
+  ...others
+}) {
   const instancePropsObject = new InstanceProps(instanceProps);
   const contextPropsObject = new ContextProps(contextProps);
 
-  const incomingDispatcher = others.incomingDispatcher || IncomingEventDispatcher;
-  const outgoingDispatcher = others.outgoingDispatcher || OutgoingEventDispatcher;
+  const incomingDispatcher =
+    others.incomingDispatcher || IncomingEventDispatcher;
+  const outgoingDispatcher =
+    others.outgoingDispatcher || OutgoingEventDispatcher;
   const localDispatcher = others.localDispatcher || InternalEventDispatcher;
-
 
   const defaultProps = {
     registerEventHandlers,
@@ -91,22 +96,35 @@ export function createAppFromProps({ registerEventHandlers, instanceProps, conte
     outgoingDispatcher,
     localDispatcher,
 
-    instanceProps:  instancePropsObject,
-    contextProps:   contextPropsObject,
-    context:        createContext(outgoingDispatcher, incomingDispatcher, instancePropsObject, contextPropsObject),
-    restApi:        createDeskproApiClient(outgoingDispatcher),
-    storageApi:     createStorageAPIClient(outgoingDispatcher, instancePropsObject, contextPropsObject),
-    deskproWindow:  createDeskproWindowFacade(outgoingDispatcher),
-    oauth:          createOauthAPIClient(outgoingDispatcher, instancePropsObject, contextPropsObject),
-    ui:             createUIFacade(outgoingDispatcher, localDispatcher)
+    instanceProps: instancePropsObject,
+    contextProps: contextPropsObject,
+    context: createContext(
+      outgoingDispatcher,
+      incomingDispatcher,
+      instancePropsObject,
+      contextPropsObject,
+    ),
+    restApi: createDeskproApiClient(outgoingDispatcher),
+    storageApi: createStorageAPIClient(
+      outgoingDispatcher,
+      instancePropsObject,
+      contextPropsObject,
+    ),
+    deskproWindow: createDeskproWindowFacade(outgoingDispatcher),
+    oauth: createOauthAPIClient(
+      outgoingDispatcher,
+      instancePropsObject,
+      contextPropsObject,
+    ),
+    ui: createUIFacade(outgoingDispatcher, localDispatcher),
   };
 
-  const appProps = {  ...defaultProps, ...others, registerEventHandlers };
+  const appProps = { ...defaultProps, ...others, registerEventHandlers };
   const appClient = new AppClient(appProps);
 
   if (!others.noSetSingleton) {
     if (!appInstanceSingleton || others.forceSetSingleton) {
-      appInstanceSingleton = appClient
+      appInstanceSingleton = appClient;
     }
   }
 
@@ -121,7 +139,9 @@ export function createAppFromProps({ registerEventHandlers, instanceProps, conte
  */
 export function getDpApp() {
   if (!appInstanceSingleton) {
-    throw new Error("You cannot use getDpApp() before the client has been created");
+    throw new Error(
+      'You cannot use getDpApp() before the client has been created',
+    );
   }
   return appInstanceSingleton;
 }
@@ -129,8 +149,7 @@ export function getDpApp() {
 /**
  * @param {function(AppClient): function} renderFactory a callback to be invoked after the app is ready
  */
-export function createRenderer(renderFactory)
-{
+export function createRenderer(renderFactory) {
   /**
    * @param {AppClient} dpapp
    */
@@ -151,13 +170,16 @@ export function createRenderer(renderFactory)
  * @param {Object} contextProps
  * @return {AppClient}
  */
-function createAppOnConnection({widgetWindow, instanceProps, contextProps})
-{
+function createAppOnConnection({ widgetWindow, instanceProps, contextProps }) {
   /**
    * @type {function}
    */
   const registerEventHandlers = handleAppEvents.bind(null, widgetWindow);
-  return createAppFromProps({ registerEventHandlers, instanceProps, contextProps })
+  return createAppFromProps({
+    registerEventHandlers,
+    instanceProps,
+    contextProps,
+  });
 }
 
 /**
@@ -165,14 +187,12 @@ function createAppOnConnection({widgetWindow, instanceProps, contextProps})
  * @param widgetWin
  * @return {Promise<{dpapp: AppClient, renderer: Function}>}
  */
-export function createApp(renderFactory, widgetWin)
-{
+export function createApp(renderFactory, widgetWin) {
   const WidgetWindow = widgetWin || createWindowBridge(window);
 
   return WidgetWindow.connect(createAppOnConnection)
     .then(registerAppEventListeners.bind(null, WidgetWindow))
-    .then(createRenderer(renderFactory))
-  ;
+    .then(createRenderer(renderFactory));
 }
 
 /**
@@ -181,15 +201,18 @@ export function createApp(renderFactory, widgetWin)
  * @param options
  * @return {Promise<{dpapp: AppClient, renderer: Function}>}
  */
-export function createMockApp (createRenderer, options = {}) {
-  const WidgetWindow = createMockWindowBridge(options.window || document.getElementById('testAppFrame') || window, options);
+export function createMockApp(createRenderer, options = {}) {
+  const WidgetWindow = createMockWindowBridge(
+    options.window || document.getElementById('testAppFrame') || window,
+    options,
+  );
 
   // DPAPP_MANIFEST is exported by webpack.
   const manifest = DPAPP_MANIFEST || null;
 
   WidgetWindow.connect(createAppOnConnection)
     .then(registerAppEventListeners.bind(null, WidgetWindow))
-    .then(createRenderer(createRenderer, manifest))
+    .then(createRenderer(createRenderer, manifest));
 }
 
 export default createApp;

@@ -1,10 +1,9 @@
 import * as Events from './events';
 import * as Constants from './constants';
 
-function setProps(newProps)
-{
+function setProps(newProps) {
   const { localDispatcher, outgoingDispatcher, props: oldProps } = this;
-  this.props = {  ...oldProps, ...newProps };
+  this.props = { ...oldProps, ...newProps };
   localDispatcher.emit(Events.EVENT_UI_CHANGED, this.props, oldProps);
   outgoingDispatcher.emitAsync(Events.EVENT_UI_CHANGED, this.props);
 }
@@ -20,26 +19,25 @@ class UIFacade {
    * @param {AppEventEmitter} localDispatcher
    */
   constructor(outgoingDispatcher, localDispatcher) {
-
     this.outgoingDispatcher = outgoingDispatcher;
     this.localDispatcher = localDispatcher;
     this.setProps = setProps.bind(this);
 
     this.props = {
-      display:            Constants.DISPLAY_EXPANDED, // expanded, collapsed
-      visibility:         Constants.VISIBILITY_VISIBLE, // visible, hidden
-      state:              Constants.STATE_READY, // loading, ready, empty, error, ? partial
-      menu:               Constants.VISIBILITY_VISIBLE, // visible, hidden
-      badgeVisibility:    Constants.VISIBILITY_HIDDEN, // visible, hidden
-      badgeCount:         0,
+      display: Constants.DISPLAY_EXPANDED, // expanded, collapsed
+      visibility: Constants.VISIBILITY_VISIBLE, // visible, hidden
+      state: Constants.STATE_READY, // loading, ready, empty, error, ? partial
+      menu: Constants.VISIBILITY_VISIBLE, // visible, hidden
+      badgeVisibility: Constants.VISIBILITY_HIDDEN, // visible, hidden
+      badgeCount: 0,
 
       settingsVisibility: Constants.VISIBILITY_HIDDEN, // visible, hidden
-      isResizing:         false,
+      isResizing: false,
 
-      notification:            null,
-      notificationType:        null,
-      title: null
-    }
+      notification: null,
+      notificationType: null,
+      title: null,
+    };
   }
 
   // TITLE API
@@ -49,17 +47,18 @@ class UIFacade {
    *
    * @param {string|null} [title]
    */
-  changeTitle = (title) =>
-  {
+  changeTitle = title => {
     const { title: oldTitle } = this.props;
     if (title !== oldTitle) {
-      this.setProps({ title: !!title ? title : null })
+      this.setProps({ title: !!title ? title : null });
     }
   };
 
   // MENU API
 
-  get menu() { return this.props.menu; }
+  get menu() {
+    return this.props.menu;
+  }
 
   /**
    * Shows the UI container's application menu
@@ -67,7 +66,6 @@ class UIFacade {
    * @method
    */
   showMenu = () => {
-
     const { menu: oldVisibility } = this.props;
     const newVisibility = Constants.VISIBILITY_VISIBLE;
 
@@ -144,9 +142,7 @@ class UIFacade {
    * @param {number} newCount
    */
   set badgeCount(newCount) {
-    const {
-      badgeCount: oldCount,
-    } = this.props;
+    const { badgeCount: oldCount } = this.props;
 
     if (oldCount !== newCount) {
       this.setProps({ badgeCount: newCount });
@@ -197,7 +193,7 @@ class UIFacade {
     const { visibility: oldVisibility } = this.props;
 
     if (oldVisibility !== newVisibility) {
-      this.setProps({ visibility: newVisibility })
+      this.setProps({ visibility: newVisibility });
     }
   };
 
@@ -211,7 +207,7 @@ class UIFacade {
     const { visibility: oldVisibility } = this.props;
 
     if (oldVisibility !== newVisibility) {
-      this.setProps({ visibility: newVisibility })
+      this.setProps({ visibility: newVisibility });
     }
   };
 
@@ -259,7 +255,7 @@ class UIFacade {
     const { display: oldDisplay } = this.props;
 
     if (oldDisplay !== newDisplay) {
-      this.setProps({ display: newDisplay })
+      this.setProps({ display: newDisplay });
     }
   };
 
@@ -322,7 +318,6 @@ class UIFacade {
     return this.props.state === Constants.STATE_ERROR;
   };
 
-
   /**
    * Shows a loading indicator
    *
@@ -349,7 +344,6 @@ class UIFacade {
     }
   };
 
-
   // Message API
 
   /**
@@ -358,9 +352,13 @@ class UIFacade {
    * @readonly
    * @type {string|Error}
    */
-  get notification() { return this.props.notification; }
+  get notification() {
+    return this.props.notification;
+  }
 
-  get notificationType() { return this.props.notificationType; }
+  get notificationType() {
+    return this.props.notificationType;
+  }
 
   showNotification = (notification, notificationType) => {
     this.setProps({ notification, notificationType });
@@ -368,10 +366,12 @@ class UIFacade {
   /**
    * @param {Error} error
    */
-  showErrorNotification = (error) => { this.showNotification(error.message, 'error') };
+  showErrorNotification = error => {
+    this.showNotification(error.message, 'error');
+  };
 
   closeNotification = () => {
-    this.setProps({ notification:null, notificationType:null });
+    this.setProps({ notification: null, notificationType: null });
   };
 
   // SETTINGS API

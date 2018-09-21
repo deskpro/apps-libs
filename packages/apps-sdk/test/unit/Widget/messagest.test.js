@@ -1,5 +1,9 @@
-import { nextRequest, nextResponse, parseResponse, parseRequest } from '../../../src/Widget/messages';
-
+import {
+  nextRequest,
+  nextResponse,
+  parseResponse,
+  parseRequest,
+} from '../../../src/Widget/messages';
 
 test('nextRequest increments messageId and correlationId', done => {
   const payload = { some: 'string' };
@@ -13,7 +17,7 @@ test('nextRequest increments messageId and correlationId', done => {
   );
   expect(
     parseInt(secondRequest.correlationId, 10) >
-    parseInt(firstRequest.correlationId, 10),
+      parseInt(firstRequest.correlationId, 10),
   ).toBe(true);
 
   done();
@@ -46,4 +50,3 @@ test('nextResponse increments messageId and re-uses correlationId', done => {
 
   done();
 });
-

@@ -1,7 +1,6 @@
 import { parseWidgetMessage } from '../../../src/Widget/factories';
 import { parseRequest, parseResponse } from '../../../src/Widget/messages';
 
-
 import WidgetResponse from '../../../src/Widget/WidgetResponse';
 import WidgetRequest from '../../../src/Widget/WidgetRequest';
 
@@ -33,4 +32,3 @@ test('parseMessageFromJS parses request', done => {
   expect(actualValue.toJS()).toEqual(expectedValue.toJS());
   done();
 });
-

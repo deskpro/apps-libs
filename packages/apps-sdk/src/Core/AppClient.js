@@ -34,7 +34,7 @@ class AppClient {
     storageApi,
     deskproWindow,
     oauth,
-    ui
+    ui,
   }) {
     this.props = {
       registerEventHandlers,
@@ -48,7 +48,7 @@ class AppClient {
       storageApi,
       deskproWindow,
       oauth,
-      ui
+      ui,
     };
 
     this._state = {
@@ -239,6 +239,10 @@ class AppClient {
     return this.props.instanceProps.instanceId;
   }
 
+  get helpdeskUuid() {
+    return this.props.instanceProps.helpdeskUuid || '.';
+  }
+
   /**
    * The display title of this application
    *
@@ -270,13 +274,14 @@ class AppClient {
    * @method
    */
   refresh = () => {
-
-    if (window && window.location && typeof window.location.reload === 'function') {
+    if (
+      window &&
+      window.location &&
+      typeof window.location.reload === 'function'
+    ) {
       window.location.reload(true);
     }
-
   };
-
 
   // CLIENTS
 

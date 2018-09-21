@@ -33,7 +33,6 @@ export const EVENT_BADGE = 'app.badge';
  * @type {{EVENT_TITLE_CHANGED: string, EVENT_BADGE: {channelType: string, invocationType: string}, EVENT_SUBSCRIBE: {channelType: string, invocationType: string}}}
  */
 export const props = {
-
   EVENT_TITLE_CHANGED,
 
   EVENT_BADGE: {
@@ -50,16 +49,14 @@ export const props = {
 const eventNames = {
   EVENT_TITLE_CHANGED,
   EVENT_BADGE,
-  EVENT_SUBSCRIBE
+  EVENT_SUBSCRIBE,
 };
-
 
 /**
  * @param {string} eventName
  * @return {{ channelType: string, invocationType:string }|null}
  */
-export function getDefinition(eventName)
-{
+export function getDefinition(eventName) {
   for (const key of Object.keys(eventNames)) {
     if (eventNames[key] === eventName) {
       return props[key];
@@ -69,14 +66,16 @@ export function getDefinition(eventName)
   return null;
 }
 
-
 /**
  * @method
  *
  * @param {string} name
  * @return {boolean}
  */
-export const isEventName = name => Object.keys(eventNames).map(key => events[key]).indexOf(name) !== -1;
+export const isEventName = name =>
+  Object.keys(eventNames)
+    .map(key => events[key])
+    .indexOf(name) !== -1;
 
 /**
  * Registers

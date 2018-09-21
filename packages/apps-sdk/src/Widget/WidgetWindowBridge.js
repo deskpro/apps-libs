@@ -163,11 +163,7 @@ class WidgetWindowBridge {
    */
   async emitResponse(eventName, error, data, request) {
     const { widgetId } = this;
-    const response = nextResponse(
-      request,
-      error ? error : data,
-      !!error,
-    );
+    const response = nextResponse(request, error ? error : data, !!error);
 
     const payload = { eventName, ...response.toJS() };
     const event = `urn:deskpro:apps.widget.event?widgetId=${widgetId}`;

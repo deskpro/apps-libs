@@ -1,11 +1,10 @@
 import { createRenderer, createAppFromProps } from '../../../src/Core/create';
-import AppEventEmitter from "../../../src/Core/AppEventEmitter";
+import AppEventEmitter from '../../../src/Core/AppEventEmitter';
 
 test('createRenderer creates a renderer function for an app', () => {
-
   const app = createAppFromProps({
     registerEventHandlers: function() {},
-    localDispatcher:    new AppEventEmitter(),
+    localDispatcher: new AppEventEmitter(),
     incomingDispatcher: new AppEventEmitter(),
     outgoingDispatcher: new AppEventEmitter(),
     instanceProps: {
@@ -20,7 +19,7 @@ test('createRenderer creates a renderer function for an app', () => {
       locationId: '1',
       tabId: 'tab-1',
       tabUrl: 'https://127.0.0.1',
-    }
+    },
   });
 
   const render = jest.fn();

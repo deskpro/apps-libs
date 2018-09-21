@@ -9,7 +9,6 @@ import UIFacade from './UIFacade';
 import connectRenderer from './render';
 import { handleOutgoingEvent } from '../Core/EventHandler';
 
-
 export {
   /**
    * @type {module:UI/events}
@@ -19,11 +18,10 @@ export {
    * @type {module:UI/constants}
    */
   UIConstants,
-
   /**
    * @type {function}
    */
-    connectRenderer
+  connectRenderer,
 };
 
 /**
@@ -35,14 +33,12 @@ export {
  * @param {AppClient} app
  */
 export function registerEventHandlers(windowBridge, app) {
-
   handleOutgoingEvent(
     windowBridge,
     app,
     UIEvents.EVENT_UI_CHANGED,
     UIEvents.props.EVENT_UI_CHANGED,
   );
-
 }
 
 /**
@@ -55,4 +51,3 @@ export function registerEventHandlers(windowBridge, app) {
 export const createUIFacade = (outgoingDispatcher, internalEventDispatcher) => {
   return new UIFacade(outgoingDispatcher, internalEventDispatcher);
 };
-

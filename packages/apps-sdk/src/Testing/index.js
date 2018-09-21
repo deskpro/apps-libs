@@ -1,2 +1,5 @@
-export { addScenario, parseScenarioInitQueryString, setActiveScenario } from './helpdeskStub'
-
+export {
+  addScenario,
+  parseScenarioInitQueryString,
+  setActiveScenario,
+} from './helpdeskStub';

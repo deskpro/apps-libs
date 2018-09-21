@@ -1,19 +1,19 @@
-import WidgetResponse from "./WidgetResponse";
-import WidgetRequest from "./WidgetRequest";
+import WidgetResponse from './WidgetResponse';
+import WidgetRequest from './WidgetRequest';
 
 const ids = {
   messageId: 0,
-  correlationId: 0
+  correlationId: 0,
 };
 
 const nextMessageId = () => {
-  const id =  ++ids.messageId;
-  return id.toString()
+  const id = ++ids.messageId;
+  return id.toString();
 };
 
 const nextCorrelationId = () => {
-   const id = ++ids.correlationId;
-   return id.toString()
+  const id = ++ids.correlationId;
+  return id.toString();
 };
 
 /**

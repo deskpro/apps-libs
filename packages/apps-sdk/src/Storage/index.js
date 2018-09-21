@@ -50,9 +50,5 @@ export const createStorageAPIClient = (
     }
   }
 
-  return new StorageApiFacade(
-    outgoingDispatcher,
-    storageAdapter,
-    props,
-  );
+  return new StorageApiFacade(outgoingDispatcher, storageAdapter, props);
 };

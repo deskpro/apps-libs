@@ -1,4 +1,4 @@
-import {UIEvents} from "./index";
+import { UIEvents } from './index';
 
 /**
  *
@@ -6,26 +6,32 @@ import {UIEvents} from "./index";
  * @param {function} createRenderer
  * @return {function}
  */
-export default function connectRenderer(dpapp, createRenderer)
-{
+export default function connectRenderer(dpapp, createRenderer) {
   const renderer = createRenderer(dpapp);
 
   const actions = {
-    refresh:          dpapp.refresh ,
-    collapse:         dpapp.ui.collapse ,
-    expand:           dpapp.ui.expand ,
-    closeNotification:dpapp.ui.closeNotification
+    refresh: dpapp.refresh,
+    collapse: dpapp.ui.collapse,
+    expand: dpapp.ui.expand,
+    closeNotification: dpapp.ui.closeNotification,
   };
 
   /**
    * @param {object}  props
    */
-  function connectedRenderer(props)
-  {
+  function connectedRenderer(props) {
     try {
-      const { badgeVisibility, badgeCount, display, notification, notificationType, state, title } = props;
+      const {
+        badgeVisibility,
+        badgeCount,
+        display,
+        notification,
+        notificationType,
+        state,
+        title,
+      } = props;
 
-      renderer ({
+      renderer({
         badgeVisibility,
         badgeCount,
         display,
@@ -33,10 +39,10 @@ export default function connectRenderer(dpapp, createRenderer)
         notificationType,
         state,
 
-        title:           title || dpapp.appTitle ,
-        iconUrl:         "assets/icon.png" ,
+        title: title || dpapp.appTitle,
+        iconUrl: 'assets/icon.png',
 
-        ...actions
+        ...actions,
       });
     } catch (e) {
       console.error('failed to invoke the renderer function', e);

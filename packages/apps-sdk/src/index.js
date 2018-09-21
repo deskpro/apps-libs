@@ -6,17 +6,14 @@ export {
    * @function
    */
   createApp,
-
   /**
    * @function
    */
   createAppFromProps,
-
   /**
    * @function
    */
   createMockApp,
-
   /**
    * @function
    */
@@ -46,7 +43,6 @@ export {
   UIConstants,
 } from './UI';
 
-
 export {
   /**
    * @type {module:Core/ContextUserEvents}
@@ -73,10 +69,9 @@ export {
   SecurityEvents,
 } from './Security';
 
-
 export {
   /**
    * @type {module:Widget/events}
    */
-  WidgetEvents
-} from './Widget'
+  WidgetEvents,
+} from './Widget';

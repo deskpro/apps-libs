@@ -28,13 +28,11 @@ export const props = {
 
 const eventNames = { EVENT_CONTEXT_PROPERTY_GET };
 
-
 /**
  * @param {string} eventName
  * @return {{ channelType: string, invocationType:string }|null}
  */
-export function getDefinition(eventName)
-{
+export function getDefinition(eventName) {
   for (const key of Object.keys(eventNames)) {
     if (eventNames[key] === eventName) {
       return props[key];
@@ -44,11 +42,13 @@ export function getDefinition(eventName)
   return null;
 }
 
-
 /**
  * @method
  *
  * @param {string} name
  * @return {boolean}
  */
-export const isEventName = name => Object.keys(eventNames).map(key => events[key]).indexOf(name) !== -1;
+export const isEventName = name =>
+  Object.keys(eventNames)
+    .map(key => events[key])
+    .indexOf(name) !== -1;

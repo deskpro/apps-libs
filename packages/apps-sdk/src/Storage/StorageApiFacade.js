@@ -112,7 +112,12 @@ class StorageApiFacade {
         );
       }
 
-      return storageAdapter.handleSetStorage(Promise.resolve(this.props), name, value, entityId);
+      return storageAdapter.handleSetStorage(
+        Promise.resolve(this.props),
+        name,
+        value,
+        entityId,
+      );
     }
 
     if (args.length === 2) {
@@ -122,7 +127,11 @@ class StorageApiFacade {
         throw batchError;
       }
 
-      return storageAdapter.handleSetBatchStorage(Promise.resolve(this.props), batch, entityId);
+      return storageAdapter.handleSetBatchStorage(
+        Promise.resolve(this.props),
+        batch,
+        entityId,
+      );
     }
 
     throw new Error(`Bad method call: unknown number of args: ${args.length}`);
@@ -223,13 +232,12 @@ class StorageApiFacade {
     const { storageAdapter } = this.props;
 
     if (validName(name)) {
-      return storageAdapter
-        .handleGetStorage(
-          Promise.resolve(this.props),
-          name,
-          entityId,
-          defaultValue || null,
-        );
+      return storageAdapter.handleGetStorage(
+        Promise.resolve(this.props),
+        name,
+        entityId,
+        defaultValue || null,
+      );
     }
 
     const batch = name;
@@ -246,13 +254,12 @@ class StorageApiFacade {
           'Bad method call: some names were not syntactically valid',
         );
       }
-      return storageAdapter
-        .handleGetBatchStorage(
-          Promise.resolve(this.props),
-          batch,
-          entityId,
-          defaultValue || null,
-        );
+      return storageAdapter.handleGetBatchStorage(
+        Promise.resolve(this.props),
+        batch,
+        entityId,
+        defaultValue || null,
+      );
     }
 
     throw new Error('Bad method call');
@@ -289,7 +296,6 @@ class StorageApiFacade {
     const entityId = `app:${this.props.appId}`;
     return this.getStorage(name, entityId, defaultValue);
   }
-
 }
 
 export default StorageApiFacade;
