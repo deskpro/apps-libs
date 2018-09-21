@@ -1,5 +1,6 @@
 import * as AppEvents from './AppEvents';
 import * as Event from './Event';
+import NamespacedBrowserStorage from '../Storage/NamespacedBrowserStorage'
 
 /**
  * A facade exposing all the underlying services required by an application
@@ -204,6 +205,15 @@ class AppClient {
   }
 
   /**
+   * Returns th UUID of the helpdesk.
+   *
+   * @return {string}
+   */
+  get helpdeskUuid() {
+    return this.props.contextProps.getProperty('appsHelpdeskUuid');
+  }
+
+  /**
    * Returns the name of the current application environment
    *
    * @public
@@ -237,10 +247,6 @@ class AppClient {
    */
   get instanceId() {
     return this.props.instanceProps.instanceId;
-  }
-
-  get helpdeskUuid() {
-    return this.props.instanceProps.helpdeskUuid || '.';
   }
 
   /**
@@ -338,6 +344,38 @@ class AppClient {
    */
   get storage() {
     return this.props.storageApi;
+  }
+
+  /**
+   * A wrapper around the normal browser localStorage. Use this
+   * instead of the actual browser localStorage to avoid key conflicts
+   * with other apps.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Storage
+   * @type {Storage}
+   */
+  get localStorage() {
+    if (!this._localStorage) {
+      this._localStorage = NamespacedBrowserStorage.createLocalStorage(this.helpdeskUuid + ':' + this.appId);
+    }
+
+    return this._localStorage;
+  }
+
+  /**
+   * A wrapper around the normal browser sessionStorage. Use this
+   * instead of the actual browser sessionStorage to avoid key conflicts
+   * with other apps.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Storage
+   * @type {Storage}
+   */
+  get sessionStorage() {
+    if (!this._sessionStorage) {
+      this._sessionStorage = NamespacedBrowserStorage.createSessionStorage(this.helpdeskUuid + ':' + this.appId);
+    }
+
+    return this._sessionStorage;
   }
 
   /**
