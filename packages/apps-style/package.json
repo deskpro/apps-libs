@@ -8,6 +8,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:deskpro/apps-libs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deskpro/apps-libs/issues"
+  },
   "scripts": {
     "dev": "npm run postcss-build && concurrently --kill-others 'npm:postcss-watch' 'npm:init-website-watch' 'npm:docs-server'",
     "build-lib": "npm run postcss-build",
