@@ -6,9 +6,9 @@
 
 This monorepos contains three packages:
 
-* `@deskpro/apps-components` are ReactJS components you should use in your apps
-* `@deskpro/apps-components-style` is the pure CSS implementations of components.
-* `@deskpro/apps-sdk` contains basic functionality for hooking up apps in the Deskpro interface
+* [`@deskpro/apps-components`](https://www.npmjs.com/package/@deskpro/apps-components) are ReactJS components you should use in your apps
+* [`@deskpro/apps-components-style`](https://www.npmjs.com/package/@deskpro/apps-components-style) is the pure CSS implementations of components.
+* [`@deskpro/apps-sdk`](https://www.npmjs.com/package/@deskpro/apps-sdk) contains basic functionality for hooking up apps in the Deskpro interface
 
 See also [@deskpro/apps-react-scripts](https://github.com/deskpro/apps-create) which is a fork of create-react-app.
 
