@@ -1,7 +1,14 @@
 .DS_Store
 *.log
 node_modules
-dist
-lib
 es
 coverage
+
+# build artifacts
+dist/*
+lib/*
+target/*
+.cache
+build/*
+gen/*
+es/*
