@@ -52,10 +52,10 @@ Action.propTypes = {
   /**
    * A string indicating how to display the label. If the value is "always" the label is shown to the right of the icon. If value is "onHover" label will be shown when mouse is over the icon
    */
-  labelDisplay: PropTypes.oneOf(
+  labelDisplay: PropTypes.oneOf([
     'always',
     'onHover'
-  ),
+  ]),
 };
 
 

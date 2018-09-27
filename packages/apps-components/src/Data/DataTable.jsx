@@ -34,7 +34,7 @@ DataTable.propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.function,
+      PropTypes.func,
     ])
   ).isRequired,
 
