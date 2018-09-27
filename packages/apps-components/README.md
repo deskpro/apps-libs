@@ -1,5 +1,10 @@
 # Deskpro Apps Components
 
+[![Build Status](https://travis-ci.org/deskpro/apps-libs.svg?branch=master)](https://travis-ci.org/deskpro/apps-libs)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/deskpro/react-components/blob/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/@deskpro/apps-components.svg?style=flat)](https://www.npmjs.com/package/@deskpro/apps-components)
+[![Storybook](https://github.com/storybooks/press/raw/master/badges/storybook.svg?sanitize=true)](https://deskpro.github.io/apps-libs/components)
+
 ## Live storybook
 
 https://deskpro.github.io/apps-libs/components

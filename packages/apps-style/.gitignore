@@ -13,3 +13,4 @@ website/static/css/style.css
 website/static/css/style.css.map
 
 dist/
+target/
