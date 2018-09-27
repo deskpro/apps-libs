@@ -15,8 +15,8 @@ import '@deskpro/apps-components-style';
  * @return {*}
  * @constructor
  */
-const Menu = ({ className, children, isOpen, onClick, ...props }) => (
-  <div {...props} className={classnames('dp-Menu', className)}>
+const Menu = React.forwardRef(({ className, children, isOpen, onClick, ...props }, ref) => (
+  <div {...props} className={classnames('dp-Menu', className)} ref={ref}>
     <i className="dp-IconSettings" onClick={onClick} />
 
     <ActionList
@@ -26,14 +26,14 @@ const Menu = ({ className, children, isOpen, onClick, ...props }) => (
       {children}
     </ActionList>
   </div>
-);
+));
 
 Menu.propsType = {
 
   /**
    * any additional classnames to be applied to the root element of this component
    */
-  classname: PropTypes.string,
+  className: PropTypes.string,
 
   /**
    * flag to indicate if the menu shows its options

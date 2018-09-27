@@ -19,7 +19,7 @@ class Action extends React.PureComponent {
         onClick={onClick}
         title=  {labelDisplay === 'onHover' ? label : ""}
       >
-        <Icon name={icon} />
+        {icon && <Icon name={icon} />}
 
         {label && labelDisplay === 'always' && <span className="dp-ActionListLabel">{label}</span>}
       </a>
@@ -37,7 +37,7 @@ Action.propTypes = {
   /**
    * the name of an icon that represents the action
    */
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.string,
 
   /**
    * a handler function
@@ -52,15 +52,15 @@ Action.propTypes = {
   /**
    * A string indicating how to display the label. If the value is "always" the label is shown to the right of the icon. If value is "onHover" label will be shown when mouse is over the icon
    */
-  labelDisplay: PropTypes.oneOf(
+  labelDisplay: PropTypes.oneOf([
     'always',
     'onHover'
-  ),
+  ]),
 };
 
 
 Action.defaultProps = {
-
+  icon:          null,
   labelDisplay: 'always'
 };
 

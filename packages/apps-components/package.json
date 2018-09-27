@@ -1,6 +1,6 @@
 {
   "name": "@deskpro/apps-components",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "author": "DeskPRO <support@deskpro.com>",
   "license": "BSD 3-Clause License",
   "main": "lib/index.js",
@@ -19,8 +19,15 @@
     "prepare": "npm run prebuild && npm run build:es2015",
     "dev": "start-storybook -s storybook/static -p 6006"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:deskpro/apps-libs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deskpro/apps-libs/issues"
+  },
   "dependencies": {
-    "@deskpro/apps-components-style": "^0.8.0",
+    "@deskpro/apps-components-style": "^0.8.1",
     "classnames": "^2.2.6",
     "react-custom-scrollbars": "^4.2.1"
   },

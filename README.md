@@ -1,6 +1,10 @@
 # Deskpro Apps
 
-This monorepos contains four packages:
+[![Build Status](https://travis-ci.org/deskpro/apps-libs.svg?branch=master)](https://travis-ci.org/deskpro/apps-libs)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/deskpro/react-components/blob/master/LICENSE)
+
+
+This monorepos contains three packages:
 
 * `@deskpro/apps-components` are ReactJS components you should use in your apps
 * `@deskpro/apps-components-style` is the pure CSS implementations of components.

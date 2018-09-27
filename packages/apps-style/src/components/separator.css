@@ -1,0 +1,17 @@
+div.dp-Hr {
+  border: 0;
+  border-top: 1px solid var(--border-color-light);
+  height: 0;
+  line-height: 0;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.dp-HrTitle {
+  background-color: #fff;
+  color: var(--border-color-light);
+  line-height: 0;
+  padding: 0 10px;
+  text-transform: uppercase;
+}

@@ -21,6 +21,14 @@
   white-space: nowrap;
 }
 
+.dp-ActionBarTitle a {
+  text-decoration: none;
+}
+
+.dp-ActionBarTitle a:hover {
+  text-decoration: underline;
+}
+
 .dp-ActionBar .dp-LevelLeft {
   flex-shrink: initial;
 }

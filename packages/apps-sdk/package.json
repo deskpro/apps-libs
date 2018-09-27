@@ -1,6 +1,6 @@
 {
   "name": "@deskpro/apps-sdk",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "core component of deskpro apps sdk",
   "main": "lib/index.js",
   "publishConfig": {
@@ -20,7 +20,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deskpro/apps-sdk-core.git"
+    "url": "git@github.com:deskpro/apps-libs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deskpro/apps-libs/issues"
   },
   "keywords": [
     "deskpro",
