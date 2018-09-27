@@ -33,7 +33,7 @@ Menu.propsType = {
   /**
    * any additional classnames to be applied to the root element of this component
    */
-  classname: PropTypes.string,
+  className: PropTypes.string,
 
   /**
    * flag to indicate if the menu shows its options
