@@ -1,6 +1,6 @@
 {
   "name": "@deskpro/apps-sdk",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "core component of deskpro apps sdk",
   "main": "lib/index.js",
   "publishConfig": {
