@@ -46,7 +46,7 @@ ActionList.propTypes = {
   /**
    * The text displayed on the left side
    */
-  title: PropTypes.string,
+  title: PropTypes.node,
 };
 
 export default ActionBar;

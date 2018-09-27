@@ -3,7 +3,6 @@ import '@deskpro/apps-components-style';
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Scrollbars } from 'react-custom-scrollbars';
 
 export function renderTrackVerticalDefault({ style, ...props }) {
   const finalStyle = {
@@ -16,25 +15,9 @@ export function renderTrackVerticalDefault({ style, ...props }) {
   return <div style={finalStyle} {...props} />;
 }
 
-function renderThumbVertical({ style, ...props }) {
-  const finalStyle = {
-    ...style,
-    right: 0,
-  };
-
-  return <div className="dp-ScrollableThumb" style={finalStyle} />;
-}
-
 const List = ({ children, height, className }) => (
-  <div className={classnames('dp-Scrollable dp---is-hooverable', className)}>
-    <Scrollbars
-      autoHeight
-      autoHeightMin={height}
-      renderThumbVertical={renderThumbVertical}
-      renderTrackVertical={renderTrackVerticalDefault}
-    >
-      {children}
-    </Scrollbars>
+  <div className={classnames('dp---is-hooverable', className)}>
+    {children}
   </div>
 );
 

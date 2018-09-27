@@ -79,7 +79,7 @@ storiesOf('AppFrame', module)
     <AppFrame title={"Deskpro"} iconUrl={dpLogo} >
       <ActionBar>
         <Action icon={"search"} label={"Find"}/>,
-        <Action icon={"search"} label={"Create"}/>
+        <Action icon={"add"} label={"Create"}/>
       </ActionBar>
       {content()}
     </AppFrame>
@@ -88,7 +88,7 @@ storiesOf('AppFrame', module)
     <AppFrame title={"Deskpro"} iconUrl={"/dp-logo.svg"} notification={"what is going on ?"} notificationType={"error"} >
       <ActionBar>
         <Action icon={"search"} label={"Find"}/>,
-        <Action icon={"search"} label={"Create"}/>
+        <Action icon={"add"} label={"Create"}/>
       </ActionBar>
       {content()}
     </AppFrame>

@@ -9,6 +9,7 @@ import './components/Notification';
 import './components/DataTable';
 import './components/DataList';
 import './components/Panel';
+import './components/Separator';
 import './components/Tabs';
 
 // import the custom styles last so they override the ones from @deskpro/apps-components-style
