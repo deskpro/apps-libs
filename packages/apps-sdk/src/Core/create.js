@@ -28,6 +28,7 @@ import { createStorageAPIClient } from '../Storage';
 import { createDeskproApiClient } from '../WebAPI';
 import { createDeskproWindowFacade } from '../DeskproWindow';
 import { createOauthAPIClient } from '../Security';
+import { createI18n } from '../I18n/create';
 
 import AppClient from './AppClient';
 
@@ -117,6 +118,8 @@ export function createAppFromProps({
       contextPropsObject,
     ),
     ui: createUIFacade(outgoingDispatcher, localDispatcher),
+
+    i18n: createI18n()
   };
 
   const appProps = { ...defaultProps, ...others, registerEventHandlers };

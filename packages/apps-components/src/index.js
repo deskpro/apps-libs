@@ -16,3 +16,11 @@ export { DataTable, DataList } from './Data';
 export { default as Panel } from './Panel';
 export { default as Separator } from './Separator';
 export { Tabs, TabMenu } from './Tabs';
+
+export {
+  DeskproApp,
+  DefaultDeskproApp,
+  DeskproAppConsumer,
+  Phrase,
+  I18nConsumer
+} from './DeskproApp';

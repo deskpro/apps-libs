@@ -22,6 +22,7 @@ class AppClient {
    * @param {DeskproWindowFacade} deskproWindow instance of the deskpro window client
    * @param {OauthFacade} oauth instanceof of the oauth client
    * @param {UIFacade} ui instance of the ui client
+   * @param {I18nClient} i18n instance of the i18n client
    */
   constructor({
     registerEventHandlers,
@@ -36,6 +37,7 @@ class AppClient {
     deskproWindow,
     oauth,
     ui,
+    i18n
   }) {
     this.props = {
       registerEventHandlers,
@@ -50,6 +52,7 @@ class AppClient {
       deskproWindow,
       oauth,
       ui,
+      i18n
     };
 
     this._state = {
@@ -376,6 +379,25 @@ class AppClient {
     }
 
     return this._sessionStorage;
+  }
+
+  /**
+   * Get the i18n client.
+   *
+   * @return {I18nClient}
+   */
+  get i18n() {
+    return this.props.i18n;
+  }
+
+  /**
+   * Alias for i18n.t()
+   *
+   * @param keys
+   * @param vars
+   */
+  t(keys, vars) {
+    return this.props.i18n.t(keys, vars)
   }
 
   /**
