@@ -37,6 +37,7 @@
     "src"
   ],
   "dependencies": {
+    "@babel/runtime": "7.1.2",
     "date-fns": "^2.0.0-alpha.18",
     "element-resize-detector": "^1.1.12",
     "eventemitter3": "2.0.3",
@@ -56,6 +57,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
@@ -75,6 +77,21 @@
   },
   "jest": {
     "testRegex": "(/test/.*\\.test.js)$",
-    "testURL": "http://localhost"
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!date-fns)"
+    ],
+    "moduleFileExtensions": [
+      "web.js",
+      "mjs",
+      "js",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ]
   }
 }
