@@ -1,11 +1,41 @@
 import * as Events from './events';
 import * as Constants from './constants';
 
-function setProps(newProps) {
-  const { localDispatcher, outgoingDispatcher, props: oldProps } = this;
-  this.props = { ...oldProps, ...newProps };
-  localDispatcher.emit(Events.EVENT_UI_CHANGED, this.props, oldProps);
-  outgoingDispatcher.emitAsync(Events.EVENT_UI_CHANGED, this.props);
+function requestChangeProps(newProps) {
+  const { outgoingDispatcher } = this;
+  const oldProps = JSON.parse(JSON.stringify(this.props));
+
+  const nextProps = { ...oldProps, ...newProps };
+  return outgoingDispatcher.emitAsync(Events.EVENT_UI_CHANGED, nextProps);
+}
+
+/**
+ * @param {Object} newProps
+ * @return {Object}
+ */
+function receiveChangeProps(newProps)
+{
+  const { localDispatcher } = this;
+  const oldProps = JSON.parse(JSON.stringify(this.props));
+
+  const actualProps = { ...oldProps, ...newProps };
+  this.props = actualProps;
+
+  localDispatcher.emit(Events.EVENT_UI_CHANGED, actualProps, oldProps);
+  return actualProps;
+}
+
+/**
+ * @param {UIFacade} facade
+ */
+function actionChangeProps(facade)
+{
+  const request = requestChangeProps.bind(facade);
+  const receive = receiveChangeProps.bind(facade);
+
+  return function action(props) {
+    return request(props).then(receive)
+  };
 }
 
 /**
@@ -21,7 +51,7 @@ class UIFacade {
   constructor(outgoingDispatcher, localDispatcher) {
     this.outgoingDispatcher = outgoingDispatcher;
     this.localDispatcher = localDispatcher;
-    this.setProps = setProps.bind(this);
+    this.setProps = actionChangeProps(this);
 
     this.props = {
       display: Constants.DISPLAY_EXPANDED, // expanded, collapsed
@@ -273,6 +303,20 @@ class UIFacade {
     }
   };
 
+  /**
+   * Puts the application in full-screen mode. Full-screen mode will not be acquired if another app is already in full-screen
+   *
+   * @method
+   */
+  fullscreen = () => {
+    const newDisplay = Constants.DISPLAY_FULLSCREEN;
+    const { display: oldDisplay } = this.props;
+
+    if (oldDisplay !== newDisplay) {
+      this.setProps({ display: newDisplay });
+    }
+  };
+
   // UI STATE API
 
   /**
@@ -360,8 +404,12 @@ class UIFacade {
     return this.props.notificationType;
   }
 
-  showNotification = (notification, notificationType) => {
-    this.setProps({ notification, notificationType });
+  /**
+   * @param {string} message the message of the notificatino
+   * @param {string} type the type of notification, for instance "error"
+   */
+  showNotification = (message, type) => {
+    this.setProps({ notification: message, notificationType: type });
   };
   /**
    * @param {Error} error
