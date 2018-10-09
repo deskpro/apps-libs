@@ -4,11 +4,6 @@
  * (e.g. on the actual <body> tag itself usually).
  */
 
-.dp-Body {
-  display: inherit;
-  margin: auto;
-}
-
 .dp-Root {
 
   color: var(--text-color);

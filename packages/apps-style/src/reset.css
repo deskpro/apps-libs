@@ -1,0 +1,7 @@
+/**
+ required for full-screen to remove any marings
+ */
+body {
+  display: inherit;
+  margin: auto;
+}
