@@ -5,8 +5,8 @@
  */
 
 .dp-Body {
-  margin: auto;
   display: inherit;
+  margin: auto;
 }
 
 .dp-Root {

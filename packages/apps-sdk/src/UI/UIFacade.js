@@ -28,7 +28,7 @@ function receiveChangeProps(newProps)
 /**
  * @param {UIFacade} facade
  */
-function actionChangeProps(facade)
+function actionChangePropsAsync(facade)
 {
   const request = requestChangeProps.bind(facade);
   const receive = receiveChangeProps.bind(facade);
@@ -36,6 +36,16 @@ function actionChangeProps(facade)
   return function action(props) {
     return request(props).then(receive)
   };
+}
+
+function setProps(newProps) {
+  const { outgoingDispatcher, localDispatcher } = this;
+  const oldProps = JSON.parse(JSON.stringify(this.props));
+
+  const nextProps = { ...oldProps, ...newProps };
+  this.props = JSON.parse(JSON.stringify(newProps));
+  localDispatcher.emit(Events.EVENT_UI_CHANGED, nextProps, oldProps);
+  outgoingDispatcher.emitAsync(Events.EVENT_UI_CHANGED, nextProps);
 }
 
 /**
@@ -51,7 +61,8 @@ class UIFacade {
   constructor(outgoingDispatcher, localDispatcher) {
     this.outgoingDispatcher = outgoingDispatcher;
     this.localDispatcher = localDispatcher;
-    this.setProps = actionChangeProps(this);
+    this.setPropsAsync = actionChangePropsAsync(this);
+    this.setProps = setProps.bind(this);
 
     this.props = {
       display: Constants.DISPLAY_EXPANDED, // expanded, collapsed
@@ -313,7 +324,7 @@ class UIFacade {
     const { display: oldDisplay } = this.props;
 
     if (oldDisplay !== newDisplay) {
-      this.setProps({ display: newDisplay });
+      this.setPropsAsync({ display: newDisplay });
     }
   };
 

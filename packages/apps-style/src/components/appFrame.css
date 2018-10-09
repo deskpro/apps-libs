@@ -3,9 +3,8 @@
   border: 2px solid var(--border-color-light);
   border-radius: var(--border-radius);
   display: block;
-  padding: var(--card-padding);
-
   margin: 8px;
+  padding: var(--card-padding);
 }
 
 .dp-AppFrame:not(:last-child) {
