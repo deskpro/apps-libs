@@ -26,6 +26,16 @@
   width: 100%;
 }
 
+.dp-ListItemRow .dp-Level .dp-LevelLeft {
+  flex: auto;
+}
+
+.dp-ListItemRow .dp-Level .dp-LevelLeft span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .dp---is-hoverable.dp-ListItem:hover,
 .dp-ListItem.is-hover {
   border-color: var(--blue);
