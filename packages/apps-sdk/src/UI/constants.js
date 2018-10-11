@@ -55,3 +55,9 @@ export const DISPLAY_COLLAPSED = 'collapsed';
  * @type {string}
  */
 export const DISPLAY_EXPANDED = 'expanded';
+
+/**
+ * @readonly
+ * @type {string}
+ */
+export const DISPLAY_FULLSCREEN = 'fullscreen';

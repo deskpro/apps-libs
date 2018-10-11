@@ -29,6 +29,10 @@
   color: var(--link-hover-color);
 }
 
+.dp---is-hoverable:hover .dp-Menu .dp-ActionListLabel {
+  color: inherit;
+}
+
 .dp---is-hidden.dp-ActionList {
   display: none;
   height: 0;

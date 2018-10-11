@@ -2,7 +2,7 @@
  * @module UI/events
  */
 
-import { CHANNEL_OUTGOING, INVOCATION_FIREANDFORGET } from '../Core/Event';
+import { CHANNEL_OUTGOING, INVOCATION_REQUESTRESPONSE } from '../Core/Event';
 
 /**
  *
@@ -23,7 +23,7 @@ const eventNames = {
 export const props = {
   EVENT_UI_CHANGED: {
     channelType: CHANNEL_OUTGOING,
-    invocationType: INVOCATION_FIREANDFORGET,
+    invocationType: INVOCATION_REQUESTRESPONSE,
   },
 };
 

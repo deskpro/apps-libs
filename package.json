@@ -10,7 +10,5 @@
     "publish-git": "lerna publish --force-publish --skip-npm --yes",
     "publish-npm": "lerna publish --force-publish --skip-git --yes"
   },
-  "dependencies": {
-    "i18next": "^11.9.0"
-  }
+  "dependencies": {}
 }
