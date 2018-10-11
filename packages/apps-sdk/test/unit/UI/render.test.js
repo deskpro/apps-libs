@@ -1,14 +1,21 @@
 import { createRenderer, createAppFromProps } from '../../../src/Core/create';
 import * as Constants from '../../../src/UI/constants';
+import * as Events from '../../../src/UI/events';
 import connectRenderer from '../../../src/UI/render';
 import AppEventEmitter from '../../../src/Core/AppEventEmitter';
 
+const outgoingDispatcher = new AppEventEmitter();
+outgoingDispatcher.addListener(Events.EVENT_UI_CHANGED, (resolve, reject, data) => {
+  resolve(data)
+});
+
 test('connectRenderer connects a renderer function', () => {
+
   const app = createAppFromProps({
     registerEventHandlers: function() {},
     localDispatcher: new AppEventEmitter(),
     incomingDispatcher: new AppEventEmitter(),
-    outgoingDispatcher: new AppEventEmitter(),
+    outgoingDispatcher,
 
     instanceProps: {
       appId: '1',
@@ -66,7 +73,7 @@ test('render function gets invoked with the correct app title', () => {
     registerEventHandlers: function() {},
     localDispatcher: new AppEventEmitter(),
     incomingDispatcher: new AppEventEmitter(),
-    outgoingDispatcher: new AppEventEmitter(),
+    outgoingDispatcher,
 
     instanceProps: {
       appId: '1',

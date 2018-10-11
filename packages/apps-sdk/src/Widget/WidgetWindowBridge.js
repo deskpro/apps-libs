@@ -204,7 +204,11 @@ class WidgetWindowBridge {
    */
   get bodySize() {
     const { windowObject } = this.props;
-    return getSize(windowObject.document.body);
+    const size = getSize(windowObject.document.body);
+    // outerheight is always short by the margin set by the browser (user-agent) on the body
+    // so i am compensating here for this. on linux, chrome adds an `margin: 8px` to the body element by default
+    size.outerHeight = size.outerHeight + 8;
+    return size;
   }
 }
 

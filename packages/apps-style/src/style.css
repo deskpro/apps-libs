@@ -1,5 +1,6 @@
 @import "fonts.css";
 @import "vars.css";
+@import "reset.css";
 @import "components/root.css";
 @import "components/swatches.css";
 @import "components/buttonTabs.css";

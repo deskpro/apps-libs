@@ -3,6 +3,7 @@
   border: 2px solid var(--border-color-light);
   border-radius: var(--border-radius);
   display: block;
+  margin: 8px;
   padding: var(--card-padding);
 }
 
@@ -23,4 +24,8 @@
 .dp-AppFrame.is-inactive {
   filter: grayscale(100%);
   opacity: 0.8;
+}
+
+.dp-AppFrame.is-fullscreen {
+  margin: 0;
 }

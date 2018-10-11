@@ -40,12 +40,14 @@ class AppFrame extends React.PureComponent {
             'dp-AppFrame',
             state === 'inactive' ? 'is-inactive' : '',
             display === 'collapsed' ? 'is-colapsed' : '',
+            display === 'fullscreen' ? 'is-fullscreen' : '',
             this.props.className,
           )}
         >
           <AppBar iconUrl={iconUrl} title={title} badgeText={badgeVisibility === 'visible' ? badgeCount : null}>
-            <Action icon='refresh' onClick={refresh} />
-            <Action icon={ display === 'collapsed' ? 'down' : 'up'  } onClick={ display === 'collapsed' ? expand : collapse } />
+            { display !== 'fullscreen' && <Action icon='refresh' onClick={refresh} /> }
+            { display !== 'fullscreen' && <Action icon={ display === 'collapsed' ? 'down' : 'up'  } onClick={ display === 'collapsed' ? expand : collapse } /> }
+            { display === 'fullscreen' && <Action icon={ "close-heavy"  } onClick={ expand } /> }
           </AppBar>
 
           <AppBody>
@@ -84,7 +86,7 @@ AppFrame.propTypes = {
   /**
    * controls how the app frame is displayed
    */
-  display: PropTypes.oneOf(['collapsed', 'expanded']),
+  display: PropTypes.oneOf(['collapsed', 'expanded', 'fullscreen']),
 
   /**
    * controls the state of the frame
@@ -129,6 +131,7 @@ AppFrame.propTypes = {
 };
 
 AppFrame.defaultProps = {
+
   className: '',
 
   state: 'ready',
