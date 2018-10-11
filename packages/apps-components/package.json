@@ -1,6 +1,6 @@
 {
   "name": "@deskpro/apps-components",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "author": "DeskPRO <support@deskpro.com>",
   "license": "BSD 3-Clause License",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
     "url": "https://github.com/deskpro/apps-libs/issues"
   },
   "dependencies": {
-    "@deskpro/apps-components-style": "^0.8.3",
+    "@deskpro/apps-components-style": "^0.9.0",
     "classnames": "^2.2.6",
     "i18next": "11.9.0",
     "react-custom-scrollbars": "^4.2.1"
