@@ -72,6 +72,32 @@ test('retrieve properties', done => {
   done();
 });
 
+test ('isPreRender is false by default', (done) => {
+
+  const instanceProps = {
+    appId: '1',
+    appTitle: 'title',
+    appPackageName: 'com.deskpro.app',
+    instanceId: '1'
+  };
+
+  const contextProps = {
+    type: 'ticket',
+    entityId: '1',
+    locationId: '1',
+    tabId: 'tab-1',
+    tabUrl: 'https://127.0.0.1',
+  };
+  const app = createAppFromProps({
+    registerEventHandlers: function() {},
+    instanceProps,
+    contextProps,
+  });
+
+  expect(app.getProperty('isPreRender')).toBe(false);
+  done();
+});
+
 test('retrieve all application properties', done => {
   const experimental = {
     instanceExperimentalOne: 'instanceExperimentalOne',
@@ -111,7 +137,7 @@ test('retrieve all application properties', done => {
   const { type: contextType, ...expectedContextProps } = contextProps;
 
   expect(app.properties).toEqual(
-    Object.assign({}, instanceProps, { contextType, ...expectedContextProps }),
+    Object.assign({}, instanceProps, { contextType, ...expectedContextProps }, {isPreRender: false}),
   );
   done();
 });

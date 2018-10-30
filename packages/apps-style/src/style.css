@@ -20,6 +20,7 @@
 @import "components/panel.css";
 @import "components/separator.css";
 @import "components/notification.css";
+@import "components/appPlaceholder.css";
 @import "elements/buttons.css";
 @import "elements/tags.css";
 @import "elements/forms.css";

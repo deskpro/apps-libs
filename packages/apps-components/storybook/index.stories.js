@@ -3,6 +3,7 @@ import './components/ActionBar';
 import './components/ActionList';
 import './components/AppBar';
 import './components/AppFrame';
+import './components/AppPlaceholder';
 import './components/List';
 import './components/Button';
 import './components/Notification';
