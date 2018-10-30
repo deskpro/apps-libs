@@ -11,14 +11,14 @@ import { EVENT_WINDOW_MOUSEEVENT, EVENT_WINDOW_RESIZE } from './events';
  * @param listener
  * @param windowObject
  */
-const addWindowEventListener = (eventName, listener, windowObject) => {
+function addWindowEventListener (eventName, listener, windowObject) {
   const addListener = windowObject.addEventListener
     ? windowObject.addEventListener
     : windowObject.attachEvent;
   const event = windowObject.addEventListener ? eventName : 'on' + eventName;
 
   addListener(event, listener);
-};
+}
 
 /**
  * @ignore
@@ -26,7 +26,7 @@ const addWindowEventListener = (eventName, listener, windowObject) => {
  * @param windowBridge
  * @param e
  */
-const mouseEventHandler = (windowBridge, e) => {
+function mouseEventHandler (windowBridge, e) {
   const scalarKeys = original => {
     const obj = {};
     for (const key in original) {
@@ -39,7 +39,7 @@ const mouseEventHandler = (windowBridge, e) => {
   windowBridge
     .emitRequest(EVENT_WINDOW_MOUSEEVENT, payload)
     .then(({ emit }) => emit());
-};
+}
 
 let isResizing = false;
 /**
@@ -48,7 +48,7 @@ let isResizing = false;
  * @param {WidgetWindowBridge} windowBridge
  * @return {null}
  */
-const windowSizeChangeHandler = windowBridge => {
+function windowSizeChangeHandler (windowBridge) {
   if (isResizing) {
     return null;
   }
@@ -60,7 +60,7 @@ const windowSizeChangeHandler = windowBridge => {
     .then(() => {
       isResizing = false;
     });
-};
+}
 
 const mouseEvents = ['mousedown', 'mouseup'];
 
@@ -76,9 +76,10 @@ class WidgetWindowBridge {
   /**
    * @param {Window} windowObject
    * @param {InitPropertiesBag} initProps
+   * @param {{fromParentWindow: function(*, *): function, fromInitProps: function(*, *): function}}  propLoaders
    */
-  constructor(windowObject, initProps) {
-    this.props = { windowObject, initProps };
+  constructor(windowObject, initProps, propLoaders) {
+    this.props = { windowObject, initProps, propLoaders };
 
     const onLoadExecutor = (resolve, reject) => {
       if (windowObject.document.readyState === 'complete') {
@@ -108,23 +109,20 @@ class WidgetWindowBridge {
   connect(createApp) {
     const { windowObject } = this.props;
     const { widgetId } = this;
+    const { initProps, propLoaders } = this.props;
 
-    return this.onLoadPromise
-      .then(() =>
-        postRobot
-          .send(
-            postRobot.parent,
-            `urn:deskpro:apps.widget.onready?widgetId=${widgetId}`,
-            {},
-          )
-          .then(event => event.data),
-      )
-      .then(o => createApp({ ...o, widgetWindow: this }))
-      .then(app => {
-        // reduce verbosity of post-robot logging
-        if (app.environment === 'production') {
-          postRobot.CONFIG.LOG_LEVEL = 'error';
-        }
+    const isRenderStatic = initProps.getProperty('dpRender') === 'static';
+
+    let loadProps;
+    if (isRenderStatic) {
+      loadProps = propLoaders.fromInitProps(widgetId, initProps);
+    } else {
+      loadProps = propLoaders.fromParentWindow(widgetId, postRobot)
+    }
+
+    let attachResizeDetector = () => {};
+    if (! isRenderStatic) {
+      attachResizeDetector = () => {
 
         const handler = mouseEventHandler.bind(null, this);
         mouseEvents.forEach(event =>
@@ -137,6 +135,19 @@ class WidgetWindowBridge {
           windowObject.document.body,
           windowSizeChangeHandler.bind(null, this),
         );
+      };
+    }
+
+    return this.onLoadPromise
+      .then(loadProps)
+      .then(o => createApp({ ...o, widgetWindow: this }))
+      .then(app => {
+        // reduce verbosity of post-robot logging
+        if (app.environment === 'production') {
+          postRobot.CONFIG.LOG_LEVEL = 'error';
+        }
+
+        attachResizeDetector();
 
         return app;
       });

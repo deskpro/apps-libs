@@ -173,7 +173,7 @@ export function createRenderer(renderFactory) {
  * @param {Object} contextProps
  * @return {AppClient}
  */
-function createAppOnConnection({ widgetWindow, instanceProps, contextProps }) {
+function createAppOnConnection({ widgetWindow, instanceProps, contextProps, ...others }) {
   /**
    * @type {function}
    */
@@ -182,6 +182,7 @@ function createAppOnConnection({ widgetWindow, instanceProps, contextProps }) {
     registerEventHandlers,
     instanceProps,
     contextProps,
+    ...others
   });
 }
 

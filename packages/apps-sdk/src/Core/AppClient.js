@@ -23,6 +23,7 @@ class AppClient {
    * @param {OauthFacade} oauth instanceof of the oauth client
    * @param {UIFacade} ui instance of the ui client
    * @param {I18nClient} i18n instance of the i18n client
+   * @param {boolean} isPreRender flag that indicates the app is running in pre-render mode
    */
   constructor({
     registerEventHandlers,
@@ -37,7 +38,8 @@ class AppClient {
     deskproWindow,
     oauth,
     ui,
-    i18n
+    i18n,
+    isPreRender
   }) {
     this.props = {
       registerEventHandlers,
@@ -52,7 +54,8 @@ class AppClient {
       deskproWindow,
       oauth,
       ui,
-      i18n
+      i18n,
+      isPreRender: isPreRender || false
     };
 
     this._state = {
@@ -189,6 +192,13 @@ class AppClient {
       value = contextProps.getProperty(propertyName);
     }
 
+    if (value === undefined) {
+      const otherProps = [ "isPreRender" ];
+      if (-1 !== otherProps.indexOf(propertyName)) {
+        value = this.props[propertyName];
+      }
+    }
+
     return value;
   };
 
@@ -199,12 +209,12 @@ class AppClient {
    * @return {Object}
    */
   get properties() {
-    const { instanceProps, contextProps } = this.props;
+    const { instanceProps, contextProps, isPreRender } = this.props;
 
     const instanceProperties = instanceProps.toJS();
     const contextProperties = contextProps.toJS();
 
-    return { ...instanceProperties, ...contextProperties };
+    return { ...instanceProperties, ...contextProperties, isPreRender };
   }
 
   /**
