@@ -1,0 +1,34 @@
+
+@keyframes placeholderLoading {
+
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.dp-AppPlaceholder {
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.dp-AppPlaceholder__line {
+  animation: placeholderLoading 500ms infinite ease-in-out;
+  background-color: var(--blue);
+  border-radius: 5px;
+  display: inline-block;
+  height: 25px;
+
+  margin: 2px;
+  width: 15px;
+}
+
+.dp-AppPlaceholder--animationDelay100 { animation-delay: 100ms; }
+.dp-AppPlaceholder--animationDelay200 { animation-delay: 200ms; }
+.dp-AppPlaceholder--animationDelay300 { animation-delay: 300ms; }
+.dp-AppPlaceholder--animationDelay400 { animation-delay: 400ms; }

@@ -1,6 +1,7 @@
 import InitPropertiesBag from './InitPropertiesBag';
 import WidgetWindowBridge from './WidgetWindowBridge';
 import { parseResponse, parseRequest } from './messages';
+import * as propLoaders from './propLoaders';
 
 /**
  * @return {WidgetWindowBridge}
@@ -21,11 +22,15 @@ export function createDefaultWindowBridge() {
  * @return {WidgetWindowBridge}
  */
 export function createMockWindowBridge(windowObject, options = {}) {
-  return new WidgetWindowBridge(windowObject, {
-    ...options,
-    widgetId: options.widgetId || 'MOCK',
-    dpWidgetId: options.dpWidgetId || 'MOCK',
-  });
+  return new WidgetWindowBridge(
+    windowObject,
+    {
+      ...options,
+      widgetId: options.widgetId || 'MOCK',
+      dpWidgetId: options.dpWidgetId || 'MOCK',
+    },
+    propLoaders
+  );
 }
 /**
  * @param {Window} windowObject
@@ -34,7 +39,7 @@ export function createMockWindowBridge(windowObject, options = {}) {
 export function createWindowBridge(windowObject) {
   const initProps = InitPropertiesBag.fromWindow(windowObject);
   if (InitPropertiesBag.validate(initProps)) {
-    return new WidgetWindowBridge(windowObject, initProps);
+    return new WidgetWindowBridge(windowObject, initProps, propLoaders);
   }
 
   throw new Error('invalid or missing init properties');
