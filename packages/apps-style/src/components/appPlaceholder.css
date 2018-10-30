@@ -1,4 +1,6 @@
+
 @keyframes placeholderLoading {
+
   0% {
     opacity: 0;
   }
@@ -13,25 +15,29 @@
 }
 
 .dp-AppPlaceholder {
-  margin-top: 10px;
-  margin-bottom: 20px;
   display: block;
+  margin-bottom: 20px;
+  margin-top: 10px;
   text-align: center;
 }
+
 /**
-  for some reasons animation delay is overwritten and the computed value is reported as 0 :(
+  for some reasons animation delay is overwritten
+  and the computed value is reported as 0 :(
  */
+
 .dp-AppPlaceholder--animationDelay200 { animation-delay: 100ms; }
 .dp-AppPlaceholder--animationDelay400 { animation-delay: 200ms; }
 .dp-AppPlaceholder--animationDelay600 { animation-delay: 300ms; }
 .dp-AppPlaceholder--animationDelay800 { animation-delay: 400ms; }
 
 .dp-AppPlaceholder__line {
-  width: 15px;
-  height: 25px;
-  background-color: var(--blue);
-  margin: 2px;
-  display: inline-block;
-  border-radius: 5px;
   animation: placeholderLoading 500ms infinite ease-in-out;
+  background-color: var(--blue);
+  border-radius: 5px;
+  display: inline-block;
+  height: 25px;
+
+  margin: 2px;
+  width: 15px;
 }

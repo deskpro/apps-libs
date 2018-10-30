@@ -185,7 +185,7 @@ class AppClient {
    * @return {String|null|undefined}
    */
   getProperty = propertyName => {
-    const { instanceProps, contextProps,  } = this.props;
+    const { instanceProps, contextProps } = this.props;
     let value = instanceProps.getProperty(propertyName);
 
     if (value === undefined) {
