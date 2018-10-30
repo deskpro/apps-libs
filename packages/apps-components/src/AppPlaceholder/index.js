@@ -8,10 +8,10 @@ const AppPlaceholder = ({ className, children, ...props }) => [
   <div {...props} className={classnames('dp-AppPlaceholder', className)}>
 
       <span className={classnames('dp-AppPlaceholder__line')} />
-      <span className={classnames('dp-AppPlaceholder__line')} style={{  animationDelay: '100ms' }}/>
-      <span className={classnames('dp-AppPlaceholder__line')} style={{  animationDelay: '200ms' }}/>
-      <span className={classnames('dp-AppPlaceholder__line')} style={{  animationDelay: '300ms' }}/>
-      <span className={classnames('dp-AppPlaceholder__line')} style={{  animationDelay: '400ms' }}/>
+      <span className={classnames('dp-AppPlaceholder__line', 'dp-AppPlaceholder--animationDelay100')} />
+      <span className={classnames('dp-AppPlaceholder__line', 'dp-AppPlaceholder--animationDelay200')} />
+      <span className={classnames('dp-AppPlaceholder__line', 'dp-AppPlaceholder--animationDelay300')} />
+      <span className={classnames('dp-AppPlaceholder__line', 'dp-AppPlaceholder--animationDelay400')} />
 
   </div>,
   children

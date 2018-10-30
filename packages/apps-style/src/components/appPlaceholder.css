@@ -17,16 +17,6 @@
   text-align: center;
 }
 
-/**
-  for some reasons animation delay is overwritten
-  and the computed value is reported as 0 :(
- */
-
-.dp-AppPlaceholder--animationDelay200 { animation-delay: 100ms; }
-.dp-AppPlaceholder--animationDelay400 { animation-delay: 200ms; }
-.dp-AppPlaceholder--animationDelay600 { animation-delay: 300ms; }
-.dp-AppPlaceholder--animationDelay800 { animation-delay: 400ms; }
-
 .dp-AppPlaceholder__line {
   animation: placeholderLoading 500ms infinite ease-in-out;
   background-color: var(--blue);
@@ -37,3 +27,8 @@
   margin: 2px;
   width: 15px;
 }
+
+.dp-AppPlaceholder--animationDelay100 { animation-delay: 100ms; }
+.dp-AppPlaceholder--animationDelay200 { animation-delay: 200ms; }
+.dp-AppPlaceholder--animationDelay300 { animation-delay: 300ms; }
+.dp-AppPlaceholder--animationDelay400 { animation-delay: 400ms; }
