@@ -71,6 +71,7 @@ class UIFacade {
       menu: Constants.VISIBILITY_VISIBLE, // visible, hidden
       badgeVisibility: Constants.VISIBILITY_HIDDEN, // visible, hidden
       badgeCount: 0,
+      badgeStyle: Constants.BADGESTYLE_URGENT,
 
       settingsVisibility: Constants.VISIBILITY_HIDDEN, // visible, hidden
       isResizing: false,
@@ -170,7 +171,7 @@ class UIFacade {
   };
 
   /**
-   * The number to display in in the application badge
+   * The number to display in the application badge
    *
    * @type {number}
    */
@@ -187,6 +188,37 @@ class UIFacade {
 
     if (oldCount !== newCount) {
       this.setProps({ badgeCount: newCount });
+    }
+  }
+
+  /**
+   * The style of the application badge
+   *
+   * @type {string}
+   */
+  get badgeStyle() {
+    return this.props.badgeStyle;
+  }
+
+  /**
+   * @ignore
+   * @param {string} newStyle
+   */
+  set badgeStyle(newStyle) {
+
+    const isValid = -1 !== [
+      Constants.BADGESTYLE_URGENT,
+      Constants.BADGESTYLE_STANDARD
+    ].indexOf(newStyle);
+
+    if ( !isValid ) {
+      throw new Error('Invalid style');
+    }
+
+    const { badgeStyle: oldStyle } = this.props;
+
+    if (oldStyle !== newStyle) {
+      this.setProps({ badgeStyle: newStyle });
     }
   }
 
