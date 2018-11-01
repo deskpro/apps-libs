@@ -2,21 +2,21 @@
 <rss version="2.0">
     <channel>
         <title>Apps Style Blog</title>
-        <link>https://deskpro.github.io/apps-components/style/apps-components/style/blog</link>
+        <link>https://deskpro.github.io/apps-libs/style/apps-libs/style/blog</link>
         <description>The best place to stay up-to-date with the latest Apps Style news and events.</description>
         <lastBuildDate>Fri, 22 Jun 2018 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
             <title>Apps Style Blog</title>
-            <url>https://deskpro.github.io/apps-components/style/apps-components/style/img/dp-logo-white.svg</url>
-            <link>https://deskpro.github.io/apps-components/style/apps-components/style/blog</link>
+            <url>https://deskpro.github.io/apps-libs/style/apps-libs/style/img/dp-logo-white.svg</url>
+            <link>https://deskpro.github.io/apps-libs/style/apps-libs/style/blog</link>
         </image>
         <copyright>Copyright © 2018 Deskpro</copyright>
         <item>
             <title><![CDATA[New Project]]></title>
-            <link>https://deskpro.github.io/apps-components/style/apps-components/style/blog/2018/06/22/init.html</link>
-            <guid>https://deskpro.github.io/apps-components/style/apps-components/style/blog/2018/06/22/init.html</guid>
+            <link>https://deskpro.github.io/apps-libs/style/apps-libs/style/blog/2018/06/22/init.html</link>
+            <guid>https://deskpro.github.io/apps-libs/style/apps-libs/style/blog/2018/06/22/init.html</guid>
             <pubDate>Fri, 22 Jun 2018 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>This new repository is the bases for all the styling found in Deskpro Apps.</p>
 ]]></description>
