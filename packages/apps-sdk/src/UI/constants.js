@@ -61,3 +61,15 @@ export const DISPLAY_EXPANDED = 'expanded';
  * @type {string}
  */
 export const DISPLAY_FULLSCREEN = 'fullscreen';
+
+/**
+ * @readonly
+ * @type {string}
+ */
+export const BADGESTYLE_STANDARD = 'standard';
+
+/**
+ * @readonly
+ * @type {string}
+ */
+export const BADGESTYLE_URGENT = 'urgent';
