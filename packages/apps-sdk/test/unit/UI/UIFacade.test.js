@@ -2,6 +2,43 @@ import { createUIFacade, UIEvents, UIConstants } from '../../../src/UI';
 import AppEventEmitter from '../../../src/Core/AppEventEmitter';
 import * as Constants from '../../../src/UI/constants';
 
+test(' badgeStyle has a default value', done => {
+  const outgoingDispatcher = new AppEventEmitter();
+  const eventDispatcher = new AppEventEmitter();
+
+  const ui = createUIFacade(outgoingDispatcher, eventDispatcher);
+  expect(ui.badgeStyle).toBe("urgent");
+  done();
+});
+
+test(' badgeStyle is stored after setting', done => {
+  const outgoingDispatcher = new AppEventEmitter();
+  const eventDispatcher = new AppEventEmitter();
+
+  const ui = createUIFacade(outgoingDispatcher, eventDispatcher);
+  ui.badgeStyle = "standard";
+  expect(ui.badgeStyle).toBe("standard");
+  done();
+});
+
+test(' badgeStyle can not have arbitrary values', done => {
+  const outgoingDispatcher = new AppEventEmitter();
+  const eventDispatcher = new AppEventEmitter();
+
+  const ui = createUIFacade(outgoingDispatcher, eventDispatcher);
+
+  let error = null;
+  try {
+    ui.badgeStyle = "non-standard";
+  } catch (e) {
+    error = e;
+  }
+
+
+  expect(error).toBeInstanceOf(Error);
+  done();
+});
+
 test('badgeCount property is stored after setting', done => {
   const outgoingDispatcher = new AppEventEmitter();
   const eventDispatcher = new AppEventEmitter();

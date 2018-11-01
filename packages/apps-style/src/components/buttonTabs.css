@@ -84,6 +84,10 @@
   max-width: 100%;
 }
 
+.dp-ButtonsImg--isInactive {
+  filter: grayscale(1);
+}
+
 .dp-ButtonTabs--wrap {
   display: flex;
 }
@@ -131,6 +135,10 @@
 }
 
 .dp-AppTabs.is-vertical .dp-ButtonTabs {
+  height: 39px;
+}
+
+.dp-AppTabs.is-vertical .dp-ButtonTabs.dp----with-separator {
   border-bottom: 1px solid var(--gray-200);
   height: calc(39px - 1px);
 }
