@@ -1,8 +1,9 @@
 .dp-Panel {
-  border: 1px solid var(--border-color-light);
-  border-radius: var(--border-radius);
+  border: 0 solid var(--border-color-light);
+  border-top-width: 1px;
   display: block;
-  padding: 5px 4px 5px 7px;
+  margin: 0 -4px;
+  padding: 5px 8px 5px 11px;
 }
 
 .dp-Panel--borderless {
