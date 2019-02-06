@@ -13,8 +13,7 @@ function requestChangeProps(newProps) {
  * @param {Object} newProps
  * @return {Object}
  */
-function receiveChangeProps(newProps)
-{
+function receiveChangeProps(newProps) {
   const { localDispatcher } = this;
   const oldProps = JSON.parse(JSON.stringify(this.props));
 
@@ -28,13 +27,12 @@ function receiveChangeProps(newProps)
 /**
  * @param {UIFacade} facade
  */
-function actionChangePropsAsync(facade)
-{
+function actionChangePropsAsync(facade) {
   const request = requestChangeProps.bind(facade);
   const receive = receiveChangeProps.bind(facade);
 
   return function action(props) {
-    return request(props).then(receive)
+    return request(props).then(receive);
   };
 }
 
@@ -205,13 +203,13 @@ class UIFacade {
    * @param {string} newStyle
    */
   set badgeStyle(newStyle) {
+    const isValid =
+      -1 !==
+      [Constants.BADGESTYLE_URGENT, Constants.BADGESTYLE_STANDARD].indexOf(
+        newStyle,
+      );
 
-    const isValid = -1 !== [
-      Constants.BADGESTYLE_URGENT,
-      Constants.BADGESTYLE_STANDARD
-    ].indexOf(newStyle);
-
-    if ( !isValid ) {
+    if (!isValid) {
       throw new Error('Invalid style');
     }
 

@@ -1,5 +1,9 @@
-import { format as dateFormat, formatDistance as dateFormatDistance, formatDistanceStrict as dateFormatDistanceStrict } from "date-fns/esm";
-import dateLocales from "date-fns/locale";
+import {
+  format as dateFormat,
+  formatDistance as dateFormatDistance,
+  formatDistanceStrict as dateFormatDistanceStrict,
+} from 'date-fns/esm';
+import dateLocales from 'date-fns/locale';
 
 export default class I18nClient {
   constructor(i18next) {
@@ -57,7 +61,11 @@ export default class I18nClient {
    * @return {String}
    */
   formatDateDistance(date, baseDate, options = {}) {
-    return dateFormatDistance(date, baseDate, Object.assign({}, options, { locale: this._getCurrentDateLocale() }));
+    return dateFormatDistance(
+      date,
+      baseDate,
+      Object.assign({}, options, { locale: this._getCurrentDateLocale() }),
+    );
   }
 
   /**
@@ -69,11 +77,18 @@ export default class I18nClient {
    * @return {String}
    */
   formatDateDistanceStrict(date, baseDate, options = {}) {
-    return dateFormatDistanceStrict(date, baseDate, Object.assign({}, options, { locale: this._getCurrentDateLocale() }));
+    return dateFormatDistanceStrict(
+      date,
+      baseDate,
+      Object.assign({}, options, { locale: this._getCurrentDateLocale() }),
+    );
   }
 
   _getCurrentDateLocale() {
-    return this.i18next.languages.find(langId => this._getDateLocale(langId)) || dateLocales.enUS;
+    return (
+      this.i18next.languages.find(langId => this._getDateLocale(langId)) ||
+      dateLocales.enUS
+    );
   }
 
   _getDateLocale(langId) {
@@ -96,14 +111,14 @@ export default class I18nClient {
    */
   formatNumber(number, options) {
     if (!Intl || !Intl.NumberFormat) {
-      return number+"";
+      return number + '';
     }
 
     try {
       return Intl.NumberFormat(this.i18next.languages, options).format(number);
     } catch (e) {
       console.warn(e);
-      return number+"";
+      return number + '';
     }
   }
 
@@ -113,7 +128,7 @@ export default class I18nClient {
    * @param langId
    */
   changeLanguage(langId) {
-    this.i18next.changeLanguage(langId)
+    this.i18next.changeLanguage(langId);
   }
 
   /**
@@ -161,7 +176,7 @@ export default class I18nClient {
   addPhrasePacks(packs) {
     Object.keys(packs).forEach(k => {
       if (k.indexOf('$') !== -1) {
-        const [ langName, ns ] = k.split('$', 2);
+        const [langName, ns] = k.split('$', 2);
         const langId = langName.replace(/^([a-z]{2})([A-Z]{2})/, '$1-$2');
 
         this.i18next.addResourceBundle(langId, ns, packs[k], true, true);
@@ -169,7 +184,7 @@ export default class I18nClient {
         const langId = k;
         Object.keys(packs[k]).forEach(ns => {
           this.i18next.addResourceBundle(langId, ns, packs[k][ns], true, true);
-        })
+        });
       }
     });
   }
@@ -192,7 +207,7 @@ export default class I18nClient {
   addPhrasePack(langId, pack) {
     Object.keys(pack).forEach(ns => {
       this.i18next.addResourceBundle(langId, ns, pack[ns], true, true);
-    })
+    });
   }
 
   /**

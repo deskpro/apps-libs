@@ -11,7 +11,7 @@ import { EVENT_WINDOW_MOUSEEVENT, EVENT_WINDOW_RESIZE } from './events';
  * @param listener
  * @param windowObject
  */
-function addWindowEventListener (eventName, listener, windowObject) {
+function addWindowEventListener(eventName, listener, windowObject) {
   const addListener = windowObject.addEventListener
     ? windowObject.addEventListener
     : windowObject.attachEvent;
@@ -26,7 +26,7 @@ function addWindowEventListener (eventName, listener, windowObject) {
  * @param windowBridge
  * @param e
  */
-function mouseEventHandler (windowBridge, e) {
+function mouseEventHandler(windowBridge, e) {
   const scalarKeys = original => {
     const obj = {};
     for (const key in original) {
@@ -48,7 +48,7 @@ let isResizing = false;
  * @param {WidgetWindowBridge} windowBridge
  * @return {null}
  */
-function windowSizeChangeHandler (windowBridge) {
+function windowSizeChangeHandler(windowBridge) {
   if (isResizing) {
     return null;
   }
@@ -117,13 +117,12 @@ class WidgetWindowBridge {
     if (isRenderStatic) {
       loadProps = propLoaders.fromInitProps(widgetId, initProps);
     } else {
-      loadProps = propLoaders.fromParentWindow(widgetId, postRobot)
+      loadProps = propLoaders.fromParentWindow(widgetId, postRobot);
     }
 
     let attachResizeDetector = () => {};
-    if (! isRenderStatic) {
+    if (!isRenderStatic) {
       attachResizeDetector = () => {
-
         const handler = mouseEventHandler.bind(null, this);
         mouseEvents.forEach(event =>
           addWindowEventListener(event, handler, windowObject),

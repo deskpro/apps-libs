@@ -72,13 +72,12 @@ test('retrieve properties', done => {
   done();
 });
 
-test ('isPreRender is false by default', (done) => {
-
+test('isPreRender is false by default', done => {
   const instanceProps = {
     appId: '1',
     appTitle: 'title',
     appPackageName: 'com.deskpro.app',
-    instanceId: '1'
+    instanceId: '1',
   };
 
   const contextProps = {
@@ -137,7 +136,12 @@ test('retrieve all application properties', done => {
   const { type: contextType, ...expectedContextProps } = contextProps;
 
   expect(app.properties).toEqual(
-    Object.assign({}, instanceProps, { contextType, ...expectedContextProps }, {isPreRender: false}),
+    Object.assign(
+      {},
+      instanceProps,
+      { contextType, ...expectedContextProps },
+      { isPreRender: false },
+    ),
   );
   done();
 });

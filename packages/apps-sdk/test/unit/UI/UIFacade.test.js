@@ -7,7 +7,7 @@ test(' badgeStyle has a default value', done => {
   const eventDispatcher = new AppEventEmitter();
 
   const ui = createUIFacade(outgoingDispatcher, eventDispatcher);
-  expect(ui.badgeStyle).toBe("urgent");
+  expect(ui.badgeStyle).toBe('urgent');
   done();
 });
 
@@ -16,8 +16,8 @@ test(' badgeStyle is stored after setting', done => {
   const eventDispatcher = new AppEventEmitter();
 
   const ui = createUIFacade(outgoingDispatcher, eventDispatcher);
-  ui.badgeStyle = "standard";
-  expect(ui.badgeStyle).toBe("standard");
+  ui.badgeStyle = 'standard';
+  expect(ui.badgeStyle).toBe('standard');
   done();
 });
 
@@ -29,11 +29,10 @@ test(' badgeStyle can not have arbitrary values', done => {
 
   let error = null;
   try {
-    ui.badgeStyle = "non-standard";
+    ui.badgeStyle = 'non-standard';
   } catch (e) {
     error = e;
   }
-
 
   expect(error).toBeInstanceOf(Error);
   done();
