@@ -121,6 +121,7 @@ export function createAppFromProps({
 
     i18n: createI18n(instancePropsObject.locale),
   };
+  console.warn(instancePropsObject);
 
   const appProps = { ...defaultProps, ...others, registerEventHandlers };
   const appClient = new AppClient(appProps);
