@@ -1,6 +1,8 @@
 class NamespacedBrowserStorage {
-  static createLocalStorage   = (ns) => new NamespacedBrowserStorage(ns, window.localStorage)
-  static createSessionStorage = (ns) => new NamespacedBrowserStorage(ns, window.sessionStorage)
+  static createLocalStorage = ns =>
+    new NamespacedBrowserStorage(ns, window.localStorage);
+  static createSessionStorage = ns =>
+    new NamespacedBrowserStorage(ns, window.sessionStorage);
 
   constructor(ns, storage) {
     this.ns = ns;
@@ -20,7 +22,7 @@ class NamespacedBrowserStorage {
   }
 
   key() {
-    throw new Error("Unsupported")
+    throw new Error('Unsupported');
   }
 
   clear() {
@@ -41,7 +43,7 @@ class NamespacedBrowserStorage {
   }
 
   isThisNamespaceKey(key) {
-    return key.substring(0, this.ns.length+1) === this.ns + ':';
+    return key.substring(0, this.ns.length + 1) === this.ns + ':';
   }
 }
 

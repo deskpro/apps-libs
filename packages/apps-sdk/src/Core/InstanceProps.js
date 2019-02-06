@@ -12,10 +12,25 @@ class InstanceProps extends PropertyBag {
    * @param {String} appTitle the title of this instance's application
    * @param {String} appPackageName the package name (from package.json) f
    * @param {String} instanceId
+   * @param {String} locale
    * @param {...*} [otherProps] experimental or undocumented props
    */
-  constructor({ appId, appTitle, appPackageName, instanceId, ...otherProps }) {
-    super({ appId, appTitle, appPackageName, instanceId, ...otherProps });
+  constructor({
+    appId,
+    appTitle,
+    appPackageName,
+    instanceId,
+    locale,
+    ...otherProps
+  }) {
+    super({
+      appId,
+      appTitle,
+      appPackageName,
+      instanceId,
+      locale,
+      ...otherProps,
+    });
   }
 
   /**
@@ -56,6 +71,16 @@ class InstanceProps extends PropertyBag {
    */
   get instanceId() {
     return this.props.instanceId;
+  }
+
+  /**
+   * @public
+   * @readonly
+   *
+   * @type {String}
+   */
+  get locale() {
+    return this.props.locale;
   }
 }
 

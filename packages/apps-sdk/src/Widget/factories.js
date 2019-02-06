@@ -29,7 +29,7 @@ export function createMockWindowBridge(windowObject, options = {}) {
       widgetId: options.widgetId || 'MOCK',
       dpWidgetId: options.dpWidgetId || 'MOCK',
     },
-    propLoaders
+    propLoaders,
   );
 }
 /**

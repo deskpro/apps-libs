@@ -6,15 +6,17 @@
  * @return {function(): Promise<Object, Error>}
  */
 export function fromParentWindow(widgetId, postRobot) {
-
   /**
    * @return {Promise<Object, Error>}
    */
   function fromParentWindowAction() {
     return postRobot
-      .send(postRobot.parent, `urn:deskpro:apps.widget.onready?widgetId=${widgetId}`, {})
-      .then(event => event.data)
-    ;
+      .send(
+        postRobot.parent,
+        `urn:deskpro:apps.widget.onready?widgetId=${widgetId}`,
+        {},
+      )
+      .then(event => event.data);
   }
 
   return fromParentWindowAction;
@@ -27,25 +29,23 @@ export function fromParentWindow(widgetId, postRobot) {
  * @param {InitPropertiesBag} initProps
  * @return {function(): Promise<Object, Error>}
  */
-export function fromInitProps(widgetId, initProps)
-{
-  function fromInitPropsAction()
-  {
+export function fromInitProps(widgetId, initProps) {
+  function fromInitPropsAction() {
     return Promise.resolve({
       isPreRender: initProps.getProperty('dpRender') === 'static',
       instanceProps: {
-        appId:          initProps.getProperty('dpInstanceAppId'),
-        appTitle:       initProps.getProperty('dpInstanceAppTitle'),
+        appId: initProps.getProperty('dpInstanceAppId'),
+        appTitle: initProps.getProperty('dpInstanceAppTitle'),
         appPackageName: initProps.getProperty('dpInstanceAppPackageName'),
-        instanceId:     initProps.getProperty('dpInstanceInstanceId'),
+        instanceId: initProps.getProperty('dpInstanceInstanceId'),
       },
       contextProps: {
-        type:       initProps.getProperty('dpContextType'),
-        entityId:   initProps.getProperty('dpContextEntityId'),
+        type: initProps.getProperty('dpContextType'),
+        entityId: initProps.getProperty('dpContextEntityId'),
         locationId: initProps.getProperty('dpContextLocationId'),
-        tabId:      initProps.getProperty('dpContextTabId'),
-        tabUrl:     initProps.getProperty('dpContextTabUrl')
-      }
+        tabId: initProps.getProperty('dpContextTabId'),
+        tabUrl: initProps.getProperty('dpContextTabUrl'),
+      },
     });
   }
 

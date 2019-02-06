@@ -1,6 +1,6 @@
 import * as AppEvents from './AppEvents';
 import * as Event from './Event';
-import NamespacedBrowserStorage from '../Storage/NamespacedBrowserStorage'
+import NamespacedBrowserStorage from '../Storage/NamespacedBrowserStorage';
 
 /**
  * A facade exposing all the underlying services required by an application
@@ -39,7 +39,7 @@ class AppClient {
     oauth,
     ui,
     i18n,
-    isPreRender
+    isPreRender,
   }) {
     this.props = {
       registerEventHandlers,
@@ -55,7 +55,7 @@ class AppClient {
       oauth,
       ui,
       i18n,
-      isPreRender: isPreRender || false
+      isPreRender: isPreRender || false,
     };
 
     this._state = {
@@ -193,7 +193,7 @@ class AppClient {
     }
 
     if (value === undefined) {
-      const otherProps = [ "isPreRender" ];
+      const otherProps = ['isPreRender'];
       if (-1 !== otherProps.indexOf(propertyName)) {
         value = this.props[propertyName];
       }
@@ -369,7 +369,9 @@ class AppClient {
    */
   get localStorage() {
     if (!this._localStorage) {
-      this._localStorage = NamespacedBrowserStorage.createLocalStorage(this.helpdeskUuid + ':' + this.appId);
+      this._localStorage = NamespacedBrowserStorage.createLocalStorage(
+        this.helpdeskUuid + ':' + this.appId,
+      );
     }
 
     return this._localStorage;
@@ -385,7 +387,9 @@ class AppClient {
    */
   get sessionStorage() {
     if (!this._sessionStorage) {
-      this._sessionStorage = NamespacedBrowserStorage.createSessionStorage(this.helpdeskUuid + ':' + this.appId);
+      this._sessionStorage = NamespacedBrowserStorage.createSessionStorage(
+        this.helpdeskUuid + ':' + this.appId,
+      );
     }
 
     return this._sessionStorage;
@@ -407,7 +411,7 @@ class AppClient {
    * @param vars
    */
   t(keys, vars) {
-    return this.props.i18n.t(keys, vars)
+    return this.props.i18n.t(keys, vars);
   }
 
   /**

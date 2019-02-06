@@ -119,7 +119,7 @@ export function createAppFromProps({
     ),
     ui: createUIFacade(outgoingDispatcher, localDispatcher),
 
-    i18n: createI18n()
+    i18n: createI18n(instancePropsObject.locale),
   };
 
   const appProps = { ...defaultProps, ...others, registerEventHandlers };
@@ -173,7 +173,12 @@ export function createRenderer(renderFactory) {
  * @param {Object} contextProps
  * @return {AppClient}
  */
-function createAppOnConnection({ widgetWindow, instanceProps, contextProps, ...others }) {
+function createAppOnConnection({
+  widgetWindow,
+  instanceProps,
+  contextProps,
+  ...others
+}) {
   /**
    * @type {function}
    */
@@ -182,7 +187,7 @@ function createAppOnConnection({ widgetWindow, instanceProps, contextProps, ...o
     registerEventHandlers,
     instanceProps,
     contextProps,
-    ...others
+    ...others,
   });
 }
 

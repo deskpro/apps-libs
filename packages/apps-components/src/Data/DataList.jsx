@@ -58,8 +58,8 @@ function renderRow(row, data)
   const [label, value] = row(data);
 
   return [
-    <dt className="dp-DataDefListKey">{label}</dt>,
-    <dd className="dp-DataDefListValue">{value}</dd>
+    <dt key={`dt-${label}-${value}`} className="dp-DataDefListKey">{label}</dt>,
+    <dd key={`dd-${label}-${value}`} className="dp-DataDefListValue">{value}</dd>
   ]
 }
 

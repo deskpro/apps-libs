@@ -5,12 +5,14 @@ import connectRenderer from '../../../src/UI/render';
 import AppEventEmitter from '../../../src/Core/AppEventEmitter';
 
 const outgoingDispatcher = new AppEventEmitter();
-outgoingDispatcher.addListener(Events.EVENT_UI_CHANGED, (resolve, reject, data) => {
-  resolve(data)
-});
+outgoingDispatcher.addListener(
+  Events.EVENT_UI_CHANGED,
+  (resolve, reject, data) => {
+    resolve(data);
+  },
+);
 
 test('connectRenderer connects a renderer function', () => {
-
   const app = createAppFromProps({
     registerEventHandlers: function() {},
     localDispatcher: new AppEventEmitter(),

@@ -16,6 +16,7 @@ test('can create a default context', done => {
     appTitle: 'title',
     appPackageName: 'com.deskpro.app',
     instanceId: '1',
+    locale: 'en',
   });
   const contextProps = new ContextProps({
     type: contextType,
