@@ -54,7 +54,7 @@
 
   &.dp---is-pulse {
 
-    .dp-ButtonsImg {
+    &.dp-ButtonsImg {
       opacity: 1;
       transition: opacity var(--animation-speed);
     }
