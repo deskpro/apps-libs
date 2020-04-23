@@ -36,7 +36,7 @@
     "concurrently": "^3.6.0",
     "contrast": "^1.0.1",
     "cpx": "^1.5.0",
-    "postcss": "^6.0.23",
+    "postcss": "^7.0.17",
     "postcss-autoreset": "^2.0.2",
     "postcss-cli": "^5.0.1",
     "postcss-extend-rule": "^2.0.0",
